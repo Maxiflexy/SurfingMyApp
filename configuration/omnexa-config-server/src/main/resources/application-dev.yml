@@ -1,7 +1,7 @@
 spring:
- cloud:
-   config:
-    server:
-      native:
-       #search-locations: "classpath:/config"
-       search-locations: "file:////Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config"
+  cloud:
+    config:
+      server:
+        native:
+          #search-locations: "classpath:/config"
+          search-locations: "file:////Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config"
