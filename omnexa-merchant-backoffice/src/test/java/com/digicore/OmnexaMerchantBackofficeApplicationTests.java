@@ -1,4 +1,4 @@
-package com.digicore.omnexa_merchant_backoffice;
+package com.digicore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
