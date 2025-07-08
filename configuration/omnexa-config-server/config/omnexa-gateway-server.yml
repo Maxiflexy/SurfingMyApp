@@ -1,0 +1,74 @@
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "omnexa-gateway-server"
+    description: "Gateway Server"
+    version: "1.0.0-SNAPSHOT"
+
+#server:
+#  ssl:
+#    enabled: false
+#    key-store-password: changeit
+#    key-store: file:/Users/togunwuyi/Documents/digicore-projects/lucid-jars/config-server/lucid.local.p12
+#    key-store-type: PKCS12
+#    use-forward-headers: true
+
+lucid:
+  gateway:
+    server:
+      encryptPayload: false
+      corsAllowedOrigins:
+        - "*"
+      corsAllowedMethods:
+        - POST
+        - GET
+        - PUT
+        - DELETE
+        - PATCH
+        - HEAD
+      corsAllowedHeaders:
+        - Content-Type
+        - Access-Control-Allow-Headers
+        - Access-Control-Allow-Origin
+        - Access-Control-Expose-Headers
+        - Content-Disposition
+        - Authorization
+        - Access-Control-Allow-Methods
+        - X-Requested-With
+        - request-id
+      corsAllowedExposedHeaders:
+        - Content-Disposition
+        - response-id
+      filteredUrl:
+        - /omnexa-merchant/documentation
+        - /lucid-customer-transfer/documentation
+        - /lucid-administration/documentation
+        - /lucid-backoffice/documentation
+        - /actuator
+      redisHost: localhost
+      redisPort: 6379
+
+logging:
+  file:
+    name: lucid-gateway-server.log
+

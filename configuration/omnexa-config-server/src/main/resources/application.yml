@@ -1,0 +1,11 @@
+spring:
+ application:
+   name: "omnexa-config-server"
+ profiles:
+   active: "native,dev"
+
+server:
+ port: 8071
+
+encrypt:
+  key: "secret"

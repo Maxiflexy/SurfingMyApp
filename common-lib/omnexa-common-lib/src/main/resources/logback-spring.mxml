@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025 Digicore Limited. All Rights Reserved.
+  ~ Unauthorized use or distribution is strictly prohibited.
+  ~ For details, see the LICENSE file.
+  -->
+
+<configuration>
+
+    <!-- Console Appender (Structured JSON) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <prettyPrint>true</prettyPrint>
+            <providers>
+                <timestamp/>
+                <logLevel/>
+                <loggerName/>
+                <callerData/>         <!-- adds class, method, line number -->
+                <threadName/>
+                <mdc/>
+                <message/>
+                <arguments/>
+                <stackTrace/>
+                <context/>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- File Appender with Daily Rotation -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/${spring.application.name:-app}.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Daily rollover and size limit -->
+            <fileNamePattern>logs/${spring.application.name:-app}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+
+            <!-- Rotate when file exceeds 100MB -->
+            <maxFileSize>100MB</maxFileSize>
+
+            <!-- Retain logs for 30 days -->
+            <maxHistory>30</maxHistory>
+
+            <!-- Optional: Cap total size of all logs -->
+            <totalSizeCap>3GB</totalSizeCap>
+
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <prettyPrint>true</prettyPrint>
+            <providers>
+                <timestamp/>
+                <logLevel/>
+                <loggerName/>
+                <callerData/>         <!-- adds class, method, line number -->
+                <threadName/>
+                <mdc/>
+                <message/>
+                <arguments/>
+                <stackTrace/>
+                <context/>
+            </providers>
+        </encoder>
+    </appender>
+
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

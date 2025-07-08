@@ -1,0 +1,12 @@
+server:
+  port: 8075
+
+spring:
+  application:
+    name: "omnexa-merchant"
+  profiles:
+    active: "dev,messages,mails,validation"
+  config:
+    import: "configserver:http://localhost:8071/"
+  messages:
+    basename: onboarding/onboarding-validation-messages

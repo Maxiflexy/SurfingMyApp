@@ -1,0 +1,4 @@
+.idea
+
+configuration/omnexa-config-server/config/keys/**
+*.jks

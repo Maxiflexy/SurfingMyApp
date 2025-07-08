@@ -1,0 +1,21 @@
+server:
+  port: 8073
+
+spring:
+  application:
+    name: "omnexa-gateway-server"
+  config:
+    import: "configserver:http://localhost:8071/"
+  cache:
+    type: caffeine
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lowerCaseServiceId: true
+    loadbalancer:
+      cache:
+        enabled: true
