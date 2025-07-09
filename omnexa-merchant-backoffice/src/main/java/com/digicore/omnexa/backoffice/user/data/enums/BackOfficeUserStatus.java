@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omxena.backoffice.user.data.enums;
+package com.digicore.omnexa.backoffice.user.data.enums;
 
 /**
  * Enum representing the status of a back office user.

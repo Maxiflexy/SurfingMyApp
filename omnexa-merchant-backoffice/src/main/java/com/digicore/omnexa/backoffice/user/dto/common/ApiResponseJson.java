@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omxena.backoffice.user.dto.common;
+package com.digicore.omnexa.backoffice.user.dto.common;
 
 import com.digicore.omnexa.common.lib.api.ApiError;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

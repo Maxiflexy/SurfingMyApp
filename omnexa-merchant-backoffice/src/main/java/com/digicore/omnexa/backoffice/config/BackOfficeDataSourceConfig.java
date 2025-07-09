@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omxena.backoffice.config;
+package com.digicore.omnexa.backoffice.config;
 
 import com.digicore.omnexa.common.lib.properties.DatabasePropertyConfig;
 import com.zaxxer.hikari.HikariDataSource;

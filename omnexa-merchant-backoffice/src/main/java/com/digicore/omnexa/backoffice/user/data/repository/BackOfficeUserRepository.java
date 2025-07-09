@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omxena.backoffice.user.data.repository;
+package com.digicore.omnexa.backoffice.user.data.repository;
 
 import com.digicore.omnexa.backoffice.modules.user.data.model.BackOfficeUser;
 import org.springframework.data.jpa.repository.JpaRepository;

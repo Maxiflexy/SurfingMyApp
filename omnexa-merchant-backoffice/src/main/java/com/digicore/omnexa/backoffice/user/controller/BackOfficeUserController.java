@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omxena.backoffice.user.controller;
+package com.digicore.omnexa.backoffice.user.controller;
 
 import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiRequestWrapper;
 import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiResponseJson;

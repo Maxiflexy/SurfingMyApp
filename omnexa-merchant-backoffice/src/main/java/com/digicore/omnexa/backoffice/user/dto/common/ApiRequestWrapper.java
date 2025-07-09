@@ -1,4 +1,4 @@
-package com.digicore.omxena.backoffice.user.dto.common;
+package com.digicore.omnexa.backoffice.user.dto.common;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;

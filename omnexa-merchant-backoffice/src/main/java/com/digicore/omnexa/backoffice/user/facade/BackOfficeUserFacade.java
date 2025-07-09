@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omxena.backoffice.user.facade;
+package com.digicore.omnexa.backoffice.user.facade;
 
 import com.digicore.omnexa.backoffice.modules.user.dto.request.InviteUserRequest;
 import com.digicore.omnexa.backoffice.modules.user.dto.request.SignupRequest;
