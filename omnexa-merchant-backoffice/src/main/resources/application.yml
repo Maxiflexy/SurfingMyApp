@@ -1,9 +1,9 @@
 server:
-  port: 8075
+  port: 8076
 
 spring:
   application:
-    name: "omnexa-merchant-backoffice"
+    name: "omnexa-backoffice"
   profiles:
     active: "dev,messages,mails,validation"
   config:

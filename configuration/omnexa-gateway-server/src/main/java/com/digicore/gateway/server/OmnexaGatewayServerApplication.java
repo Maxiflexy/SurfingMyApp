@@ -1,13 +1,13 @@
-package com.digicore;
+package com.digicore.gateway.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OmnexaMerchantBackofficeApplication {
+public class OmnexaGatewayServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OmnexaMerchantBackofficeApplication.class, args);
+		SpringApplication.run(OmnexaGatewayServerApplication.class, args);
 	}
 
 }
