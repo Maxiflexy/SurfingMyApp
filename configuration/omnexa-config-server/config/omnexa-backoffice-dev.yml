@@ -97,3 +97,14 @@ omnexa:
     onboardingPath: "/auth/onboarding/signatory-account?organizationId=%s&email=%s"
 
 
+  message:
+    onboard:
+      duplicate: "User with profile {profile} already exists"
+      invalid: "Invalid onboarding request"
+      not_found: "User with profile {profile} not found"
+      required: "Field {profile} is required"
+      successful: "Onboarding completed successfully"
+
+    user:
+      duplicate: "User {profile} already exists"
+      not_found: "User {profile} not found"

@@ -6,14 +6,19 @@
 
 package com.digicore.omnexa.backoffice.modules.user.controller;
 
-import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiRequestWrapper;
-import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiResponseJson;
+//import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiRequestWrapper;
+//import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiResponseJson;
 import com.digicore.omnexa.backoffice.modules.user.dto.request.InviteUserRequest;
 import com.digicore.omnexa.backoffice.modules.user.dto.request.SignupRequest;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.InviteUserResponse;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.SignupResponse;
+import com.digicore.omnexa.backoffice.modules.user.dto.response.UserListResponse;
 import com.digicore.omnexa.backoffice.modules.user.facade.BackOfficeUserFacade;
+import com.digicore.omnexa.common.lib.api.ApiRequestWrapper;
+import com.digicore.omnexa.common.lib.api.ApiResponseJson;
+import com.digicore.omnexa.common.lib.api.ApiResponsesJson;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -27,7 +32,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 
-import static com.digicore.common.lib.api.ApiVersion.API_V1;
+import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
+
 /**
  * Controller for back office user management operations.
  *
@@ -59,21 +65,20 @@ public class BackOfficeUserController {
             @ApiResponse(
                     responseCode = "201",
                     description = "User invited successfully",
-                    content = @Content(schema = @Schema(implementation = ApiResponseJson.class))
+                    content = @Content(schema = @Schema(implementation = ApiResponsesJson.class))
             ),
             @ApiResponse(
                     responseCode = "400",
                     description = "Invalid request or user already exists"
             )
     })
-    public ResponseEntity<ApiResponseJson<InviteUserResponse>> inviteUser(
+    public ResponseEntity<ApiResponsesJson<InviteUserResponse>> inviteUser(
             @Valid @RequestBody ApiRequestWrapper<InviteUserRequest> requestWrapper) {
-        System.out.println("Here !!!!");
 
         InviteUserResponse response = backOfficeUserFacade.inviteUser(requestWrapper.getData());
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponseJson.<InviteUserResponse>builder()
+                .body(ApiResponsesJson.<InviteUserResponse>builder()
                         .success(true)
                         .message("User invited successfully")
                         .requestId(requestWrapper.getRequestId())
@@ -97,7 +102,7 @@ public class BackOfficeUserController {
             @ApiResponse(
                     responseCode = "201",
                     description = "User signup completed successfully",
-                    content = @Content(schema = @Schema(implementation = ApiResponseJson.class))
+                    content = @Content(schema = @Schema(implementation = ApiResponsesJson.class))
             ),
             @ApiResponse(
                     responseCode = "400",
@@ -108,13 +113,13 @@ public class BackOfficeUserController {
                     description = "User invitation not found"
             )
     })
-    public ResponseEntity<ApiResponseJson<SignupResponse>> signup(
+    public ResponseEntity<ApiResponsesJson<SignupResponse>> signup(
             @Valid @RequestBody ApiRequestWrapper<SignupRequest> requestWrapper) {
 
         SignupResponse response = backOfficeUserFacade.signup(requestWrapper.getData());
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponseJson.<SignupResponse>builder()
+                .body(ApiResponsesJson.<SignupResponse>builder()
                         .success(true)
                         .message("Signup completed successfully")
                         .requestId(requestWrapper.getRequestId())
@@ -123,10 +128,54 @@ public class BackOfficeUserController {
                         .build());
     }
 
+
+    /**
+     * Retrieves paginated list of back office users with search and filter capabilities.
+     *
+     * @param pageNumber page number (1-based, optional, default: 1)
+     * @param pageSize page size (max 16, optional, default: 16)
+     * @param search search term to filter users by name or email (optional)
+     * @param status filter by user status (optional)
+     * @return paginated list of users
+     */
+    @GetMapping("/list")
+    @Operation(
+            summary = "Get paginated list of back office users with search and filter",
+            description = "Retrieves a paginated list of back office users with optional search by name/email and filter by status, sorted by creation date (newest first)"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Users retrieved successfully",
+                    content = @Content(schema = @Schema(implementation = ApiResponseJson.class))
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid pagination parameters"
+            )
+    })
+    public ResponseEntity<ApiResponseJson<UserListResponse>> getUserList(
+            @Parameter(description = "Page number (1-based)", example = "1")
+            @RequestParam(required = false) Integer pageNumber,
+            @Parameter(description = "Page size (max 16)", example = "16")
+            @RequestParam(required = false) Integer pageSize,
+            @Parameter(description = "Search term to filter users by name or email", example = "john.doe")
+            @RequestParam(required = false) String search,
+            @Parameter(description = "Filter by user status (ACTIVE, INACTIVE, PENDING, etc.)", example = "ACTIVE")
+            @RequestParam(required = false) String status) {
+
+        UserListResponse response = backOfficeUserFacade.getUserList(pageNumber, pageSize, search, status);
+
+        return ResponseEntity.ok(ApiResponseJson.<UserListResponse>builder()
+                .success(true)
+                .message("Users retrieved successfully")
+                .data(response)
+                .build());
+    }
+
     @GetMapping()
-    public  ResponseEntity<ApiResponseJson<String>> healthCheck() {
-        System.out.println("Health check endpoint hit");
-        ApiResponseJson<String> response = ApiResponseJson.<String>builder()
+    public  ResponseEntity<ApiResponsesJson<String>> healthCheck() {
+        ApiResponsesJson<String> response = ApiResponsesJson.<String>builder()
                 .success(true)
                 .message("Back Office User Service is running")
                 .requestId("health-check")

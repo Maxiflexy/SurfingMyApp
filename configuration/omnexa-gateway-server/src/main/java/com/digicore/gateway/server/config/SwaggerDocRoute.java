@@ -25,6 +25,8 @@ public class SwaggerDocRoute {
           .routes()
           .route(p -> p.path("/omnexa-backoffice/documentation/**").uri("lb://OMNEXA-BACKOFFICE"))
           .route(p -> p.path("/omnexa-merchant/documentation/**").uri("lb://OMNEXA-MERCHANT"))
+          .route("backoffice-api", p -> p.path("/v1/backoffice/**").uri("lb://OMNEXA-BACKOFFICE"))
+
           .build();
  }
 }

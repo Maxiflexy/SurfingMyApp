@@ -10,6 +10,7 @@ import com.digicore.omnexa.backoffice.modules.user.dto.request.InviteUserRequest
 import com.digicore.omnexa.backoffice.modules.user.dto.request.SignupRequest;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.InviteUserResponse;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.SignupResponse;
+import com.digicore.omnexa.backoffice.modules.user.dto.response.UserListResponse;
 import com.digicore.omnexa.backoffice.modules.user.service.BackOfficeUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -47,5 +48,19 @@ public class BackOfficeUserFacade {
      */
     public SignupResponse signup(SignupRequest request) {
         return backOfficeUserService.signup(request);
+    }
+
+
+    /**
+     * Retrieves paginated list of back office users with search and filter capabilities.
+     *
+     * @param pageNumber page number (1-based)
+     * @param pageSize page size (max 16)
+     * @param search search term for name or email
+     * @param status filter by user status
+     * @return paginated user list response
+     */
+    public UserListResponse getUserList(Integer pageNumber, Integer pageSize, String search, String status) {
+        return backOfficeUserService.getUserList(pageNumber, pageSize, search, status);
     }
 }
