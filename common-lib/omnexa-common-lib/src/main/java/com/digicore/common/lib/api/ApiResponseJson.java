@@ -7,6 +7,9 @@
 package com.digicore.common.lib.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.*;
@@ -27,20 +30,26 @@ import lombok.*;
 @Builder
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Schema(description = "Standard API response wrapper")
 public class ApiResponseJson<T> {
-  /** The message describing the response. */
-  private String message;
 
-  /** Indicates whether the API call was successful. */
+  @Schema(description = "Indicates if the request was successful")
   private boolean success;
 
-  /**
-   * The data payload returned by the API. This is a generic type to allow flexibility in the
-   * response structure.
-   */
+  @Schema(description = "Response message")
+  private String message;
+
+  @Schema(description = "Request identifier for tracking (optional)")
+  private String requestId;
+
+  @Schema(description = "Response timestamp (optional)")
+  private ZonedDateTime timestamp;
+
+  @Schema(description = "Response data payload")
   private T data;
 
-  /** A list of errors associated with the API response. Defaults to an empty list. */
+  @Schema(description = "List of errors if request failed")
   private List<ApiError> errors = new ArrayList<>();
 
   /**
@@ -50,5 +59,68 @@ public class ApiResponseJson<T> {
    */
   public void addError(ApiError error) {
     errors.add(error);
+  }
+
+  /**
+   * Creates a successful response without tracking fields.
+   *
+   * @param message the success message
+   * @param data the response data
+   * @param <T> the type of the data
+   * @return a successful ApiResponseJson
+   */
+  public static <T> ApiResponseJson<T> success(String message, T data) {
+    return ApiResponseJson.<T>builder().success(true).message(message).data(data).build();
+  }
+
+  /**
+   * Creates a successful response with tracking fields.
+   *
+   * @param message the success message
+   * @param data the response data
+   * @param requestId the request identifier
+   * @param timestamp the response timestamp
+   * @param <T> the type of the data
+   * @return a successful ApiResponseJson with tracking fields
+   */
+  public static <T> ApiResponseJson<T> success(
+      String message, T data, String requestId, ZonedDateTime timestamp) {
+    return ApiResponseJson.<T>builder()
+        .success(true)
+        .message(message)
+        .data(data)
+        .requestId(requestId)
+        .timestamp(timestamp)
+        .build();
+  }
+
+  /**
+   * Creates an error response without tracking fields.
+   *
+   * @param message the error message
+   * @param <T> the type of the data
+   * @return an error ApiResponseJson
+   */
+  public static <T> ApiResponseJson<T> error(String message) {
+    return ApiResponseJson.<T>builder().success(false).message(message).build();
+  }
+
+  /**
+   * Creates an error response with tracking fields.
+   *
+   * @param message the error message
+   * @param requestId the request identifier
+   * @param timestamp the response timestamp
+   * @param <T> the type of the data
+   * @return an error ApiResponseJson with tracking fields
+   */
+  public static <T> ApiResponseJson<T> error(
+      String message, String requestId, ZonedDateTime timestamp) {
+    return ApiResponseJson.<T>builder()
+        .success(false)
+        .message(message)
+        .requestId(requestId)
+        .timestamp(timestamp)
+        .build();
   }
 }

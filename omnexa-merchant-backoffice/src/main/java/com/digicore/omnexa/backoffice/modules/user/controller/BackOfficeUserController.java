@@ -6,17 +6,14 @@
 
 package com.digicore.omnexa.backoffice.modules.user.controller;
 
-//import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiRequestWrapper;
-//import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiResponseJson;
+import com.digicore.common.lib.api.ApiRequestWrapper;
+import com.digicore.common.lib.api.ApiResponseJson;
 import com.digicore.omnexa.backoffice.modules.user.dto.request.InviteUserRequest;
 import com.digicore.omnexa.backoffice.modules.user.dto.request.SignupRequest;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.InviteUserResponse;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.SignupResponse;
 import com.digicore.omnexa.backoffice.modules.user.dto.response.UserListResponse;
 import com.digicore.omnexa.backoffice.modules.user.facade.BackOfficeUserFacade;
-import com.digicore.omnexa.common.lib.api.ApiRequestWrapper;
-import com.digicore.omnexa.common.lib.api.ApiResponseJson;
-import com.digicore.omnexa.common.lib.api.ApiResponsesJson;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 
-import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
+import static com.digicore.common.lib.api.ApiVersion.API_V1;
 
 /**
  * Controller for back office user management operations.
@@ -65,20 +62,20 @@ public class BackOfficeUserController {
             @ApiResponse(
                     responseCode = "201",
                     description = "User invited successfully",
-                    content = @Content(schema = @Schema(implementation = ApiResponsesJson.class))
+                    content = @Content(schema = @Schema(implementation = ApiResponseJson.class))
             ),
             @ApiResponse(
                     responseCode = "400",
                     description = "Invalid request or user already exists"
             )
     })
-    public ResponseEntity<ApiResponsesJson<InviteUserResponse>> inviteUser(
+    public ResponseEntity<ApiResponseJson<InviteUserResponse>> inviteUser(
             @Valid @RequestBody ApiRequestWrapper<InviteUserRequest> requestWrapper) {
 
         InviteUserResponse response = backOfficeUserFacade.inviteUser(requestWrapper.getData());
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponsesJson.<InviteUserResponse>builder()
+                .body(ApiResponseJson.<InviteUserResponse>builder()
                         .success(true)
                         .message("User invited successfully")
                         .requestId(requestWrapper.getRequestId())
@@ -102,7 +99,7 @@ public class BackOfficeUserController {
             @ApiResponse(
                     responseCode = "201",
                     description = "User signup completed successfully",
-                    content = @Content(schema = @Schema(implementation = ApiResponsesJson.class))
+                    content = @Content(schema = @Schema(implementation = ApiResponseJson.class))
             ),
             @ApiResponse(
                     responseCode = "400",
@@ -113,13 +110,13 @@ public class BackOfficeUserController {
                     description = "User invitation not found"
             )
     })
-    public ResponseEntity<ApiResponsesJson<SignupResponse>> signup(
+    public ResponseEntity<ApiResponseJson<SignupResponse>> signup(
             @Valid @RequestBody ApiRequestWrapper<SignupRequest> requestWrapper) {
 
         SignupResponse response = backOfficeUserFacade.signup(requestWrapper.getData());
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponsesJson.<SignupResponse>builder()
+                .body(ApiResponseJson.<SignupResponse>builder()
                         .success(true)
                         .message("Signup completed successfully")
                         .requestId(requestWrapper.getRequestId())
@@ -174,8 +171,8 @@ public class BackOfficeUserController {
     }
 
     @GetMapping()
-    public  ResponseEntity<ApiResponsesJson<String>> healthCheck() {
-        ApiResponsesJson<String> response = ApiResponsesJson.<String>builder()
+    public ResponseEntity<ApiResponseJson<String>> healthCheck() {
+        ApiResponseJson<String> response = ApiResponseJson.<String>builder()
                 .success(true)
                 .message("Back Office User Service is running")
                 .requestId("health-check")
