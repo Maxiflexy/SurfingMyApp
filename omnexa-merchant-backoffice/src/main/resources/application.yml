@@ -8,3 +8,5 @@ spring:
     active: "dev,messages,mails,validation"
   config:
     import: "configserver:http://localhost:8071/"
+  messages:
+    basename: backoffice/backoffice-validation-messages
