@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omnexa.backoffice.user.data.converter;
+package com.digicore.omnexa.backoffice.modules.user.data.converter;
 
 import com.digicore.omnexa.backoffice.modules.user.data.enums.BackOfficeUserStatus;
 import com.digicore.omnexa.common.lib.converter.StringEnumConverter;

@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omnexa.backoffice.user.dto.response;
+package com.digicore.omnexa.backoffice.modules.user.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

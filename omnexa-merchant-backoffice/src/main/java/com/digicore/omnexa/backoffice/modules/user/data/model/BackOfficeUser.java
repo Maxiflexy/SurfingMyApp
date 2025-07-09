@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omnexa.backoffice.user.data.model;
+package com.digicore.omnexa.backoffice.modules.user.data.model;
 
 import com.digicore.omnexa.backoffice.modules.user.data.converter.BackOfficeUserStatusConverter;
 import com.digicore.omnexa.backoffice.modules.user.data.enums.BackOfficeUserStatus;

@@ -31,16 +31,10 @@ omnexa:
     corsAllowedExposedHeaders:
       - Content-Disposition
     allowedUrls:
-      - /omnexa-merchant/documentation/**
+      - /omnexa-backoffice/documentation/**
       - /actuator/**
-      - /v1/authentication/process/**
-      - /v1/onboarding/**
-      - /v1/activation/process/send-bvn-verification-code
-      - /v1/activation/process/validate-bvn
-      - /v1/activation/process/signatory/retrieve
-      - /v1/activation/process/signatory/update
-      - /v1/location/process/retrieve-all
-    platform: "CUSTOMER"
+      - /v1/**
+    platform: "BACKOFFICE"
     filteredUrls:
       - /actuator/**
       - /omnexa-merchant/documentation/**

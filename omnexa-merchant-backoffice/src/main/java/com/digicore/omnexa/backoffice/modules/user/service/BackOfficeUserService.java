@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omnexa.backoffice.user.service;
+package com.digicore.omnexa.backoffice.modules.user.service;
 
 import com.digicore.omnexa.backoffice.modules.user.data.model.BackOfficeUser;
 import com.digicore.omnexa.backoffice.modules.user.data.repository.BackOfficeUserRepository;

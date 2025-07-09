@@ -4,7 +4,7 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omnexa.backoffice.user.controller;
+package com.digicore.omnexa.backoffice.modules.user.controller;
 
 import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiRequestWrapper;
 import com.digicore.omnexa.backoffice.modules.user.dto.common.ApiResponseJson;
@@ -23,15 +23,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 
-import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-
+import static com.digicore.common.lib.api.ApiVersion.API_V1;
 /**
  * Controller for back office user management operations.
  *
@@ -72,6 +68,7 @@ public class BackOfficeUserController {
     })
     public ResponseEntity<ApiResponseJson<InviteUserResponse>> inviteUser(
             @Valid @RequestBody ApiRequestWrapper<InviteUserRequest> requestWrapper) {
+        System.out.println("Here !!!!");
 
         InviteUserResponse response = backOfficeUserFacade.inviteUser(requestWrapper.getData());
 
@@ -124,5 +121,19 @@ public class BackOfficeUserController {
                         .timestamp(ZonedDateTime.now())
                         .data(response)
                         .build());
+    }
+
+    @GetMapping()
+    public  ResponseEntity<ApiResponseJson<String>> healthCheck() {
+        System.out.println("Health check endpoint hit");
+        ApiResponseJson<String> response = ApiResponseJson.<String>builder()
+                .success(true)
+                .message("Back Office User Service is running")
+                .requestId("health-check")
+                .timestamp(ZonedDateTime.now())
+                .data("OK")
+                .build();
+
+        return ResponseEntity.ok(response);
     }
 }
