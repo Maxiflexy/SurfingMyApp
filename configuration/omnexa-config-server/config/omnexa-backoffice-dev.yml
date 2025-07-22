@@ -1,16 +1,17 @@
 omnexa:
   database:
-    url: "jdbc:mysql://localhost:3306/omnexa_merchant?allowPublicKeyRetrieval=true&useSSL=false"
+    url: "jdbc:mysql://localhost:3306/omnexa_backoffice?allowPublicKeyRetrieval=true&useSSL=false"
     username: "Digicore"
     password: "Digicore_123"
     driver: "com.mysql.cj.jdbc.Driver"
   security:
+    #jwtKeyStorePath: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//keys//keystore.jks"
     jwtKeyStorePath: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//keys//keystore.jks"
     jwtKeyStorePassword: "password"
     jwtKeyAlias: "jwtsigning"
     jwtPrivateKeyPassphrase: "password"
     systemKey: "LD8EH2OF34WL9I8A"
-    systemDefinedPermissions: "/Users//maximillian//digicore//sofri//configuration//omnexa-projects//configuration//omnexa-config-server//config//permissions//customer//systemPermissions.json"
+    systemDefinedPermissions: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//permissions//backoffice//systemPermissions.json"
     corsAllowedOrigins: "*"
     corsAllowedMethods:
       - POST
@@ -33,11 +34,17 @@ omnexa:
     allowedUrls:
       - /omnexa-backoffice/documentation/**
       - /actuator/**
-      - /v1/**
+      - /v1/authentication/process/**
+      - /v1/onboarding/**
+      - /v1/activation/process/send-bvn-verification-code
+      - /v1/activation/process/validate-bvn
+      - /v1/activation/process/signatory/retrieve
+      - /v1/activation/process/signatory/update
+      - /v1/location/process/retrieve-all
     platform: "BACKOFFICE"
     filteredUrls:
       - /actuator/**
-      - /omnexa-merchant/documentation/**
+      - /omnexa-backoffice/documentation/**
       - /v1/onboarding/**
       - /v1/activation/process/send-bvn-verification-code
       - /v1/activation/process/validate-bvn
@@ -80,7 +87,7 @@ omnexa:
   swagger:
     developmentServerUrl: "http://localhost:8073/omnexa-backoffice/"
   file:
-    fileUploadDirectory: "/Users//maximillian//digicore//sofri//"
+    fileUploadDirectory: "/Users//maximillian//digicore//"
     minFileUploadSize: 1000
     maxFileUploadSize: 5000000
     s3BucketName: lucid-staging-bucket
@@ -97,14 +104,3 @@ omnexa:
     onboardingPath: "/auth/onboarding/signatory-account?organizationId=%s&email=%s"
 
 
-  message:
-    onboard:
-      duplicate: "User with profile {profile} already exists"
-      invalid: "Invalid onboarding request"
-      not_found: "User with profile {profile} not found"
-      required: "Field {profile} is required"
-      successful: "Onboarding completed successfully"
-
-    user:
-      duplicate: "User {profile} already exists"
-      not_found: "User {profile} not found"

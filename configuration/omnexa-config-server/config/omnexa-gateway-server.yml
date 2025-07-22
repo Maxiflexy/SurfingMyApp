@@ -61,7 +61,6 @@ lucid:
         - response-id
       filteredUrl:
         - /omnexa-merchant/documentation
-        - /omnexa-backoffice/documentation
         - /lucid-customer-transfer/documentation
         - /lucid-administration/documentation
         - /lucid-backoffice/documentation

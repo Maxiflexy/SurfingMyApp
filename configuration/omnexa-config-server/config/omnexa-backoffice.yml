@@ -17,8 +17,8 @@ eureka:
 
 info:
   app:
-    name: "omnexa-backoffice"
-    description: "omnexa back office"
+    name: "omnexa-backoffice-service"
+    description: "Backoffice Service"
     version: "1.0.0-SNAPSHOT"
 
 management:
@@ -50,7 +50,10 @@ springdoc:
 
 lucid:
   swagger:
-    projectTitle: "Omnexa Backoffice"
+    projectTitle: "Omnexa Backoffice Service"
     projectVersion: "${info.app.version}"
   processors:
     enabled: true
+#logging:
+#  file:
+#    name: omnexa-backoffice-service.log

@@ -6,10 +6,10 @@
 
 package com.digicore.omnexa.backoffice.modules.user.data.model;
 
-import com.digicore.omnexa.backoffice.modules.user.data.converter.BackOfficeUserStatusConverter;
-import com.digicore.omnexa.backoffice.modules.user.data.enums.BackOfficeUserStatus;
 import com.digicore.omnexa.common.lib.model.BaseModel;
 import com.digicore.omnexa.common.lib.util.RequestUtil;
+import com.digicore.omnexa.backoffice.modules.user.data.converter.BackOfficeUserStatusConverter;
+import com.digicore.omnexa.backoffice.modules.user.data.enums.BackOfficeUserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

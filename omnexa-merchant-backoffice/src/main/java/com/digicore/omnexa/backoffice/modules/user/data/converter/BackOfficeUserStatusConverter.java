@@ -6,8 +6,8 @@
 
 package com.digicore.omnexa.backoffice.modules.user.data.converter;
 
-import com.digicore.omnexa.backoffice.modules.user.data.enums.BackOfficeUserStatus;
 import com.digicore.omnexa.common.lib.converter.StringEnumConverter;
+import com.digicore.omnexa.backoffice.modules.user.data.enums.BackOfficeUserStatus;
 import jakarta.persistence.Converter;
 
 /**

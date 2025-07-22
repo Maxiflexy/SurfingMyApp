@@ -1,4 +1,4 @@
-package com.digicore.omnexa.backoffice.modules.user.dto.common; ///*
+///*
 // * Copyright (c) 2025 Digicore Limited. All Rights Reserved.
 // * Unauthorized use or distribution is strictly prohibited.
 // * For details, see the LICENSE file.

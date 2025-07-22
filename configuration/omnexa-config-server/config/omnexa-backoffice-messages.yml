@@ -1,0 +1,84 @@
+omnexa:
+ message:
+  user:
+   not_found: "{email} does not exist"
+   created: "User created successfully"
+   duplicate: "{email} already exists"
+  role:
+    not_found: "{roleName} does not exist"
+    created: "Role created successfully"
+    duplicate: "{roleName} already exists"
+    conflict: "You can't assign a checker and a maker permission under one role"
+    invalid: "Invalid role supplied"
+    invalid_permissions: "The following permissions are invalid: {permissions}"
+  login:
+    login_successful: "{user} logged in successfully"
+    login_failed: "Invalid login credentials"
+    login_denied: "We detected multiple failed attempt on login, check back in {time} minutes or contact support for help."
+    login_denied_description: "{user} login attempt failed {time} times"
+    inactive: "Account is inactive"
+    password_already_used: "Password has already been previously used"
+    old_password_wrong: "The old password provided is wrong"
+    system_default_password_cant_be_updated: "Default system users password can't be updated"
+    password_updated: "{user} reset password successfully"
+  audit:
+    create: "A create {module} request has been initiated by {user}"
+    onboard: "An onboarding {module} request has been initiated by {user}"
+    edit: "An edit {module} request has been initiated by {user}"
+    delete: "A delete {module} request has been initiated by {user}"
+    approve: "A {action} {module} request has been approved by {user}"
+    decline: "A {action} {module} request has been declined by {user}"
+    enable: "An enable {module} request has been initiated by {user}"
+    disable: "A disable {module} request has been initiated by {user}"
+    password_updated: "Password updated successfully by {user}"
+  email:
+    login_successful_subject: "Login successful"
+    onboarding_subject: "Onboarding"
+    password_reset_successful_subject: "Password Reset Successful"
+  client:
+    not_found: "Invalid client"
+    duplicate: "{name} already exists"
+    activation_id_not_found: "Invalid activation id supplied"
+  approval:
+    not_authorized: "You are not authorized to perform this action"
+    not_found: "Invalid activity type supplied"
+    not_configured: "Workflow not configured"
+    level_not_configured: "Approval leg not configured"
+    invalid_type: "Invalid approval type"
+    already_treated: "User has already approved this request at a previous stage."
+  activation:
+    not_found: "Invalid organization id supplied"
+  transfer:
+    transaction_authentication_rule_not_found: "Transaction authentication rule not found"
+  account:
+    not_found: "Account not found for this user"
+    account_officer_addition_failed: "Account officer addition failed"
+  limit:
+    not_found: "No limit found"
+    limit_violation: "You have violated global limit."
+  document:
+    not_found: "No document found"
+    invalid: "An error occurred while processing the document."
+    not_enough: "At least one document is required"
+  preference:
+    not_found: "No preference found"
+    duplicate: "Bank preference already exists"
+    invalid: "Invalid preference details provided"
+    logo_missing: "Logo is required"
+  fee:
+    not_found: "No fee configuration found"
+    duplicate: "{fee} fee configuration already exists"
+  location:
+    not_found: "No Location found"
+    duplicate: "Location details already exists"
+  faq:
+    not_found: "FAQ not found"
+    duplicate: "{FAQ} already exists"
+  content:
+    not_found: "No content found"
+    duplicate: "{content} content already exists"
+    not_enough: "At least one document is required"
+  support_information:
+    not_found: "No support information found"
+    duplicate: "{support_information} support information already exists"
+

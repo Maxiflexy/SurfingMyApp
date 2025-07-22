@@ -1,0 +1,59 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: "update"
+    show-sql: "false"
+    generate-ddl: "true"
+
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
+
+info:
+  app:
+    name: "omnexa-terminal-management-service"
+    description: "Merchant Terminal Management Service"
+    version: "1.0.0-SNAPSHOT"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+springdoc:
+  swagger-ui:
+    path: "/omnexa-terminal-management-service/documentation/doc-ui.html"
+    url: "/omnexa-terminal-management-service/documentation/v3/api-docs"
+    disable-swagger-default-url: true
+    configUrl: "/omnexa-terminal-management-service/documentation/v3/api-docs/swagger-config"
+    operationsSorter: "alpha"
+    tagsSorter: "alpha"
+  api-docs:
+    path: "/omnexa-terminal-management-service/documentation/v3/api-docs"
+
+lucid:
+  swagger:
+    projectTitle: "Omnexa Terminal Management Service"
+    projectVersion: "${info.app.version}"
+  processors:
+    enabled: true
+#logging:
+#  file:
+#    name: omnexa-terminal-management-service-service.log

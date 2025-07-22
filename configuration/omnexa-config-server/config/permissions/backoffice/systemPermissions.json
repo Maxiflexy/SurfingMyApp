@@ -1,0 +1,322 @@
+[
+  {
+    "name": "view-dashboard",
+    "description": "This allows you to view dashboard modules and metrics",
+    "permissionType": "DASHBOARD"
+  },
+  {
+    "name": "view-transactions",
+    "description": "This allows you to view transactions",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "name": "view-transaction-details",
+    "description": "This allows you to view a transaction details",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "name": "export-transactions",
+    "description": "This allows you to export  transactions",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "name": "view-backoffice-users",
+    "description": "This allows you to view backoffice users",
+    "permissionType": "USER"
+  },
+  {
+    "name": "view-backoffice-user-details",
+    "description": "This allows you to view a backoffice user details",
+    "permissionType": "USER"
+  },
+  {
+    "name": "export-backoffice-users",
+    "description": "This allows you to export a backoffice users",
+    "permissionType": "USER"
+  },
+  {
+    "name": "enable-backoffice-user",
+    "description": "This allows you to enable a backoffice user",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-enable-backoffice-user",
+    "description": "This allows you to approve enable a backoffice user request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "disable-backoffice-user",
+    "description": "This allows you to disable a backoffice user",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-disable-backoffice-user",
+    "description": "This allows you to approve disable a backoffice user request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "invite-backoffice-user",
+    "description": "This allows you to invite a new backoffice user",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-invite-backoffice-user",
+    "description": "This allows you to approve invite a new backoffice user request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "edit-backoffice-user-details",
+    "description": "This allows you to edit a backoffice user details",
+    "permissionType": "USER"
+  },
+  {
+    "name": "resend-backoffice-user-invite",
+    "description": "This allows you to resend a backoffice invite email",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-resend-backoffice-user-invite",
+    "description": "This allows you to approve a resend backoffice invite email request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "resend-merchant-user-invite",
+    "description": "This allows you to resend a customer invite email",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-resend-merchant-user-invite",
+    "description": "This allows you to approve a resend customer invite email request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "create-backoffice-roles",
+    "description": "This allows you to create new backoffice roles",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-create-backoffice-roles",
+    "description": "This allows you to approve create new backoffice roles requests",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "view-backoffice-permissions",
+    "description": "This allows you to view backoffice available permissions",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "view-backoffice-roles",
+    "description": "This allows you to view backoffice available roles",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "delete-backoffice-role",
+    "description": "This allows you to delete a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-delete-backoffice-role",
+    "description": "This allows you to approve a request to delete a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "edit-backoffice-role",
+    "description": "This allows you to edit a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-edit-backoffice-role",
+    "description": "This allows you to approve a request to edit a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "treat-requests",
+    "description": "This allows you to treat a request you have been assigned to",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "disable-backoffice-role",
+    "description": "This allows you to disable a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-disable-backoffice-role",
+    "description": "This allows you to approve a request to disable a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "enable-backoffice-role",
+    "description": "This allows you to enable a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-enable-backoffice-role",
+    "description": "This allows you to approve a request to enable a backoffice role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "delete-backoffice-user-profile",
+    "description": "This allows you to delete a backoffice user profile",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-delete-backoffice-profile",
+    "description": "This allows you to approve the delete of a backoffice profile request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "view-backoffice-role-details",
+    "description": "This allows you to view a backoffice role detail",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "view-self-audit-trails",
+    "description": "This allows you to view only your audit trails",
+    "permissionType": "AUDIT_TRAIL"
+  },
+  {
+    "name": "view-all-audit-trails",
+    "description": "This allows you to view all audit trails",
+    "permissionType": "AUDIT_TRAIL"
+  },
+  {
+    "name": "approve-edit-backoffice-user-details",
+    "description": "This allows you to approve edit request of a backoffice user",
+    "permissionType": "USER"
+  },
+  {
+  "name": "view-self-user-details",
+  "description": "This allows you to view your user details",
+  "permissionType": "USER"
+  },
+  {
+    "name": "approve-create-approval-rule",
+    "description": "This allows you to approve create approval rule request",
+    "permissionType": "APPROVAL_RULE"
+  },
+  {
+    "name": "create-approval-rule",
+    "description": "This allows you to create approval rule",
+    "permissionType": "APPROVAL_RULE"
+  },
+  {
+    "name": "approve-edit-approval-rule",
+    "description": "This allows you to approve edit approval rule request",
+    "permissionType": "APPROVAL_RULE"
+  },
+  {
+    "name": "edit-approval-rule",
+    "description": "This allows you to edit approval rule",
+    "permissionType": "APPROVAL_RULE"
+  },
+  {
+    "name": "view-activity-types",
+    "description": "This allows you to view activity types",
+    "permissionType": "APPROVAL_RULE"
+  },
+  {
+    "name": "view-approval-rule",
+    "description": "This allows you to view approval rules",
+    "permissionType": "APPROVAL_RULE"
+  },
+  {
+    "name": "activate-merchant",
+    "description": "This allows you to activate customer",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-activate-merchant",
+    "description": "This allows you to approve activate customer request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "view-merchant-activation",
+    "description": "This allows you to view customer activation request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "onboard-merchant",
+    "description": "This allows you to onboard customer",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-onboard-merchant",
+    "description": "This allows you to approve onboard customer request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "view-merchant-profile",
+    "description": "This allows you to view a customer profile",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "enable-merchant",
+    "description": "This allows you to enable a customer",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-enable-merchant",
+    "description": "This allows you to approve enable customer request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "disable-merchant",
+    "description": "This allows you to enable a customer",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-disable-merchant",
+    "description": "This allows you to approve enable customer request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "edit-merchant-user-detail",
+    "description": "This allows you to edit a customer user detail",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-edit-merchant-user-detail",
+    "description": "This allows you to approve edit customer user  request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "view-merchant-users",
+    "description": "This allows you to view a customer users",
+    "permissionType": "MERCHANT"
+  } ,
+  {
+    "name": "view-merchant-user-detail",
+    "description": "This allows you to approve view a customer user details",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "enable-merchant-user",
+    "description": "This allows you to enable a customer user",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-enable-merchant-user",
+    "description": "This allows you to approve enable customer user request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "disable-merchant-user",
+    "description": "This allows you to disable a customer user",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-disable-merchant-user",
+    "description": "This allows you to approve disable customer user request",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "invite-merchant-user",
+    "description": "This allows you to invite a new customer user",
+    "permissionType": "MERCHANT"
+  },
+  {
+    "name": "approve-invite-merchant-user",
+    "description": "This allows you to approve invite a new customer user request",
+    "permissionType": "MERCHANT"
+  }
+]
