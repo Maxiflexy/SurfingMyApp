@@ -5,12 +5,12 @@ omnexa:
     password: "Digicore_123"
     driver: "com.mysql.cj.jdbc.Driver"
   security:
-    jwtKeyStorePath: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//keys//keystore.jks"
+    jwtKeyStorePath: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//keys//keystore.jks"
     jwtKeyStorePassword: "password"
     jwtKeyAlias: "jwtsigning"
     jwtPrivateKeyPassphrase: "password"
     systemKey: "LD8EH2OF34WL9I8A"
-    systemDefinedPermissions: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//permissions//customer//systemPermissions.json"
+    systemDefinedPermissions: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//permissions//customer//systemPermissions.json"
     corsAllowedOrigins: "*"
     corsAllowedMethods:
       - POST
@@ -86,7 +86,7 @@ omnexa:
   swagger:
     developmentServerUrl: "http://localhost:8073/omnexa-merchant/"
   file:
-    fileUploadDirectory: "/Users//maximillian//digicore//"
+    fileUploadDirectory: "/Users//togunwuyi//Documents//digicore-projects//"
     minFileUploadSize: 1000
     maxFileUploadSize: 5000000
     s3BucketName: lucid-staging-bucket
@@ -95,11 +95,11 @@ omnexa:
     s3Url: http://localhost:4566
   template:
     account:
-      account_template_path: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//templates//customer//"
+      account_template_path: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//omnexa-config-server//config//templates//customer//"
       account_statement: "accountStatement"
       receipt: "accountReceipt"
   misc:
-    locationsPath: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//locations//nigeria-states-and-cities.json"
+    locationsPath: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//omnexa-config-server//config//locations//nigeria-states-and-cities.json"
     onboardingPath: "/auth/onboarding/signatory-account?organizationId=%s&email=%s"
 
 

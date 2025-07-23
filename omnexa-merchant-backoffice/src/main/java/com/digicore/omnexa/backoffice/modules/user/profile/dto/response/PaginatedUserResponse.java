@@ -1,32 +1,27 @@
-/*
- * Copyright (c) 2025 Digicore Limited. All Rights Reserved.
- * Unauthorized use or distribution is strictly prohibited.
- * For details, see the LICENSE file.
- */
-
-package com.digicore.omnexa.backoffice.modules.user.dto.response;
+package com.digicore.omnexa.backoffice.modules.user.profile.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.util.List;
 
-/**
- * Response DTO for paginated user list.
- *
- * @author Onyekachi Ejemba
- * @createdOn Jul-09(Wed)-2025
- */
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Paginated user list response")
-public class UserListResponse {
+/**
+ * @author Onyekachi Ejemba
+ * @createdOn Jul-23(Wed)-2025
+ */
+public class PaginatedUserResponse {
 
     @Schema(description = "List of users in current page")
-    private List<UserSummary> content;
+    private List<BackOfficeUserProfileDTO> content;
 
     @Schema(description = "Current page number (1-based)")
     private int currentPage;

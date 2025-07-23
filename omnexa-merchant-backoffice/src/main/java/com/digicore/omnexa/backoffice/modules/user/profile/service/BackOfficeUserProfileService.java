@@ -14,6 +14,7 @@ import com.digicore.omnexa.backoffice.modules.user.profile.data.repository.BackO
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.request.BackOfficeProfileEditRequest;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeProfileEditResponse;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeUserProfileDTO;
+import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.PaginatedUserResponse;
 import com.digicore.omnexa.common.lib.api.ApiError;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
@@ -38,6 +39,10 @@ import java.util.function.Supplier;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -84,6 +89,7 @@ public class BackOfficeUserProfileService implements ProfileService {
       BackOfficeUserProfile user = new BackOfficeUserProfile();
       user.setEmail(request.getEmail());
       user.setFirstName(request.getFirstName());
+      user.setLastName("");
       user.setRole(request.getRole());
       backOfficeUserRepository.save(user);
       return new UserInviteResponse();
@@ -136,8 +142,9 @@ public class BackOfficeUserProfileService implements ProfileService {
     if (backOfficeUserRepository.existsByProfileId(profileId)) {
       backOfficeUserRepository.updateProfileStatuses(
           profileStatus, profileVerificationStatus, profileId);
+    }else {
+      throw new OmnexaException(buildNotFoundErrorMessage(profileId), HttpStatus.NOT_FOUND);
     }
-    throw new OmnexaException(buildNotFoundErrorMessage(profileId), HttpStatus.NOT_FOUND);
   }
 
   /**
@@ -266,5 +273,60 @@ public class BackOfficeUserProfileService implements ProfileService {
     String message = messagePropertyConfig.getOnboardMessage(DUPLICATE).replace(PROFILE, email);
     log.error(message);
     return message;
+  }
+
+
+  /**
+   * Retrieves paginated list of all backoffice users with optional search and filter.
+   *
+   * @param pageNumber page number (1-based, optional, default: 1)
+   * @param pageSize page size (max 16, optional, default: 16)
+   * @param search search term for firstName, lastName, or email (optional)
+   * @param profileStatus filter by profile status (optional)
+   * @return paginated user list response
+   */
+  public PaginatedUserResponse getAllUsersPaginated(Integer pageNumber, Integer pageSize, String search, String profileStatus) {
+    // Validate and set defaults for pagination parameters
+    int validatedPageNumber = Math.max(1, pageNumber != null ? pageNumber : 1);
+    int validatedPageSize = Math.min(16, Math.max(1, pageSize != null ? pageSize : 16));
+
+    // Convert to 0-based page number for Spring Data
+    int zeroBasedPageNumber = validatedPageNumber - 1;
+
+    // Create pageable with sorting by creation date (newest first)
+    Pageable pageable = PageRequest.of(
+            zeroBasedPageNumber,
+            validatedPageSize,
+            Sort.by(Sort.Direction.DESC, "createdDate")
+    );
+
+    // Prepare search parameter (trim whitespace)
+    String searchTerm = (search != null && !search.trim().isEmpty())
+            ? search.trim() : null;
+
+    // Parse and validate profile status
+    ProfileStatus statusFilter = null;
+    if (profileStatus != null && !profileStatus.trim().isEmpty()) {
+      try {
+        statusFilter = ProfileStatus.valueOf(profileStatus.trim().toUpperCase());
+      } catch (IllegalArgumentException e) {
+        log.warn("Invalid profile status provided: {}", profileStatus);
+        // Continue with null status (no filter)
+      }
+    }
+
+    // Fetch paginated users from repository
+    Page<BackOfficeUserProfileDTO> userPage = backOfficeUserRepository.findAllUsersPaginated(
+            searchTerm, statusFilter, pageable);
+
+    // Build and return response
+    return PaginatedUserResponse.builder()
+            .content(userPage.getContent())
+            .currentPage(validatedPageNumber) // Return 1-based page number
+            .totalItems(userPage.getTotalElements())
+            .totalPages(userPage.getTotalPages())
+            .isFirstPage(userPage.isFirst())
+            .isLastPage(userPage.isLast())
+            .build();
   }
 }

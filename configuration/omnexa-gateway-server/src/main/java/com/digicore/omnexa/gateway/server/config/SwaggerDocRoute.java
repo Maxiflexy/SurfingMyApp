@@ -28,4 +28,3 @@ public class SwaggerDocRoute {
           .build();
  }
 }
-//.route("backoffice-api", p -> p.path("/v1/backoffice/**").uri("lb://OMNEXA-BACKOFFICE"))

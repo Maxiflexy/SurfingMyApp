@@ -14,46 +14,67 @@ import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 /**
- * Repository interface for BackOfficeUser entity operations.
+ * Repository interface for performing database operations on BackOfficeUserProfile entities.
  *
- * <p>Provides database operations for back office users including finding users by email and
- * checking existence.
+ * <p>Provides methods for CRUD operations, custom queries, and updates related to back office user profiles.
  *
- * @author Onyekachi Ejemba
- * @createdOn Jul-08(Tue)-2025
+ * <p>Author: Onyekachi Ejemba
+ * Created On: Jul-08(Tue)-2025
  */
 public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserProfile, Long> {
 
   /**
-   * Finds a back office user by email.
+   * Finds a back office user by their email address.
    *
-   * @param email the email to search for
-   * @return an Optional containing the user if found
+   * @param email the email address to search for
+   * @return an {@link Optional} containing the user profile if found, or empty if not found
    */
   Optional<BackOfficeUserProfile> findByEmail(String email);
 
   /**
-   * Checks if a user exists with the given email.
+   * Checks if a back office user exists with the given email address.
    *
-   * @param email the email to check
-   * @return true if user exists, false otherwise
+   * @param email the email address to check
+   * @return true if a user exists with the given email, false otherwise
    */
   boolean existsByEmail(String email);
 
+  /**
+   * Checks if a back office user exists with the given profile ID.
+   *
+   * @param profileId the profile ID to check
+   * @return true if a user exists with the given profile ID, false otherwise
+   */
   boolean existsByProfileId(String profileId);
 
+  /**
+   * Retrieves profile statuses of a back office user by their email address.
+   *
+   * @param email the email address to search for
+   * @return an {@link Optional} containing the {@link BackOfficeUserProfileDTO} if found, or empty if not found
+   */
   @Query(
-      "SELECT new "
-          + BACKOFFICE_USER_PROFILE_DTO
-          + "(b.id,b.profileId, b.profileStatus, b.profileVerificationStatus) FROM BackOfficeUserProfile b WHERE b.email = :email")
+          "SELECT new " + BACKOFFICE_USER_PROFILE_DTO +
+                  "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) " +
+                  "FROM BackOfficeUserProfile b WHERE b.email = :email")
   Optional<BackOfficeUserProfileDTO> findProfileStatusesByEmail(@Param("email") String email);
 
+  /**
+   * Updates the profile status and verification status of a back office user.
+   *
+   * @param profileStatus the new profile status to set
+   * @param profileVerificationStatus the new profile verification status to set
+   * @param profileId the profile ID of the user to update
+   */
   @Transactional
   @Modifying
   @Query(
@@ -69,12 +90,27 @@ public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserPr
       @Param("profileVerificationStatus") ProfileVerificationStatus profileVerificationStatus,
       @Param("profileId") String profileId);
 
+  /**
+   * Finds a back office user by their profile ID.
+   *
+   * @param profileId the profile ID to search for
+   * @return an {@link Optional} containing the {@link BackOfficeUserProfileDTO} if found, or empty if not found
+   */
   @Query(
       "SELECT new "
           + BACKOFFICE_USER_PROFILE_DTO
           + "(b.email, b.firstName, b.lastName, b.profileId,  b.role) FROM BackOfficeUserProfile b WHERE b.profileId = :profileId")
   Optional<BackOfficeUserProfileDTO> findByProfileId(@Param("profileId") String profileId);
 
+  /**
+   * Updates the profile details of a back office user.
+   *
+   * @param email the new email address to set (optional)
+   * @param firstName the new first name to set (optional)
+   * @param lastName the new last name to set (optional)
+   * @param role the new role to set (optional)
+   * @param profileId the profile ID of the user to update
+   */
   @Transactional
   @Modifying
   @Query(
@@ -93,4 +129,26 @@ public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserPr
       @Param("lastName") String lastName,
       @Param("role") String role,
       @Param("profileId") String profileId);
+
+  /**
+   * Retrieves a paginated list of back office users based on search and filter criteria.
+   *
+   * @param search the search term to filter users by name or email (optional)
+   * @param profileStatus the profile status to filter users by (optional)
+   * @param pageable the pagination information
+   * @return a {@link Page} containing the list of {@link BackOfficeUserProfileDTO} matching the criteria
+   */
+  @Query(
+          "SELECT new " + BACKOFFICE_USER_PROFILE_DTO +
+                  "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) " +
+                  "FROM BackOfficeUserProfile b WHERE " +
+                  "(:search IS NULL OR :search = '' OR " +
+                  "LOWER(CONCAT(COALESCE(b.firstName, ''), ' ', COALESCE(b.lastName, ''))) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
+                  "LOWER(b.email) LIKE LOWER(CONCAT('%', :search, '%'))) AND " +
+                  "(:profileStatus IS NULL OR b.profileStatus = :profileStatus) " +
+                  "ORDER BY b.createdDate DESC")
+  Page<BackOfficeUserProfileDTO> findAllUsersPaginated(
+          @Param("search") String search,
+          @Param("profileStatus") ProfileStatus profileStatus,
+          Pageable pageable);
 }
