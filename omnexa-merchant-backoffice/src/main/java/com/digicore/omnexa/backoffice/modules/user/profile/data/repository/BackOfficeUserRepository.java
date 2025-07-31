@@ -14,7 +14,6 @@ import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,10 +24,10 @@ import org.springframework.data.repository.query.Param;
 /**
  * Repository interface for performing database operations on BackOfficeUserProfile entities.
  *
- * <p>Provides methods for CRUD operations, custom queries, and updates related to back office user profiles.
+ * <p>Provides methods for CRUD operations, custom queries, and updates related to back office user
+ * profiles.
  *
- * <p>Author: Onyekachi Ejemba
- * Created On: Jul-08(Tue)-2025
+ * <p>Author: Onyekachi Ejemba Created On: Jul-08(Tue)-2025
  */
 public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserProfile, Long> {
 
@@ -60,12 +59,14 @@ public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserPr
    * Retrieves profile statuses of a back office user by their email address.
    *
    * @param email the email address to search for
-   * @return an {@link Optional} containing the {@link BackOfficeUserProfileDTO} if found, or empty if not found
+   * @return an {@link Optional} containing the {@link BackOfficeUserProfileDTO} if found, or empty
+   *     if not found
    */
   @Query(
-          "SELECT new " + BACKOFFICE_USER_PROFILE_DTO +
-                  "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) " +
-                  "FROM BackOfficeUserProfile b WHERE b.email = :email")
+      "SELECT new "
+          + BACKOFFICE_USER_PROFILE_DTO
+          + "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) "
+          + "FROM BackOfficeUserProfile b WHERE b.email = :email")
   Optional<BackOfficeUserProfileDTO> findProfileStatusesByEmail(@Param("email") String email);
 
   /**
@@ -94,7 +95,8 @@ public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserPr
    * Finds a back office user by their profile ID.
    *
    * @param profileId the profile ID to search for
-   * @return an {@link Optional} containing the {@link BackOfficeUserProfileDTO} if found, or empty if not found
+   * @return an {@link Optional} containing the {@link BackOfficeUserProfileDTO} if found, or empty
+   *     if not found
    */
   @Query(
       "SELECT new "
@@ -136,19 +138,72 @@ public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUserPr
    * @param search the search term to filter users by name or email (optional)
    * @param profileStatus the profile status to filter users by (optional)
    * @param pageable the pagination information
-   * @return a {@link Page} containing the list of {@link BackOfficeUserProfileDTO} matching the criteria
+   * @return a {@link Page} containing the list of {@link BackOfficeUserProfileDTO} matching the
+   *     criteria
    */
   @Query(
-          "SELECT new " + BACKOFFICE_USER_PROFILE_DTO +
-                  "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) " +
-                  "FROM BackOfficeUserProfile b WHERE " +
-                  "(:search IS NULL OR :search = '' OR " +
-                  "LOWER(CONCAT(COALESCE(b.firstName, ''), ' ', COALESCE(b.lastName, ''))) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
-                  "LOWER(b.email) LIKE LOWER(CONCAT('%', :search, '%'))) AND " +
-                  "(:profileStatus IS NULL OR b.profileStatus = :profileStatus) " +
-                  "ORDER BY b.createdDate DESC")
+      "SELECT new "
+          + BACKOFFICE_USER_PROFILE_DTO
+          + "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) "
+          + "FROM BackOfficeUserProfile b WHERE "
+          + "(:search IS NULL OR :search = '' OR "
+          + "LOWER(CONCAT(COALESCE(b.firstName, ''), ' ', COALESCE(b.lastName, ''))) LIKE LOWER(CONCAT('%', :search, '%')) OR "
+          + "LOWER(b.email) LIKE LOWER(CONCAT('%', :search, '%'))) AND "
+          + "(:profileStatus IS NULL OR b.profileStatus = :profileStatus) "
+          + "ORDER BY b.createdDate DESC")
   Page<BackOfficeUserProfileDTO> findAllUsersPaginated(
-          @Param("search") String search,
-          @Param("profileStatus") ProfileStatus profileStatus,
-          Pageable pageable);
+      @Param("search") String search,
+      @Param("profileStatus") ProfileStatus profileStatus,
+      Pageable pageable);
+
+  /**
+   * Retrieves a paginated list of all back office users without any filters.
+   *
+   * @param pageable the pagination information
+   * @return a {@link Page} containing the list of {@link BackOfficeUserProfileDTO}
+   */
+  @Query(
+      "SELECT new "
+          + BACKOFFICE_USER_PROFILE_DTO
+          + "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) "
+          + "FROM BackOfficeUserProfile b "
+          + "ORDER BY b.createdDate DESC")
+  Page<BackOfficeUserProfileDTO> findAllUsersPaginated(Pageable pageable);
+
+  /**
+   * Retrieves a paginated list of back office users filtered by search term.
+   *
+   * @param search the search term to filter users by name or email (required)
+   * @param pageable the pagination information
+   * @return a {@link Page} containing the list of {@link BackOfficeUserProfileDTO} matching the
+   *     search criteria
+   */
+  @Query(
+      "SELECT new "
+          + BACKOFFICE_USER_PROFILE_DTO
+          + "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) "
+          + "FROM BackOfficeUserProfile b WHERE "
+          + "LOWER(CONCAT(COALESCE(b.firstName, ''), ' ', COALESCE(b.lastName, ''))) LIKE LOWER(CONCAT('%', :search, '%')) OR "
+          + "LOWER(b.email) LIKE LOWER(CONCAT('%', :search, '%')) "
+          + "ORDER BY b.createdDate DESC")
+  Page<BackOfficeUserProfileDTO> findUsersBySearchPaginated(
+      @Param("search") String search, Pageable pageable);
+
+  /**
+   * Retrieves a paginated list of back office users filtered by profile status.
+   *
+   * @param profileStatus the profile status to filter users by (required)
+   * @param pageable the pagination information
+   * @return a {@link Page} containing the list of {@link BackOfficeUserProfileDTO} matching the
+   *     status criteria
+   */
+  @Query(
+      "SELECT new "
+          + BACKOFFICE_USER_PROFILE_DTO
+          + "(b.id, b.profileId, b.profileStatus, b.profileVerificationStatus, b.email, b.firstName, b.lastName, b.createdDate) "
+          + "FROM BackOfficeUserProfile b WHERE "
+          + "b.profileStatus = :profileStatus "
+          + "ORDER BY b.createdDate DESC")
+  Page<BackOfficeUserProfileDTO> findUsersByStatusPaginated(
+      @Param("profileStatus") ProfileStatus profileStatus, Pageable pageable);
 }

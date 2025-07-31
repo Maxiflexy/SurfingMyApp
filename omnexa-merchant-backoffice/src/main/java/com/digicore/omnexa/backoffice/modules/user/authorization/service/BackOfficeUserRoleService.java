@@ -11,6 +11,7 @@ import static com.digicore.omnexa.backoffice.modules.user.authorization.helper.A
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.BackOfficeUserRole;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.repository.BackOfficeUserPermissionRepository;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.repository.BackOfficeUserRoleRepository;
+import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
 import com.digicore.omnexa.common.lib.authorization.contract.RoleService;
 import com.digicore.omnexa.common.lib.authorization.dto.request.RoleCreationDTO;
 import com.digicore.omnexa.common.lib.properties.MessagePropertyConfig;
@@ -30,7 +31,8 @@ public class BackOfficeUserRoleService implements RoleService {
   private final MessagePropertyConfig messagePropertyConfig;
 
   @Override
-  public void createRole(RoleCreationDTO roleCreationDTO) {
+  public void createRole(AuthorizationRequest request) {
+    RoleCreationDTO roleCreationDTO = (RoleCreationDTO) request;
     roleCreationDTO.setActive(true);
     BackOfficeUserRole newRole = new BackOfficeUserRole();
     BeanUtils.copyProperties(roleCreationDTO, newRole);

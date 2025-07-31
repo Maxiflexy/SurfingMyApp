@@ -14,7 +14,6 @@ import com.digicore.omnexa.backoffice.modules.user.profile.data.repository.BackO
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.request.BackOfficeProfileEditRequest;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeProfileEditResponse;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeUserProfileDTO;
-import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.PaginatedUserResponse;
 import com.digicore.omnexa.common.lib.api.ApiError;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
@@ -30,6 +29,7 @@ import com.digicore.omnexa.common.lib.profile.dto.response.ProfileEditResponse;
 import com.digicore.omnexa.common.lib.profile.dto.response.ProfileInfoResponse;
 import com.digicore.omnexa.common.lib.properties.MessagePropertyConfig;
 import com.digicore.omnexa.common.lib.util.BeanUtilWrapper;
+import com.digicore.omnexa.common.lib.util.PaginatedResponse;
 import com.digicore.omnexa.common.lib.util.RequestUtil;
 import jakarta.transaction.Transactional;
 import java.util.ArrayList;
@@ -40,9 +40,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -142,7 +140,7 @@ public class BackOfficeUserProfileService implements ProfileService {
     if (backOfficeUserRepository.existsByProfileId(profileId)) {
       backOfficeUserRepository.updateProfileStatuses(
           profileStatus, profileVerificationStatus, profileId);
-    }else {
+    } else {
       throw new OmnexaException(buildNotFoundErrorMessage(profileId), HttpStatus.NOT_FOUND);
     }
   }
@@ -189,7 +187,6 @@ public class BackOfficeUserProfileService implements ProfileService {
    */
   @Override
   public ProfileInfoResponse getProfileByEmail(String email) {
-
     BackOfficeUserProfileDTO user =
         backOfficeUserRepository
             .findProfileStatusesByEmail(email)
@@ -201,6 +198,103 @@ public class BackOfficeUserProfileService implements ProfileService {
 
     return user;
   }
+
+  /**
+   * Retrieves a paginated list of all back office users without any filters.
+   *
+   * @param pageNumber page number (1-based, optional, default: 1)
+   * @param pageSize page size (max 16, optional, default: 16)
+   * @return paginated user list response
+   */
+  @Override
+  public PaginatedResponse<ProfileInfoResponse> getAllProfiles(
+      Integer pageNumber, Integer pageSize) {
+    int[] validatedParams = RequestUtil.validatePaginationParameters(pageNumber, pageSize);
+    int validatedPageNumber = validatedParams[0];
+    int validatedPageSize = validatedParams[1];
+
+    Pageable pageable = RequestUtil.createPageable(validatedPageNumber, validatedPageSize);
+
+    Page<BackOfficeUserProfileDTO> userPage =
+        backOfficeUserRepository.findAllUsersPaginated(pageable);
+
+    return buildPaginatedResponse(userPage, validatedPageNumber);
+  }
+
+  //  /**
+  //   * Retrieves a paginated list of back office users filtered by search term.
+  //   *
+  //   * @param search search term for firstName, lastName, or email (required)
+  //   * @param pageNumber page number (1-based, optional, default: 1)
+  //   * @param pageSize page size (max 16, optional, default: 16)
+  //   * @return paginated user list response filtered by search term
+  //   */
+  //  public PaginatedUserResponse searchUsersPaginated(String search, Integer pageNumber, Integer
+  // pageSize) {
+  //
+  //    String trimmedSearch;
+  //    try {
+  //      trimmedSearch = RequestUtil.validateSearchTerm(search, "Search term");
+  //    } catch (IllegalArgumentException e) {
+  //      throw new OmnexaException(e.getMessage(), HttpStatus.BAD_REQUEST);
+  //    }
+  //
+  //    // Use RequestUtil for pagination validation
+  //    int[] validatedParams = RequestUtil.validatePaginationParameters(pageNumber, pageSize);
+  //    int validatedPageNumber = validatedParams[0];
+  //    int validatedPageSize = validatedParams[1];
+  //
+  //    Pageable pageable = RequestUtil.createPageable(validatedPageNumber, validatedPageSize,
+  // "createdDate");
+  //
+  //    Page<BackOfficeUserProfileDTO> userPage =
+  // backOfficeUserRepository.findUsersBySearchPaginated(trimmedSearch, pageable);
+  //
+  //    return buildPaginatedResponse(userPage, validatedPageNumber);
+  //  }
+  //
+  //  /**
+  //   * Retrieves a paginated list of back office users filtered by profile status.
+  //   *
+  //   * @param profileStatus filter by profile status (required)
+  //   * @param pageNumber page number (1-based, optional, default: 1)
+  //   * @param pageSize page size (max 16, optional, default: 16)
+  //   * @return paginated user list response filtered by profile status
+  //   */
+  //  public PaginatedUserResponse getUsersByStatusPaginated(String profileStatus, Integer
+  // pageNumber, Integer pageSize) {
+  //    log.debug("Retrieving users with status='{}', page={}, size={}", profileStatus, pageNumber,
+  // pageSize);
+  //
+  //    if (RequestUtil.nullOrEmpty(profileStatus)) {
+  //      throw new OmnexaException("Profile status is required", HttpStatus.BAD_REQUEST);
+  //    }
+  //
+  //    ProfileStatus statusFilter;
+  //    try {
+  //      statusFilter = ProfileStatus.valueOf(profileStatus.trim().toUpperCase());
+  //    } catch (IllegalArgumentException e) {
+  //      log.error("Invalid profile status provided: '{}'. Valid values are: {}",
+  //              profileStatus, java.util.Arrays.toString(ProfileStatus.values()));
+  //      throw new OmnexaException(
+  //              String.format("Invalid profile status: '%s'. Valid values are: %s",
+  //                      profileStatus, java.util.Arrays.toString(ProfileStatus.values())),
+  //              HttpStatus.BAD_REQUEST);
+  //    }
+  //
+  //    // Use RequestUtil for pagination validation
+  //    int[] validatedParams = RequestUtil.validatePaginationParameters(pageNumber, pageSize);
+  //    int validatedPageNumber = validatedParams[0];
+  //    int validatedPageSize = validatedParams[1];
+  //
+  //    Pageable pageable = RequestUtil.createPageable(validatedPageNumber, validatedPageSize,
+  // "createdDate");
+  //
+  //    Page<BackOfficeUserProfileDTO> userPage =
+  // backOfficeUserRepository.findUsersByStatusPaginated(statusFilter, pageable);
+  //
+  //    return buildPaginatedResponse(userPage, validatedPageNumber);
+  //  }
 
   /**
    * Validates the fields of a signup request.
@@ -275,58 +369,28 @@ public class BackOfficeUserProfileService implements ProfileService {
     return message;
   }
 
-
   /**
-   * Retrieves paginated list of all backoffice users with optional search and filter.
+   * Builds a paginated response from a Page object.
    *
-   * @param pageNumber page number (1-based, optional, default: 1)
-   * @param pageSize page size (max 16, optional, default: 16)
-   * @param search search term for firstName, lastName, or email (optional)
-   * @param profileStatus filter by profile status (optional)
-   * @return paginated user list response
+   * <p>This method remains in the service as it's specific to the BackOfficeUserProfileDTO and
+   * PaginatedUserResponse types.
+   *
+   * @param userPage the Page object from repository
+   * @param validatedPageNumber the validated page number (1-based)
+   * @return PaginatedUserResponse
    */
-  public PaginatedUserResponse getAllUsersPaginated(Integer pageNumber, Integer pageSize, String search, String profileStatus) {
-    // Validate and set defaults for pagination parameters
-    int validatedPageNumber = Math.max(1, pageNumber != null ? pageNumber : 1);
-    int validatedPageSize = Math.min(16, Math.max(1, pageSize != null ? pageSize : 16));
-
-    // Convert to 0-based page number for Spring Data
-    int zeroBasedPageNumber = validatedPageNumber - 1;
-
-    // Create pageable with sorting by creation date (newest first)
-    Pageable pageable = PageRequest.of(
-            zeroBasedPageNumber,
-            validatedPageSize,
-            Sort.by(Sort.Direction.DESC, "createdDate")
-    );
-
-    // Prepare search parameter (trim whitespace)
-    String searchTerm = (search != null && !search.trim().isEmpty())
-            ? search.trim() : null;
-
-    // Parse and validate profile status
-    ProfileStatus statusFilter = null;
-    if (profileStatus != null && !profileStatus.trim().isEmpty()) {
-      try {
-        statusFilter = ProfileStatus.valueOf(profileStatus.trim().toUpperCase());
-      } catch (IllegalArgumentException e) {
-        log.warn("Invalid profile status provided: {}", profileStatus);
-        // Continue with null status (no filter)
-      }
-    }
-
-    // Fetch paginated users from repository
-    Page<BackOfficeUserProfileDTO> userPage = backOfficeUserRepository.findAllUsersPaginated(
-            searchTerm, statusFilter, pageable);
-
-    // Build and return response
-    return PaginatedUserResponse.builder()
-            .content(userPage.getContent())
-            .currentPage(validatedPageNumber) // Return 1-based page number
-            .totalItems(userPage.getTotalElements())
-            .totalPages(userPage.getTotalPages())
-            .isFirstPage(userPage.isFirst())
-            .isLastPage(userPage.isLast())
-            .build();
+  private PaginatedResponse<ProfileInfoResponse> buildPaginatedResponse(
+      Page<BackOfficeUserProfileDTO> userPage, int validatedPageNumber) {
+    return PaginatedResponse.<ProfileInfoResponse>builder()
+        .content(
+            userPage.getContent().stream()
+                .map(backOfficeUserProfileDTO -> (ProfileInfoResponse) backOfficeUserProfileDTO)
+                .toList())
+        .currentPage(validatedPageNumber) // Return 1-based page number
+        .totalItems(userPage.getTotalElements())
+        .totalPages(userPage.getTotalPages())
+        .isFirstPage(userPage.isFirst())
+        .isLastPage(userPage.isLast())
+        .build();
   }
 }

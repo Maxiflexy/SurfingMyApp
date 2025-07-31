@@ -15,13 +15,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 /**
- * Mapper class for converting onboarding-related requests to back office user profile edit requests.
+ * Mapper class for converting onboarding-related requests to back office user profile edit
+ * requests.
  *
- * <p>This class provides utility methods to map different types of onboarding requests
- * to a standardized format used for editing back office user profiles.
+ * <p>This class provides utility methods to map different types of onboarding requests to a
+ * standardized format used for editing back office user profiles.
  *
- * <p>Author: Oluwatobi Ogunwuyi
- * Created On: Jul-18(Fri)-2025
+ * <p>Author: Oluwatobi Ogunwuyi Created On: Jul-18(Fri)-2025
  */
 @Component
 public class BackOfficeUserOnboardingMapper {

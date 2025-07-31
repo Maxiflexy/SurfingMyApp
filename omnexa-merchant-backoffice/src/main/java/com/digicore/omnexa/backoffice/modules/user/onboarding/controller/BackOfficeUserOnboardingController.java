@@ -20,22 +20,20 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Parameter;
 
 /**
- * Controller for back office user management operations.
+ * Controller for back office user onboarding operations.
  *
- * <p>Provides endpoints for user invitation, retrieval, signup processes,
- * and fetching paginated lists of users.
+ * <p>Provides endpoints for user invitation, retrieval, and signup processes. User management
+ * operations (listing, searching, filtering) have been moved to the
+ * BackOfficeUserManagementController to follow SOLID principles.
  *
- * <p>Each endpoint is documented with its purpose, input parameters, and response details.
- * This controller uses Spring Boot annotations for request mapping and validation.
- * It also integrates with a facade resolver and user profile service for business logic.
+ * <p>Each endpoint is documented with its purpose, input parameters, and response details. This
+ * controller uses Spring Boot annotations for request mapping and validation. It also integrates
+ * with a facade resolver and user profile service for business logic.
  *
- * <p>Author: Onyekachi Ejemba
- * Created On: Jul-08(Tue)-2025
+ * <p>Author: Onyekachi Ejemba Created On: Jul-08(Tue)-2025
  */
 @RestController
 @RequestMapping(API_V1 + ONBOARDING_API)
@@ -52,7 +50,7 @@ public class BackOfficeUserOnboardingController {
    * @return a response entity with a success message and HTTP status 201
    */
   @PostMapping()
-  //@PreAuthorize("hasAuthority('invite-backoffice-user')")
+  // @PreAuthorize("hasAuthority('invite-backoffice-user')")
   @Operation(
       summary = ONBOARDING_CONTROLLER_ONBOARD_TITLE,
       description = ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION)
@@ -79,7 +77,6 @@ public class BackOfficeUserOnboardingController {
         backOfficeUserProfileService.getProfileByEmail(email));
   }
 
-
   /**
    * Completes the signup process for a back office user.
    *
@@ -94,33 +91,5 @@ public class BackOfficeUserOnboardingController {
     Facade<UserInviteRequest, Void> facade = facadeResolver.resolve("backOfficeUserOnboarding");
     facade.process(signupRequest);
     return ControllerResponse.buildCreateSuccessResponse("Onboarding Successful");
-  }
-
-
-  /**
-   * Retrieves a paginated list of back office users with optional search and filter parameters.
-   *
-   * @param pageNumber the page number (1-based) for pagination
-   * @param pageSize the number of users per page (maximum 16)
-   * @param search an optional search term to filter users by name or email
-   * @param profileStatus an optional filter for user profile status (e.g., ACTIVE, INACTIVE)
-   * @return a response entity containing the paginated list of users
-   */
-  @GetMapping("/users")
-  @Operation(
-          summary = "Get paginated list of backoffice users with search and filter",
-          description = "Retrieves a paginated list of all backoffice users with optional search by name/email and filter by profile status")
-  public ResponseEntity<Object> getAllUsers(
-          @Parameter(description = "Page number (1-based)", example = "1")
-          @RequestParam(required = false) Integer pageNumber,
-          @Parameter(description = "Page size (max 16)", example = "16")
-          @RequestParam(required = false) Integer pageSize,
-          @Parameter(description = "Search term to filter users by firstName, lastName, or email", example = "john")
-          @RequestParam(required = false) String search,
-          @Parameter(description = "Filter by profile status (ACTIVE, INACTIVE, LOCKED, DEACTIVATED)", example = "ACTIVE")
-          @RequestParam(required = false) String profileStatus) {
-
-    return ControllerResponse.buildCreateSuccessResponse(
-            backOfficeUserProfileService.getAllUsersPaginated(pageNumber, pageSize, search, profileStatus));
   }
 }

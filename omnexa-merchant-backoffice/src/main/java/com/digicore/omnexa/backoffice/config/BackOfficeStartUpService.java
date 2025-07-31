@@ -6,8 +6,9 @@
 
 package com.digicore.omnexa.backoffice.config;
 
+import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
 import com.digicore.omnexa.common.lib.authorization.contract.PermissionService;
-import com.digicore.omnexa.common.lib.authorization.dto.response.PermissionDTO;
+import com.digicore.omnexa.common.lib.authorization.dto.request.PermissionCreationDTO;
 import com.digicore.omnexa.common.lib.backgound.startup.StartupService;
 import com.digicore.omnexa.common.lib.security.SecurityPropertyConfig;
 import com.digicore.omnexa.common.lib.util.RequestUtil;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -40,11 +42,12 @@ public class BackOfficeStartUpService implements StartupService {
   @Order(1)
   public void updateSystemPermissions() {
     File file = getSystemFile(securityPropertyConfig.getSystemDefinedPermissions());
-    Set<PermissionDTO> newAuthorities;
+    Set<PermissionCreationDTO> newAuthorities;
     try {
       newAuthorities = RequestUtil.getObjectMapper().readValue(file, new TypeReference<>() {});
 
-      backOfficeUserPermissionService.createPermission(newAuthorities);
+      backOfficeUserPermissionService.createPermission(
+          newAuthorities.stream().map(p -> (AuthorizationRequest) p).collect(Collectors.toSet()));
     } catch (IOException ignored) {
       log.trace("<<< no update required >>>");
     }

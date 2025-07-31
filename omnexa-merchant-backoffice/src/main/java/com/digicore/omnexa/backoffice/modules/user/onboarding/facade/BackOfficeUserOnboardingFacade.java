@@ -25,25 +25,25 @@ import org.springframework.stereotype.Component;
 /**
  * Facade for handling back office user onboarding operations.
  *
- * <p>This class implements the {@link Facade} interface to process onboarding requests
- * and manage user profiles. It integrates with profile services to validate, update,
- * and create user profiles, as well as to manage profile statuses.
+ * <p>This class implements the {@link Facade} interface to process onboarding requests and manage
+ * user profiles. It integrates with profile services to validate, update, and create user profiles,
+ * as well as to manage profile statuses.
  *
- * <p>Author: Onyekachi Ejemba
- * Created On: Jul-08(Tue)-2025
+ * <p>Author: Onyekachi Ejemba Created On: Jul-08(Tue)-2025
  */
 @Component
 @RequiredArgsConstructor
 public class BackOfficeUserOnboardingFacade implements Facade<OnboardingRequest, Void> {
 
   private final ProfileService backOfficeUserProfileService; // Service for managing user profiles
-  private final ProfileService backOfficeUserAuthProfileService; // Service for managing authentication profiles
+  private final ProfileService
+      backOfficeUserAuthProfileService; // Service for managing authentication profiles
 
   /**
    * Processes an onboarding request and updates the user profile accordingly.
    *
-   * <p>This method validates the onboarding request, updates the user profile,
-   * creates an authentication profile, and sets the profile status to active and verified.
+   * <p>This method validates the onboarding request, updates the user profile, creates an
+   * authentication profile, and sets the profile status to active and verified.
    *
    * @param request the onboarding request to process
    * @return an empty {@link Optional} as the method does not return a value

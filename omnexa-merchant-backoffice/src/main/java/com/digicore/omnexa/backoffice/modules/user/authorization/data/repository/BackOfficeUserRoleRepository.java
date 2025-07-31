@@ -9,8 +9,19 @@ package com.digicore.omnexa.backoffice.modules.user.authorization.data.repositor
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.BackOfficeUserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 /**
  * @author Oluwatobi Ogunwuyi
  * @createdOn Jul-21(Mon)-2025
  */
-public interface BackOfficeUserRoleRepository extends JpaRepository<BackOfficeUserRole, Long> {}
+public interface BackOfficeUserRoleRepository extends JpaRepository<BackOfficeUserRole, Long> {
+
+    /**
+     * Finds the first back office user role by name.
+     *
+     * @param name the name of the role to search for
+     * @return an Optional containing the BackOfficeUserRole if found, empty if not found
+     */
+    Optional<BackOfficeUserRole> findFirstByName(String name);
+}

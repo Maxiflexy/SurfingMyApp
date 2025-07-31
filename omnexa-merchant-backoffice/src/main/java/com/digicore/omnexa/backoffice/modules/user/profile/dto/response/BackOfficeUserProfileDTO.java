@@ -9,7 +9,6 @@ package com.digicore.omnexa.backoffice.modules.user.profile.dto.response;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
 import com.digicore.omnexa.common.lib.profile.dto.response.ProfileInfoResponse;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -51,14 +50,14 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
 
   // Add this constructor to BackOfficeUserProfileDTO class
   public BackOfficeUserProfileDTO(
-          Long id,
-          String profileId,
-          ProfileStatus profileStatus,
-          ProfileVerificationStatus profileVerificationStatus,
-          String email,
-          String firstName,
-          String lastName,
-          LocalDateTime createdDate) {
+      Long id,
+      String profileId,
+      ProfileStatus profileStatus,
+      ProfileVerificationStatus profileVerificationStatus,
+      String email,
+      String firstName,
+      String lastName,
+      LocalDateTime createdDate) {
     this.id = id;
     this.profileId = profileId;
     this.profileStatus = profileStatus;

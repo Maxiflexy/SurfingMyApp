@@ -29,7 +29,4 @@ public class BackOfficeUserAuthProfile extends BaseAuthModel implements Serializ
   @OneToOne(cascade = CascadeType.ALL, optional = false)
   @JoinColumn(name = "backoffice_user_profile_id", nullable = false)
   private BackOfficeUserProfile backOfficeUserProfile;
-
-  @OneToOne(mappedBy = "backOfficeUserAuthProfile", cascade = CascadeType.ALL, optional = false)
-  private BackOfficeUserLoginProfile backOfficeUserLoginProfile;
 }

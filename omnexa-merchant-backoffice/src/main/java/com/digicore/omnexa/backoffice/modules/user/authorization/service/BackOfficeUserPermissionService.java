@@ -9,7 +9,10 @@ package com.digicore.omnexa.backoffice.modules.user.authorization.service;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.BackOfficeUserPermission;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.repository.BackOfficeUserPermissionRepository;
 import com.digicore.omnexa.backoffice.modules.user.authorization.mapper.AuthorizationMapper;
+import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
+import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationResponse;
 import com.digicore.omnexa.common.lib.authorization.contract.PermissionService;
+import com.digicore.omnexa.common.lib.authorization.dto.request.PermissionCreationDTO;
 import com.digicore.omnexa.common.lib.authorization.dto.response.PermissionDTO;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +30,12 @@ public class BackOfficeUserPermissionService implements PermissionService {
   private final BackOfficeUserPermissionRepository backOfficeUserPermissionRepository;
 
   @Override
-  public void createPermission(Set<PermissionDTO> newPermissions) {
+  public void createPermission(Set<AuthorizationRequest> newPermissions) {
+    Set<PermissionCreationDTO> permissions =
+        newPermissions.stream()
+            .filter(PermissionCreationDTO.class::isInstance)
+            .map(PermissionCreationDTO.class::cast)
+            .collect(Collectors.toSet());
     // Retrieve all existing permission names from the repository
     List<String> existingPermissionNames =
         backOfficeUserPermissionRepository.retrieveAllPermissionName().stream()
@@ -35,8 +43,8 @@ public class BackOfficeUserPermissionService implements PermissionService {
             .toList();
 
     // Filter out permissions that already exist
-    List<PermissionDTO> permissionsToAdd =
-        newPermissions.stream()
+    List<PermissionCreationDTO> permissionsToAdd =
+        permissions.stream()
             .filter(permission -> !existingPermissionNames.contains(permission.getName()))
             .toList();
 
@@ -58,7 +66,7 @@ public class BackOfficeUserPermissionService implements PermissionService {
   }
 
   @Override
-  public Set<PermissionDTO> getAllPermissions() {
+  public Set<AuthorizationResponse> getAllPermissions() {
     return backOfficeUserPermissionRepository.findAll().stream()
         .map(AuthorizationMapper::mapEntityToDTO)
         .collect(Collectors.toSet());
