@@ -4,10 +4,9 @@
  * For details, see the LICENSE file.
  */
 
-package com.digicore.omnexa.common.lib.authorization.dto.response;
+package com.digicore.omnexa.common.lib.authorization.dto.request;
 
-import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationResponse;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,18 +21,15 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class PermissionDTO implements AuthorizationResponse, Serializable {
+public class PermissionCreationDTO implements AuthorizationRequest, Serializable {
   public static final String PERMISSION_DTO =
       "com.digicore.omnexa.common.lib.authorization.dto.response.PermissionDTO";
 
-  public PermissionDTO(String name) {
+  public PermissionCreationDTO(String name) {
     this.name = name;
   }
 
   private String name;
-
-  @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-  private long id;
 
   private String description;
   private String permissionType;

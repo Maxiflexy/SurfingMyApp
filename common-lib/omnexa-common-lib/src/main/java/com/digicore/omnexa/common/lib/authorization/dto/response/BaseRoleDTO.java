@@ -19,6 +19,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BaseRoleDTO implements Serializable {
+  public BaseRoleDTO() {}
+
+  public BaseRoleDTO(String name, String description, boolean active) {
+    this.name = name;
+    this.description = description;
+    this.active = active;
+  }
 
   private String name;
 

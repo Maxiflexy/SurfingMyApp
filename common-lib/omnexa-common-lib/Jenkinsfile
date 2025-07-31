@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven-3.8'
+        jdk 'java-21'
+    }
+
+    environment {
+        MAVEN_OPTS = "-Xmx1024m"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    echo "Deploying from branch: main"
+                    checkout scm: [
+                        $class: 'GitSCM',
+                        branches: [[name: "*/main"]],
+                    ]
+                }
+            }
+        }
+
+        stage('Build and Deploy') {
+            steps {
+                script {
+                    configFileProvider([configFile(
+                            fileId: 'd8104a7b-cd35-46ea-82ee-b5870ee44981', 
+                            variable: 'MAVEN_SETTINGS_XML'
+                        )]) {
+
+                    sh '''
+                                echo "Maven version:"
+                                mvn --version
+                                
+                                echo "Building with Maven..."
+                                mvn clean install deploy \
+                                    -s $MAVEN_SETTINGS_XML \
+                                    -DskipTests
+                            '''
+                        }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment to Archiva successful.'
+        }
+        failure {
+            echo 'Deployment failed.'
+        }
+    }
+}

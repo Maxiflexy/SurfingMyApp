@@ -6,14 +6,8 @@
 
 package com.digicore.omnexa.common.lib.authorization.contract;
 
-import java.util.Set;
-
 /**
  * @author Oluwatobi Ogunwuyi
- * @createdOn Jul-21(Mon)-2025
+ * @createdOn Jul-29(Tue)-2025
  */
-public interface PermissionService extends AuthorizationService {
-  void createPermission(Set<AuthorizationRequest> newPermissions);
-
-  Set<AuthorizationResponse> getAllPermissions();
-}
+public interface AuthorizationResponse {}

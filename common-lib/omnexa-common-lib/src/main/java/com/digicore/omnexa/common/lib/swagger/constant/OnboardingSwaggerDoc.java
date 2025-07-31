@@ -34,6 +34,8 @@ public class OnboardingSwaggerDoc {
   /** Base API path for the Onboarding module. */
   public static final String ONBOARDING_API = "onboarding/";
 
+  public static final String MANAGEMENT_API = "management/";
+
   /** Title for the Onboarding controller in Swagger documentation. */
   public static final String ONBOARDING_CONTROLLER_TITLE = "Onboarding-Module";
 
@@ -47,4 +49,12 @@ public class OnboardingSwaggerDoc {
   /** Description for the Onboard API in Swagger documentation. */
   public static final String ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION =
       "This API is used to onboard a user, it sends an invitation email to a new user";
+
+  public static final String ONBOARDING_CONTROLLER_RETRIEVE_TITLE = "Retrieve a user";
+  public static final String ONBOARDING_CONTROLLER_RETRIEVE_DESCRIPTION =
+      "This API is used to retrieve a user awaiting verification";
+
+  public static final String ONBOARDING_CONTROLLER_VERIFY_TITLE = "Verify a user status";
+  public static final String ONBOARDING_CONTROLLER_VERIFY_DESCRIPTION =
+      "This API is used to update a user verification status";
 }

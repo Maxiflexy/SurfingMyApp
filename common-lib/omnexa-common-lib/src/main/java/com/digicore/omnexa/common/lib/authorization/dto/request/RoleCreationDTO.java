@@ -6,6 +6,7 @@
 
 package com.digicore.omnexa.common.lib.authorization.dto.request;
 
+import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
 import com.digicore.omnexa.common.lib.authorization.dto.response.BaseRoleDTO;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -21,6 +22,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class RoleCreationDTO extends BaseRoleDTO implements Serializable {
+public class RoleCreationDTO extends BaseRoleDTO implements AuthorizationRequest, Serializable {
   private Set<String> permissions = new HashSet<>();
 }

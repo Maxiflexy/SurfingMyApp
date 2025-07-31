@@ -13,6 +13,7 @@ import com.digicore.omnexa.common.lib.onboarding.contract.OnboardingResponse;
 import com.digicore.omnexa.common.lib.profile.dto.request.ProfileEditRequest;
 import com.digicore.omnexa.common.lib.profile.dto.response.ProfileEditResponse;
 import com.digicore.omnexa.common.lib.profile.dto.response.ProfileInfoResponse;
+import com.digicore.omnexa.common.lib.util.PaginatedResponse;
 
 /**
  * Service interface for profile management.
@@ -76,6 +77,11 @@ public interface ProfileService {
    *     if not found.
    */
   default ProfileInfoResponse getProfileById(String profileId) {
+    return null;
+  }
+
+  default PaginatedResponse<ProfileInfoResponse> getAllProfiles(
+      Integer pageNumber, Integer pageSize) {
     return null;
   }
 

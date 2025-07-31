@@ -48,6 +48,9 @@ public class MessagePlaceHolderConstant {
   /** Placeholder for the time value. */
   public static final String TIME = "{time}";
 
+  /** Placeholder for the count value. */
+  public static final String COUNT = "{count}";
+
   /** Placeholder for the name. */
   public static final String NAME = "{name}";
 

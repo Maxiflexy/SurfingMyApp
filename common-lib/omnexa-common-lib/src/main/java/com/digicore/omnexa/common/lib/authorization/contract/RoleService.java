@@ -6,12 +6,14 @@
 
 package com.digicore.omnexa.common.lib.authorization.contract;
 
-import com.digicore.omnexa.common.lib.authorization.dto.request.RoleCreationDTO;
-
 /**
  * @author Oluwatobi Ogunwuyi
  * @createdOn Jul-21(Mon)-2025
  */
 public interface RoleService extends AuthorizationService {
-  void createRole(RoleCreationDTO request);
+  void createRole(AuthorizationRequest request);
+
+  default AuthorizationResponse retrieveRole(String roleName, String identifier) {
+    return null;
+  }
 }

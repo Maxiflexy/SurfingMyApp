@@ -6,8 +6,8 @@
 
 package com.digicore.omnexa.common.lib.authentication.converter;
 
-import com.digicore.omnexa.common.lib.authentication.enums.AuthenticationType;
 import com.digicore.omnexa.common.lib.converter.StringEnumConverter;
+import com.digicore.omnexa.common.lib.enums.AuthenticationType;
 import jakarta.persistence.Converter;
 
 /**
