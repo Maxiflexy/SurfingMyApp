@@ -7,9 +7,8 @@
 package com.digicore.omnexa.backoffice.modules.user.authorization.data.repository;
 
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.BackOfficeUserRole;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Oluwatobi Ogunwuyi

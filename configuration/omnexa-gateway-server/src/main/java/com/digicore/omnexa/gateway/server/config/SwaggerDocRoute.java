@@ -15,16 +15,15 @@ import org.springframework.context.annotation.Configuration;
  * @author Oluwatobi Ogunwuyi
  * @createdOn Jul-01(Tue)-2025
  */
-
 @Configuration
 public class SwaggerDocRoute {
 
- @Bean
- public RouteLocator administrationRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
-  return routeLocatorBuilder
-          .routes()
-          .route(p -> p.path("/omnexa-backoffice/documentation/**").uri("lb://OMNEXA-BACKOFFICE"))
-          .route(p -> p.path("/omnexa-merchant/documentation/**").uri("lb://OMNEXA-MERCHANT"))
-          .build();
- }
+  @Bean
+  public RouteLocator administrationRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
+    return routeLocatorBuilder
+        .routes()
+        .route(p -> p.path("/omnexa-backoffice/documentation/**").uri("lb://OMNEXA-BACKOFFICE"))
+        .route(p -> p.path("/omnexa-merchant/documentation/**").uri("lb://OMNEXA-MERCHANT"))
+        .build();
+  }
 }

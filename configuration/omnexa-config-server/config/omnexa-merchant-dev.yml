@@ -10,7 +10,7 @@ omnexa:
     jwtKeyAlias: "jwtsigning"
     jwtPrivateKeyPassphrase: "password"
     systemKey: "LD8EH2OF34WL9I8A"
-    systemDefinedPermissions: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//permissions//customer//systemPermissions.json"
+    systemDefinedPermissions: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//permissions//merchant//systemPermissions.json"
     corsAllowedOrigins: "*"
     corsAllowedMethods:
       - POST
@@ -33,7 +33,7 @@ omnexa:
     allowedUrls:
       - /omnexa-merchant/documentation/**
       - /actuator/**
-      - /v1/authentication/process/**
+      - /v1/authentication/**
       - /v1/onboarding/**
       - /v1/activation/process/send-bvn-verification-code
       - /v1/activation/process/validate-bvn

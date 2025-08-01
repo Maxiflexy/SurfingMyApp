@@ -15,11 +15,13 @@ import com.digicore.omnexa.common.lib.facade.contract.Facade;
 import com.digicore.omnexa.common.lib.facade.resolver.FacadeResolver;
 import com.digicore.omnexa.common.lib.onboarding.dto.request.SignupRequest;
 import com.digicore.omnexa.common.lib.onboarding.dto.request.UserInviteRequest;
+import com.digicore.omnexa.common.lib.profile.contract.ProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -41,26 +43,8 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = ONBOARDING_CONTROLLER_TITLE, description = ONBOARDING_CONTROLLER_DESCRIPTION)
 public class BackOfficeUserOnboardingController {
   private final FacadeResolver facadeResolver;
-  private final BackOfficeUserProfileService backOfficeUserProfileService;
+  private final ProfileService backOfficeUserProfileService;
 
-  /**
-   * Invites a new user to the back office system.
-   *
-   * @param userInviteRequest the request payload containing user invitation details
-   * @return a response entity with a success message and HTTP status 201
-   */
-  @PostMapping()
-  // @PreAuthorize("hasAuthority('invite-backoffice-user')")
-  @Operation(
-      summary = ONBOARDING_CONTROLLER_ONBOARD_TITLE,
-      description = ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION)
-  public ResponseEntity<Object> inviteBackOfficeUser(
-      @Valid @RequestBody UserInviteRequest userInviteRequest) {
-    Facade<UserInviteRequest, Void> facade = facadeResolver.resolve("backOfficeUserInvitation");
-    facade.process(userInviteRequest);
-    return ControllerResponse.buildCreateSuccessResponse(
-        "BackOffice User Invitation sent Successful");
-  }
 
   /**
    * Retrieves the profile of a back office user by email.

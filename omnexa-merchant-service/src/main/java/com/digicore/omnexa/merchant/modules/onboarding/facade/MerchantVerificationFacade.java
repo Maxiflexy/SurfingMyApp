@@ -7,6 +7,7 @@
 package com.digicore.omnexa.merchant.modules.onboarding.facade;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.CONFLICT;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_CONFLICT_ERROR;
 
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
 import com.digicore.omnexa.common.lib.exception.OmnexaException;
@@ -43,7 +44,9 @@ public class MerchantVerificationFacade implements Facade<String, Void> {
 
     if (profileHelper.merchantIsVerified(merchantId)) {
       throw new OmnexaException(
-          profileHelper.getMessagePropertyConfig().getOnboardMessage(CONFLICT),
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR),
           HttpStatus.CONFLICT);
     }
 

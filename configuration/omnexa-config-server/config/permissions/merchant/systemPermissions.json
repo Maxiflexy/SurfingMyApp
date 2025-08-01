@@ -1,0 +1,182 @@
+[
+  {
+    "name": "view-dashboard",
+    "description": "This allows you to view dashboard modules and metrics",
+    "permissionType": "DASHBOARD"
+  },
+  {
+    "name": "view-transactions",
+    "description": "This allows you to view transactions",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "name": "view-transaction-details",
+    "description": "This allows you to view a transaction details",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "name": "export-transactions",
+    "description": "This allows you to export  transactions",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "name": "view-merchant-users",
+    "description": "This allows you to view merchant users",
+    "permissionType": "USER"
+  },
+  {
+    "name": "view-user-details",
+    "description": "This allows you to view a user details",
+    "permissionType": "USER"
+  },
+  {
+    "name": "export-users",
+    "description": "This allows you to export a users",
+    "permissionType": "USER"
+  },
+  {
+    "name": "enable-user",
+    "description": "This allows you to enable a user",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-enable-user",
+    "description": "This allows you to approve enable a user request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "disable-user",
+    "description": "This allows you to disable a user",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-disable-user",
+    "description": "This allows you to approve disable a user request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "invite-user",
+    "description": "This allows you to invite a new user",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-invite-user",
+    "description": "This allows you to approve invite a new user request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "edit-user-details",
+    "description": "This allows you to edit a user details",
+    "permissionType": "USER"
+  },
+  {
+    "name": "resend-user-invite",
+    "description": "This allows you to resend a invite email",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-resend-user-invite",
+    "description": "This allows you to approve a resend invite email request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "create-role",
+    "description": "This allows you to create new roles",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-create-role",
+    "description": "This allows you to approve create new roles requests",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "view-permissions",
+    "description": "This allows you to view available permissions",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "view-role",
+    "description": "This allows you to view available roles",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "delete-role",
+    "description": "This allows you to delete a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-delete-role",
+    "description": "This allows you to approve a request to delete a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "edit-role",
+    "description": "This allows you to edit a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-edit-role",
+    "description": "This allows you to approve a request to edit a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "treat-requests",
+    "description": "This allows you to treat a request you have been assigned to",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "disable-role",
+    "description": "This allows you to disable a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-disable-role",
+    "description": "This allows you to approve a request to disable a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "enable-role",
+    "description": "This allows you to enable a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "approve-enable-role",
+    "description": "This allows you to approve a request to enable a role",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "delete-user-profile",
+    "description": "This allows you to delete a user profile",
+    "permissionType": "USER"
+  },
+  {
+    "name": "approve-delete-user-profile",
+    "description": "This allows you to approve the delete of a profile request",
+    "permissionType": "USER"
+  },
+  {
+    "name": "view-role-details",
+    "description": "This allows you to view a role detail",
+    "permissionType": "ROLE"
+  },
+  {
+    "name": "view-self-audit-trails",
+    "description": "This allows you to view only your audit trails",
+    "permissionType": "AUDIT_TRAIL"
+  },
+  {
+    "name": "view-all-audit-trails",
+    "description": "This allows you to view all audit trails",
+    "permissionType": "AUDIT_TRAIL"
+  },
+  {
+    "name": "approve-edit-user-details",
+    "description": "This allows you to approve edit request of a user",
+    "permissionType": "USER"
+  },
+  {
+  "name": "view-self-user-details",
+  "description": "This allows you to view your user details",
+  "permissionType": "USER"
+  }
+]

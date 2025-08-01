@@ -114,7 +114,6 @@ public class BackOfficeJwtUtil {
         claims.put("username", username);
         claims.put("profileId", userDetails.getProfileId());
         claims.put("role", userDetails.getRole());
-        claims.put("fullName", userDetails.getFullName());
 
         String authorities = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

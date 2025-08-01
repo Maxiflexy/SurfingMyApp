@@ -8,6 +8,7 @@ package com.digicore.omnexa.merchant.modules.authentication.service;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.PROFILE;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.*;
 
 import com.digicore.omnexa.common.lib.exception.OmnexaException;
 import com.digicore.omnexa.common.lib.onboarding.contract.OnboardingRequest;
@@ -51,7 +52,9 @@ public class MerchantUserAuthProfileService implements ProfileService {
       return new MerchantOnboardingResponse();
     }
     throw new OmnexaException(
-        profileHelper.getMessagePropertyConfig().getOnboardMessage(INVALID),
+        profileHelper
+            .getMessagePropertyConfig()
+            .getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
         HttpStatus.BAD_REQUEST);
   }
 
@@ -60,7 +63,7 @@ public class MerchantUserAuthProfileService implements ProfileService {
       String errorMessage =
           profileHelper
               .getMessagePropertyConfig()
-              .getOnboardMessage(DUPLICATE)
+              .getOnboardMessage(DUPLICATE, SYSTEM_DEFAULT_DUPLICATE_ERROR)
               .replace(PROFILE, username);
       logger.error(errorMessage);
       throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);

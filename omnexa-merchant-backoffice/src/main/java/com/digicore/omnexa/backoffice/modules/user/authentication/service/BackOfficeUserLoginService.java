@@ -25,7 +25,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.DENIED;
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.FAILED;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_DENIED_ERROR;
 
 /**
  * @author Oluwatobi Ogunwuyi
@@ -80,7 +82,7 @@ public class BackOfficeUserLoginService implements AuthenticationService, UserDe
     return backOfficeUserAuthProfileRepository
             .findByUsername(username)
             .orElseThrow(() -> new OmnexaException(
-                    messagePropertyConfig.getLoginMessage(FAILED),
+                    messagePropertyConfig.getLoginMessage(DENIED, SYSTEM_DEFAULT_DENIED_ERROR),
                     HttpStatus.UNAUTHORIZED));
   }
 }

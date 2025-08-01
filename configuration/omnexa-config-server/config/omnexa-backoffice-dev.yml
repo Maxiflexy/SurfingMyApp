@@ -33,7 +33,7 @@ omnexa:
     allowedUrls:
       - /omnexa-backoffice/documentation/**
       - /actuator/**
-      - /v1/authentication/process/**
+      - /v1/authentication/**
       - /v1/onboarding/**
       - /v1/activation/process/send-bvn-verification-code
       - /v1/activation/process/validate-bvn

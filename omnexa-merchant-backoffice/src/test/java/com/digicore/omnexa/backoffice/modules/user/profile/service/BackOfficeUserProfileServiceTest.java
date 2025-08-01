@@ -7,10 +7,12 @@
 package com.digicore.omnexa.backoffice.modules.user.profile.service;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_DUPLICATE_ERROR;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_NOT_FOUND_ERROR;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.digicore.omnexa.backoffice.modules.user.profile.data.model.BackOfficeUserProfile;
-import com.digicore.omnexa.backoffice.modules.user.profile.data.repository.BackOfficeUserRepository;
+import com.digicore.omnexa.backoffice.modules.user.profile.data.repository.BackOfficeUserProfileRepository;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.request.BackOfficeProfileEditRequest;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeProfileEditResponse;
 import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeUserProfileDTO;
@@ -42,7 +44,9 @@ import org.springframework.http.HttpStatus;
 @ExtendWith(MockitoExtension.class)
 class BackOfficeUserProfileServiceTest {
 
-  @Mock private BackOfficeUserRepository backOfficeUserRepository; // Mock for the user repository
+  @Mock
+  private BackOfficeUserProfileRepository
+      backOfficeUserProfileRepository; // Mock for the user repository
 
   @Mock
   private MessagePropertyConfig messagePropertyConfig; // Mock for message property configuration
@@ -61,12 +65,13 @@ class BackOfficeUserProfileServiceTest {
     request.setFirstName("John");
     request.setRole("Admin");
 
-    Mockito.when(backOfficeUserRepository.existsByEmail(request.getEmail())).thenReturn(false);
+    Mockito.when(backOfficeUserProfileRepository.existsByEmail(request.getEmail()))
+        .thenReturn(false);
 
     OnboardingResponse response = backOfficeUserProfileService.createProfile(request);
 
     assertInstanceOf(UserInviteResponse.class, response);
-    Mockito.verify(backOfficeUserRepository).save(Mockito.any(BackOfficeUserProfile.class));
+    Mockito.verify(backOfficeUserProfileRepository).save(Mockito.any(BackOfficeUserProfile.class));
   }
 
   /**
@@ -78,8 +83,10 @@ class BackOfficeUserProfileServiceTest {
     UserInviteRequest request = new UserInviteRequest();
     request.setEmail("test@example.com");
 
-    Mockito.when(backOfficeUserRepository.existsByEmail(request.getEmail())).thenReturn(true);
-    Mockito.when(messagePropertyConfig.getOnboardMessage(DUPLICATE)).thenReturn("Duplicate email");
+    Mockito.when(backOfficeUserProfileRepository.existsByEmail(request.getEmail()))
+        .thenReturn(true);
+    Mockito.when(messagePropertyConfig.getOnboardMessage(DUPLICATE, SYSTEM_DEFAULT_DUPLICATE_ERROR))
+        .thenReturn("Duplicate email");
 
     OmnexaException exception =
         assertThrows(
@@ -100,13 +107,13 @@ class BackOfficeUserProfileServiceTest {
     request.setEmail("updated@example.com");
     request.setFirstName("UpdatedName");
 
-    Mockito.when(backOfficeUserRepository.existsByProfileId(request.getProfileId()))
+    Mockito.when(backOfficeUserProfileRepository.existsByProfileId(request.getProfileId()))
         .thenReturn(true);
 
     ProfileEditResponse response = backOfficeUserProfileService.updateProfile(request);
 
     assertTrue(response instanceof BackOfficeProfileEditResponse);
-    Mockito.verify(backOfficeUserRepository)
+    Mockito.verify(backOfficeUserProfileRepository)
         .updateProfile(
             request.getEmail(),
             request.getFirstName(),
@@ -124,9 +131,9 @@ class BackOfficeUserProfileServiceTest {
     BackOfficeProfileEditRequest request = new BackOfficeProfileEditRequest();
     request.setProfileId("123");
 
-    Mockito.when(backOfficeUserRepository.existsByProfileId(request.getProfileId()))
+    Mockito.when(backOfficeUserProfileRepository.existsByProfileId(request.getProfileId()))
         .thenReturn(false);
-    Mockito.when(messagePropertyConfig.getOnboardMessage(NOT_FOUND))
+    Mockito.when(messagePropertyConfig.getOnboardMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR))
         .thenReturn("Profile not found");
 
     OmnexaException exception =
@@ -148,7 +155,7 @@ class BackOfficeUserProfileServiceTest {
     userProfileDTO.setProfileVerificationStatus(
         ProfileVerificationStatus.PENDING_INVITE_ACCEPTANCE);
 
-    Mockito.when(backOfficeUserRepository.findProfileStatusesByEmail(email))
+    Mockito.when(backOfficeUserProfileRepository.findProfileStatusesByEmail(email))
         .thenReturn(Optional.of(userProfileDTO));
 
     ProfileInfoResponse response = backOfficeUserProfileService.getProfileByEmail(email);
@@ -164,9 +171,9 @@ class BackOfficeUserProfileServiceTest {
   void getProfileByEmail_throwsOmnexaException_whenProfileDoesNotExist() {
     String email = "nonexistent@example.com";
 
-    Mockito.when(backOfficeUserRepository.findProfileStatusesByEmail(email))
+    Mockito.when(backOfficeUserProfileRepository.findProfileStatusesByEmail(email))
         .thenReturn(Optional.empty());
-    Mockito.when(messagePropertyConfig.getOnboardMessage(NOT_FOUND))
+    Mockito.when(messagePropertyConfig.getOnboardMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR))
         .thenReturn("Profile not found");
 
     OmnexaException exception =

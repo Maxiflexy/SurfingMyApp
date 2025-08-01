@@ -6,6 +6,9 @@
 
 package com.digicore.omnexa.merchant.config;
 
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_MERCHANT_ROLE_DESCRIPTION;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_MERCHANT_ROLE_NAME;
+
 import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
 import com.digicore.omnexa.common.lib.authorization.contract.PermissionService;
 import com.digicore.omnexa.common.lib.authorization.dto.request.PermissionCreationDTO;
@@ -62,12 +65,14 @@ public class MerchantStartUpService implements StartupService {
   @Override
   @EventListener(ContextRefreshedEvent.class)
   @Order(2)
-  public void updateSystemRole() {
+  public void updateSystemRoles() {
     MerchantUserRole userRole =
-        merchantUserRoleRepository.findFirstByName("CUSTODIAN").orElse(new MerchantUserRole());
+        merchantUserRoleRepository
+            .findFirstByName(SYSTEM_MERCHANT_ROLE_NAME)
+            .orElse(new MerchantUserRole());
     userRole.setActive(true);
-    userRole.setName("CUSTODIAN");
-    userRole.setDescription("The custodian role");
+    userRole.setName(SYSTEM_MERCHANT_ROLE_NAME);
+    userRole.setDescription(SYSTEM_MERCHANT_ROLE_DESCRIPTION);
     userRole.setPermissions(new HashSet<>(merchantUserPermissionRepository.findAll()));
     merchantUserRoleRepository.save(userRole);
   }

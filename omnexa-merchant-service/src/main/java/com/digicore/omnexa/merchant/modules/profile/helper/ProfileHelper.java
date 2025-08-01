@@ -43,7 +43,6 @@ public class ProfileHelper {
   @Getter private final SecurityPropertyConfig securityPropertyConfig;
   @Getter private final MerchantUserAuthProfileRepository merchantUserAuthProfileRepository;
   @Getter private final PasswordEncoder passwordEncoder;
-  public static final String MERCHANT_ROLE = "CUSTODIAN";
 
   // Create lazy reference to merchant profile
   public MerchantProfile getMerchantProfileByReference(Long id) {

@@ -6,11 +6,9 @@
 
 package com.digicore.omnexa.common.lib.model;
 
-import com.digicore.omnexa.common.lib.util.RequestUtil;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -60,10 +58,4 @@ public class BaseUserModel extends BaseModel implements Serializable {
   private String profilePictureUrl;
 
   private String role;
-
-  @PrePersist
-  public void generateProfileId() {
-    if (RequestUtil.nullOrEmpty(getProfileId()))
-      setProfileId("MU".concat(RequestUtil.generateProfileId()));
-  }
 }

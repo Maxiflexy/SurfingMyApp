@@ -8,6 +8,8 @@ package com.digicore.omnexa.merchant.modules.authorization.helper;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.CONFLICT;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.ROLE_NAME;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_CONFLICT_ERROR;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_MERCHANT_ROLE_NAME;
 import static com.digicore.omnexa.common.lib.util.RequestUtil.getValueFromAccessToken;
 
 import com.digicore.omnexa.common.lib.exception.OmnexaException;
@@ -43,7 +45,6 @@ public class AuthorizationHelper {
   @Getter private final MessagePropertyConfig messagePropertyConfig;
   private final EntityManager entityManager;
   private static final String MERCHANT_ID = "merchantId";
-  public static final String MERCHANT_ROLE = "CUSTODIAN";
 
   public Set<MerchantUserPermission> retrieveSelectedPermissions(Set<String> selectedPermissions) {
     Set<String> effectivePermissions = new HashSet<>(selectedPermissions);
@@ -55,7 +56,8 @@ public class AuthorizationHelper {
 
         if (selectedPermissions.contains(basePermission)) {
           throw new OmnexaException(
-              messagePropertyConfig.getRoleMessage(CONFLICT), HttpStatus.BAD_REQUEST);
+              messagePropertyConfig.getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR),
+              HttpStatus.BAD_REQUEST);
         }
 
         if (!selectedPermissions.contains("treat-requests") && !treatRequestAdded) {
@@ -80,7 +82,7 @@ public class AuthorizationHelper {
   public void validateRoleName(String roleName) {
     String conflictMessage = getConflictMessage(roleName);
 
-    if (MERCHANT_ROLE.equalsIgnoreCase(roleName)) {
+    if (SYSTEM_MERCHANT_ROLE_NAME.equalsIgnoreCase(roleName)) {
       log.warn(conflictMessage);
       throw new OmnexaException(conflictMessage, HttpStatus.CONFLICT);
     }
@@ -96,7 +98,9 @@ public class AuthorizationHelper {
   }
 
   private String getConflictMessage(String roleName) {
-    return messagePropertyConfig.getRoleMessage(CONFLICT).replace(ROLE_NAME, roleName);
+    return messagePropertyConfig
+        .getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR)
+        .replace(ROLE_NAME, roleName);
   }
 
   public static String retrieveMerchantId() {

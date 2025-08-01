@@ -7,6 +7,7 @@
 package com.digicore.omnexa.merchant.modules.profile.service;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.INVALID;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_INVALID_REQUEST_ERROR;
 import static com.digicore.omnexa.common.lib.util.AESUtil.generateBase64AESKey;
 import static com.digicore.omnexa.common.lib.util.ApiKeyGenerator.generateApiKey;
 
@@ -61,7 +62,8 @@ public class MerchantApiKeyProfileService implements ProfileService {
       OnboardingRequest profile) {
     if (!(profile instanceof MerchantApiKeyOnboardingRequest)) {
       throw new OmnexaException(
-          messagePropertyConfig.getOnboardMessage(INVALID), HttpStatus.BAD_REQUEST);
+          messagePropertyConfig.getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
+          HttpStatus.BAD_REQUEST);
     }
     return (MerchantApiKeyOnboardingRequest) profile;
   }

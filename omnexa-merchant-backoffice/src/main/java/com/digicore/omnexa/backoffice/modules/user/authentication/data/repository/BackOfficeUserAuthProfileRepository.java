@@ -7,6 +7,7 @@
 package com.digicore.omnexa.backoffice.modules.user.authentication.data.repository;
 
 import com.digicore.omnexa.backoffice.modules.user.authentication.data.model.BackOfficeUserAuthProfile;
+import java.util.Optional;
 import com.digicore.omnexa.backoffice.modules.user.authentication.dto.response.BackOfficeLoginProfileDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +25,8 @@ public interface BackOfficeUserAuthProfileRepository
     extends JpaRepository<BackOfficeUserAuthProfile, Long> {
   boolean existsByUsername(String username);
 
+  Optional<BackOfficeUserAuthProfile> findFirstByUsername(String username);
+
   /**
    * Finds a back office user authentication profile by username for login purposes.
    *
@@ -36,7 +39,8 @@ public interface BackOfficeUserAuthProfileRepository
                   "       bup.role, " +
                   "       bua.username, " +
                   "       bup.firstName, " +
-                  "       bup.lastName) " +
+                  "       bup.lastName, " +
+                  "       bua.password) " +
                   "FROM BackOfficeUserAuthProfile bua " +
                   "JOIN bua.backOfficeUserProfile bup " +
                   "WHERE bua.username = :username")

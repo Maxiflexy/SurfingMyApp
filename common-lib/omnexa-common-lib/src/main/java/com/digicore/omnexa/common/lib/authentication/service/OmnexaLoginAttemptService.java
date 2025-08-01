@@ -9,6 +9,7 @@ package com.digicore.omnexa.common.lib.authentication.service;
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.*;
 import static com.digicore.omnexa.common.lib.constant.module.ModuleConstant.AUTHENTICATION;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.*;
 
 import com.digicore.omnexa.common.lib.audit.contract.AuditLogService;
 import com.digicore.omnexa.common.lib.authentication.contract.LoginAttemptService;
@@ -117,9 +118,12 @@ public class OmnexaLoginAttemptService implements LoginAttemptService {
             loginAttemptDTO.getName(),
             ACTIVITY_TYPE,
             AUTHENTICATION,
-            messagePropertyConfig.getLoginMessage(LOCKED).replace(USER, loginAttemptDTO.getName()));
+            messagePropertyConfig
+                .getLoginMessage(LOCKED, SYSTEM_DEFAULT_LOCKED_ERROR)
+                .replace(USER, loginAttemptDTO.getName()));
         throw new OmnexaException(
-            messagePropertyConfig.getLoginMessage(LOCKED), HttpStatus.UNAUTHORIZED);
+            messagePropertyConfig.getLoginMessage(LOCKED, SYSTEM_DEFAULT_LOCKED_ERROR),
+            HttpStatus.UNAUTHORIZED);
       }
 
       loginAttempt.setFailedLoginAttempts(loginAttempt.getFailedLoginAttempts() + 1);
@@ -133,9 +137,10 @@ public class OmnexaLoginAttemptService implements LoginAttemptService {
             loginAttemptDTO.getName(),
             ACTIVITY_TYPE,
             AUTHENTICATION,
-            messagePropertyConfig.getLoginMessage(LOCKED));
+            messagePropertyConfig.getLoginMessage(LOCKED, SYSTEM_DEFAULT_LOCKED_ERROR));
         throw new OmnexaException(
-            messagePropertyConfig.getLoginMessage(LOCKED), HttpStatus.UNAUTHORIZED);
+            messagePropertyConfig.getLoginMessage(LOCKED, SYSTEM_DEFAULT_LOCKED_ERROR),
+            HttpStatus.UNAUTHORIZED);
       } else {
         auditLogService.log(
             loginAttemptDTO.getRole(),
@@ -144,7 +149,7 @@ public class OmnexaLoginAttemptService implements LoginAttemptService {
             ACTIVITY_TYPE,
             AUTHENTICATION,
             messagePropertyConfig
-                .getLoginMessage(DENIED)
+                .getLoginMessage(DENIED, SYSTEM_DEFAULT_DENIED_ERROR)
                 .replace(TIME, String.valueOf(loginAttempt.getFailedLoginAttempts()))
                 .replace(USER, loginAttemptDTO.getName()));
 
@@ -154,7 +159,7 @@ public class OmnexaLoginAttemptService implements LoginAttemptService {
                   - loginAttempt.getFailedLoginAttempts();
           throw new OmnexaException(
               messagePropertyConfig
-                  .getLoginMessage(WARNING)
+                  .getLoginMessage(WARNING, SYSTEM_DEFAULT_WARNING_ERROR)
                   .replace(COUNT, String.valueOf(remainingAttempts)),
               HttpStatus.UNAUTHORIZED);
         }
@@ -162,7 +167,8 @@ public class OmnexaLoginAttemptService implements LoginAttemptService {
     } else {
       if (loginAttempt.isLoginLocked() && shouldNotAutomaticallyUnlockProfile(loginAttempt)) {
         throw new OmnexaException(
-            messagePropertyConfig.getLoginMessage(LOCKED), HttpStatus.FORBIDDEN);
+            messagePropertyConfig.getLoginMessage(LOCKED, SYSTEM_DEFAULT_LOCKED_ERROR),
+            HttpStatus.FORBIDDEN);
       }
       loginAttempt.setLastLoginAt(ZonedDateTime.now());
       save(loginAttempt);

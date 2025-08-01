@@ -8,6 +8,8 @@ package com.digicore.omnexa.backoffice.modules.user.authentication.service;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.PROFILE;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_DUPLICATE_ERROR;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_INVALID_REQUEST_ERROR;
 
 import com.digicore.omnexa.backoffice.modules.user.authentication.data.model.BackOfficeUserAuthProfile;
 import com.digicore.omnexa.backoffice.modules.user.authentication.data.repository.BackOfficeUserAuthProfileRepository;
@@ -62,13 +64,16 @@ public class BackOfficeUserAuthProfileService implements ProfileService {
       return new UserInviteResponse();
     }
     throw new OmnexaException(
-        messagePropertyConfig.getOnboardMessage(INVALID), HttpStatus.BAD_REQUEST);
+        messagePropertyConfig.getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
+        HttpStatus.BAD_REQUEST);
   }
 
   private void validateOnboardingRequest(String username) {
     if (backOfficeUserAuthProfileRepository.existsByUsername(username)) {
       String errorMessage =
-          messagePropertyConfig.getOnboardMessage(DUPLICATE).replace(PROFILE, username);
+          messagePropertyConfig
+              .getOnboardMessage(DUPLICATE, SYSTEM_DEFAULT_DUPLICATE_ERROR)
+              .replace(PROFILE, username);
       logger.error(errorMessage);
       throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
     }

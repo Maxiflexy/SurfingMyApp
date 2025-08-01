@@ -8,6 +8,7 @@ package com.digicore.omnexa.backoffice.modules.user.authentication.controller;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
 import static com.digicore.omnexa.backoffice.modules.user.authentication.facade.BackOfficeUserAuthenticationFacade.BACKOFFICE_AUTHENTICATION;
+import static com.digicore.omnexa.common.lib.swagger.constant.AuthenticationSwaggerDocConstant.*;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationRequest;
@@ -44,9 +45,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @createdOn Jul-31(Thu)-2025
  */
 @RestController
-@RequestMapping(API_V1 + "/auth")
+@RequestMapping(API_V1 + AUTHENTICATION_API)
 @RequiredArgsConstructor
-@Tag(name = "Back Office Authentication", description = "Back office user authentication operations")
+@Tag(name = AUTHENTICATION_CONTROLLER_TITLE, description = AUTHENTICATION_CONTROLLER_DESCRIPTION)
 public class BackOfficeUserAuthenticationController {
 
     private final FacadeResolver facadeResolver;
@@ -60,8 +61,8 @@ public class BackOfficeUserAuthenticationController {
      */
     @PostMapping()
     @Operation(
-            summary = "Back office user login",
-            description = "Authenticates a back office user")
+            summary = AUTHENTICATION_CONTROLLER_LOGIN_TITLE,
+            description = AUTHENTICATION_CONTROLLER_LOGIN_DESCRIPTION)
     public ResponseEntity<Object> login(
             @Valid @RequestBody LoginRequestDTO loginRequestDTO, HttpServletRequest httpServletRequest) {
 

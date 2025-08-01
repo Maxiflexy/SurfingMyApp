@@ -4,9 +4,9 @@ pipeline {
     // setting environment variables
     environment {
         // Application configuration
-        SERVICE_NAME = 'omnexa-merchant-service'
-        JAR_NAME = "omnexa-merchant-service-1.0.0-SNAPSHOT.jar"
-        DEPLOY_PATH = '/home/ubuntu/omnexa/merchant-service' // Path where the JAR will be deployed
+        SERVICE_NAME = 'omnexa-backoffice-service'
+        JAR_NAME = "omnexa-backoffice-service-1.0.0-SNAPSHOT.jar"
+        DEPLOY_PATH = '/home/ubuntu/omnexa/backoffice-service' // Path where the JAR will be deployed
         
         // Server configuration
         TARGET_SERVER = '10.0.0.68' // target server

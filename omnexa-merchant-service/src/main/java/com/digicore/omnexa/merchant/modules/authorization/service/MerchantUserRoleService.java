@@ -8,6 +8,7 @@ package com.digicore.omnexa.merchant.modules.authorization.service;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.NOT_FOUND;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.ROLE_NAME;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_NOT_FOUND_ERROR;
 
 import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationRequest;
 import com.digicore.omnexa.common.lib.authorization.contract.AuthorizationResponse;
@@ -57,7 +58,7 @@ public class MerchantUserRoleService implements RoleService {
                     new OmnexaException(
                         authorizationHelper
                             .getMessagePropertyConfig()
-                            .getRoleMessage(NOT_FOUND)
+                            .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
                             .replace(ROLE_NAME, roleName)));
     return new RoleDTO(
         userRole.getName(),

@@ -29,11 +29,9 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
       "com.digicore.omnexa.backoffice.modules.user.profile.dto.response.BackOfficeUserProfileDTO";
 
   public BackOfficeUserProfileDTO(
-      Long id,
       String profileId,
       ProfileStatus profileStatus,
       ProfileVerificationStatus profileVerificationStatus) {
-    this.id = id;
     this.profileId = profileId;
     this.profileStatus = profileStatus;
     this.profileVerificationStatus = profileVerificationStatus;
@@ -48,9 +46,23 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
     this.role = role;
   }
 
+
+  public BackOfficeUserProfileDTO(
+      String email, String firstName, String lastName, String profileId, String role, ProfileStatus profileStatus,
+      ProfileVerificationStatus profileVerificationStatus, LocalDateTime createdDate) {
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.profileId = profileId;
+    this.role = role;
+    this.profileStatus = profileStatus;
+    this.profileVerificationStatus = profileVerificationStatus;
+    this.createdDate = createdDate != null ? createdDate.atZone(ZoneId.systemDefault()) : null;
+  }
+
   // Add this constructor to BackOfficeUserProfileDTO class
   public BackOfficeUserProfileDTO(
-      Long id,
+          Long id,
       String profileId,
       ProfileStatus profileStatus,
       ProfileVerificationStatus profileVerificationStatus,
@@ -68,16 +80,31 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
     this.createdDate = createdDate != null ? createdDate.atZone(ZoneId.systemDefault()) : null;
   }
 
+
+  public BackOfficeUserProfileDTO(
+      String profileId,
+      ProfileStatus profileStatus,
+      ProfileVerificationStatus profileVerificationStatus,
+      String email,
+      String firstName,
+      String lastName,
+      LocalDateTime createdDate) {
+    this.profileId = profileId;
+    this.profileStatus = profileStatus;
+    this.profileVerificationStatus = profileVerificationStatus;
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.createdDate = createdDate != null ? createdDate.atZone(ZoneId.systemDefault()) : null;
+  }
+
   private Long id;
   private String email;
   private String firstName;
   private String lastName;
-  private String phoneNumber;
   private String profileId;
-  private String profilePictureUrl;
   private String role;
   private ProfileStatus profileStatus;
-  private String username;
   private ZonedDateTime createdDate;
   private ProfileVerificationStatus profileVerificationStatus;
 }

@@ -8,6 +8,8 @@ package com.digicore.omnexa.merchant.modules.authentication.helper;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.NOT_FOUND;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.ROLE_NAME;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_NOT_FOUND_ERROR;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_MERCHANT_ROLE_NAME;
 
 import com.digicore.omnexa.common.lib.authentication.dto.request.LoginRequestDTO;
 import com.digicore.omnexa.common.lib.authentication.dto.response.LoginResponseDTO;
@@ -78,7 +80,7 @@ public class LoginHelper {
   public RoleDTO retrieveRole(String roleName, String merchantId) {
     MerchantUserRole userRole;
 
-    if ("CUSTODIAN".equalsIgnoreCase(roleName))
+    if (SYSTEM_MERCHANT_ROLE_NAME.equalsIgnoreCase(roleName))
       userRole =
           merchantUserRoleRepository
               .findFirstByName(roleName)
@@ -86,7 +88,7 @@ public class LoginHelper {
                   () ->
                       new OmnexaException(
                           messagePropertyConfig
-                              .getRoleMessage(NOT_FOUND)
+                              .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
                               .replace(ROLE_NAME, roleName)));
     else
       userRole =
@@ -96,7 +98,7 @@ public class LoginHelper {
                   () ->
                       new OmnexaException(
                           messagePropertyConfig
-                              .getRoleMessage(NOT_FOUND)
+                              .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
                               .replace(ROLE_NAME, roleName)));
     return new RoleDTO(
         userRole.getName(),

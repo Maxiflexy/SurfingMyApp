@@ -4,6 +4,8 @@ omnexa:
    not_found: "{email} does not exist"
    created: "User created successfully"
    duplicate: "{email} already exists"
+   bvn_validation_failed: "Bvn validation failed"
+   nin_verification_failed: "Nin verification failed"
   role:
     not_found: "{roleName} does not exist"
     created: "Role created successfully"
@@ -35,10 +37,13 @@ omnexa:
     login_successful_subject: "Login successful"
     onboarding_subject: "Onboarding"
     password_reset_successful_subject: "Password Reset Successful"
+    account_statement_subject: "Account Statement"
+    password_reset_request_subject: "Password Reset Request"
+    password_change_request_subject: "Password Change Request"
   client:
     not_found: "Invalid client"
     duplicate: "{name} already exists"
-    activation_id_not_found: "Invalid activation id supplied"
+    invalid: "Invalid application id provided"
   approval:
     not_authorized: "You are not authorized to perform this action"
     not_found: "Invalid activity type supplied"
@@ -48,41 +53,48 @@ omnexa:
     already_treated: "User has already approved this request at a previous stage."
   activation:
     not_found: "Invalid organization id supplied"
-  transfer:
-    transaction_authentication_rule_not_found: "Transaction authentication rule not found"
+    required_fields_missing: "Required fields are missing"
+    invalid: "The signatories/directors haven't verified their bvn"
+    invalid_payload: "The fields are required for activation"
+    not_configured: "Account officer not provided"
+    assigned_role_required: "Assigned role is required"
+    custodian_role_required: "Custodian role is required"
+    company_rep_invalid_role: "Company representative must have a initiator role"
+    invalid_role: "Invalid role provided"
+    invalid_type: "Invalid account type"
   account:
     not_found: "Account not found for this user"
-    account_officer_addition_failed: "Account officer addition failed"
+    duplicate: "Account number already exists"
+    activation: "Unable to create account at this time"
+    organization_id_mismatch: "Organization id does not match provided account"
+  profile:
+    not_found: "Profile not found"
+    activation: "Unable to create profile at this time"
+    duplicate: "Profile already exists"
+  transaction:
+    not_found: "No transactions found"
   limit:
     not_found: "No limit found"
     limit_violation: "You have violated global limit."
-  document:
-    not_found: "No document found"
-    invalid: "An error occurred while processing the document."
-    not_enough: "At least one document is required"
+    duplicate: "Limit already exists"
   preference:
     not_found: "No preference found"
-    duplicate: "Bank preference already exists"
+    duplicate: "Customer preference already exists"
     invalid: "Invalid preference details provided"
-    logo_missing: "Logo is required"
-  fee:
-    not_found: "No fee configuration found"
-    duplicate: "{fee} fee configuration already exists"
   location:
     not_found: "No Location found"
-    duplicate: "Location details already exists"
-  faq:
-    not_found: "FAQ not found"
-    duplicate: "{FAQ} already exists"
-  content:
-    not_found: "No content found"
-    duplicate: "{content} content already exists"
-    not_enough: "At least one document is required"
-  support_information:
-    not_found: "No support information found"
-    duplicate: "{support_information} support information already exists"
+  branch:
+    not_found: "No branch found"
+    duplicate: "Customer branch already exists"
+  device:
+    not_found: "Device not found"
+    not_configured: "This operation is not allowed for this access channel"
+    duplicate: "Device is already registered with a customer"
+    invalid: "This device is either yet to be registered or has been disabled from accessing this profile"
+  document:
+    not_enough: "Document is required"
+    not_found: "No document found"
+    invalid: "An error occurred while processing the document."
   onboard:
-    not_found: "Onboard request not found"
-    duplicate: "{profile} already exists"
-    invalid: "Invalid onboard request details provided"
-
+    not_found: "No onboarding found"
+    duplicate: "Onboarding already exists"

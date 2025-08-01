@@ -8,6 +8,7 @@ package com.digicore.omnexa.backoffice.modules.user.authentication.helper;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.NOT_FOUND;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.ROLE_NAME;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_NOT_FOUND_ERROR;
 
 import com.digicore.omnexa.backoffice.modules.user.authentication.dto.response.BackOfficeLoginProfileDTO;
 import com.digicore.omnexa.backoffice.modules.user.authentication.util.BackOfficeJwtUtil;
@@ -111,7 +112,7 @@ public class BackOfficeLoginHelper {
         BackOfficeUserRole userRole = backOfficeUserRoleRepository
                 .findFirstByName(roleName)
                 .orElseThrow(() -> new OmnexaException(
-                        messagePropertyConfig.getRoleMessage(NOT_FOUND).replace(ROLE_NAME, roleName)));
+                        messagePropertyConfig.getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR).replace(ROLE_NAME, roleName)));
 
         return new RoleDTO(
                 userRole.getName(),

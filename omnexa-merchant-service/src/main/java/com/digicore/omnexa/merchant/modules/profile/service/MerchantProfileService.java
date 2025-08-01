@@ -8,6 +8,7 @@ package com.digicore.omnexa.merchant.modules.profile.service;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.PROFILE;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.*;
 import static com.digicore.omnexa.merchant.modules.profile.helper.ProfileHelper.*;
 
 import com.digicore.omnexa.common.lib.api.ApiError;
@@ -122,7 +123,9 @@ public class MerchantProfileService implements ProfileService {
   private MerchantOnboardingRequest castToMerchantRequest(OnboardingRequest profile) {
     if (!(profile instanceof MerchantOnboardingRequest)) {
       throw new OmnexaException(
-          profileHelper.getMessagePropertyConfig().getOnboardMessage(INVALID),
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
           HttpStatus.BAD_REQUEST);
     }
     return (MerchantOnboardingRequest) profile;
@@ -178,7 +181,7 @@ public class MerchantProfileService implements ProfileService {
             String message =
                 profileHelper
                     .getMessagePropertyConfig()
-                    .getOnboardMessage(REQUIRED)
+                    .getOnboardMessage(REQUIRED, SYSTEM_DEFAULT_REQUIRED_FIELD_MISSING_ERROR)
                     .replace(PROFILE, fieldName);
             errors.add(new ApiError(message));
           }
@@ -191,7 +194,7 @@ public class MerchantProfileService implements ProfileService {
       String message =
           profileHelper
               .getMessagePropertyConfig()
-              .getOnboardMessage(REQUIRED)
+              .getOnboardMessage(REQUIRED, SYSTEM_DEFAULT_REQUIRED_FIELD_MISSING_ERROR)
               .replace(PROFILE, "Terms and Conditions");
       errors.add(new ApiError(message));
     }
@@ -207,7 +210,7 @@ public class MerchantProfileService implements ProfileService {
       String message =
           profileHelper
               .getMessagePropertyConfig()
-              .getOnboardMessage(DUPLICATE)
+              .getOnboardMessage(DUPLICATE, SYSTEM_DEFAULT_DUPLICATE_ERROR)
               .replace(PROFILE, request.getBusinessName() + " or " + request.getBusinessEmail());
       errors.add(new ApiError(message));
     }
@@ -220,7 +223,9 @@ public class MerchantProfileService implements ProfileService {
           error -> log.warn("Merchant onboarding validation failed: {}", error.getMessage()));
 
       throw new OmnexaException(
-          profileHelper.getMessagePropertyConfig().getOnboardMessage(INVALID),
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
           HttpStatus.BAD_REQUEST,
           errors);
     }

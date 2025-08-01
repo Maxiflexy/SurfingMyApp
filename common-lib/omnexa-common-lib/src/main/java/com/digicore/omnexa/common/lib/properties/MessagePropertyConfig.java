@@ -60,39 +60,39 @@ public class MessagePropertyConfig {
    * Retrieves a user-related message by key.
    *
    * @param key the key for the user message.
-   * @return the user message corresponding to the key, or "N/A" if not found.
+   * @return the user message corresponding to the key, or defaultValue if not found.
    */
-  public String getUserMessage(String key) {
-    return user != null ? user.getOrDefault(key, "N/A") : null;
+  public String getUserMessage(String key, String defaultValue) {
+    return user != null ? user.getOrDefault(key, defaultValue) : null;
   }
 
   /**
    * Retrieves a role-related message by key.
    *
    * @param key the key for the role message.
-   * @return the role message corresponding to the key, or "N/A" if not found.
+   * @return the role message corresponding to the key, or defaultValue if not found.
    */
-  public String getRoleMessage(String key) {
-    return role != null ? role.getOrDefault(key, "N/A") : null;
+  public String getRoleMessage(String key, String defaultValue) {
+    return role != null ? role.getOrDefault(key, defaultValue) : null;
   }
 
   /**
    * Retrieves a login-related message by key.
    *
    * @param key the key for the login message.
-   * @return the login message corresponding to the key, or "N/A" if not found.
+   * @return the login message corresponding to the key, or defaultValue if not found.
    */
-  public String getLoginMessage(String key) {
-    return login != null ? login.getOrDefault(key, "N/A") : null;
+  public String getLoginMessage(String key, String defaultValue) {
+    return login != null ? login.getOrDefault(key, defaultValue) : null;
   }
 
   /**
    * Retrieves an onboarding-related message by key.
    *
    * @param key the key for the onboarding message.
-   * @return the onboarding message corresponding to the key, or "N/A" if not found.
+   * @return the onboarding message corresponding to the key, or defaultValue if not found.
    */
-  public String getOnboardMessage(String key) {
-    return onboard != null ? onboard.getOrDefault(key, "N/A") : null;
+  public String getOnboardMessage(String key, String defaultValue) {
+    return onboard != null ? onboard.getOrDefault(key, defaultValue) : null;
   }
 }

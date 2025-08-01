@@ -6,7 +6,8 @@
 
 package com.digicore.omnexa.merchant.modules.authentication.service;
 
-import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.FAILED;
+import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.DENIED;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_DENIED_ERROR;
 
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationRequest;
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationResponse;
@@ -66,6 +67,7 @@ public class MerchantUserLoginService implements AuthenticationService, UserDeta
         .orElseThrow(
             () ->
                 new OmnexaException(
-                    messagePropertyConfig.getLoginMessage(FAILED), HttpStatus.UNAUTHORIZED));
+                    messagePropertyConfig.getLoginMessage(DENIED, SYSTEM_DEFAULT_DENIED_ERROR),
+                    HttpStatus.UNAUTHORIZED));
   }
 }

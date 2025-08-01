@@ -44,7 +44,7 @@ public class BackOfficeUserProfile extends BaseUserModel implements Serializable
 
   @Convert(converter = ProfileVerificationStatusConverter.class)
   private ProfileVerificationStatus profileVerificationStatus =
-      ProfileVerificationStatus.PENDING_EMAIL_VERIFICATION;
+      ProfileVerificationStatus.PENDING_INVITE_ACCEPTANCE;
 
   @PrePersist
   public void generateUserId() {

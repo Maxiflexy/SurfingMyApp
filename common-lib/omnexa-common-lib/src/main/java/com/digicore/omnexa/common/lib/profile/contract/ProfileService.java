@@ -23,7 +23,7 @@ import com.digicore.omnexa.common.lib.util.PaginatedResponse;
  *
  * <p>Features: - Supports onboarding requests for profile creation. - Allows profile updates
  * through edit requests. - Provides retrieval of profile information by ID. - Enables profile
- * deletion by ID.
+ * deletion by ID. - Supports search and filtering capabilities with pagination.
  *
  * <p>Usage: - Implement this interface in a class to provide the actual business logic for profile
  * management. - Example:
@@ -80,8 +80,41 @@ public interface ProfileService {
     return null;
   }
 
+  /**
+   * Retrieves a paginated list of all profiles.
+   *
+   * @param pageNumber the page number (1-based, optional)
+   * @param pageSize the page size (optional)
+   * @return a paginated response containing profile information
+   */
   default PaginatedResponse<ProfileInfoResponse> getAllProfiles(
       Integer pageNumber, Integer pageSize) {
+    return null;
+  }
+
+  /**
+   * Retrieves a paginated list of profiles filtered by search term.
+   *
+   * @param search the search term to filter profiles by name or email (required)
+   * @param pageNumber the page number (1-based, optional)
+   * @param pageSize the page size (optional)
+   * @return a paginated response containing filtered profile information
+   */
+  default PaginatedResponse<ProfileInfoResponse> searchProfilesPaginated(
+          String search, Integer pageNumber, Integer pageSize) {
+    return null;
+  }
+
+  /**
+   * Retrieves a paginated list of profiles filtered by profile status.
+   *
+   * @param profileStatus the profile status to filter by (required)
+   * @param pageNumber the page number (1-based, optional)
+   * @param pageSize the page size (optional)
+   * @return a paginated response containing filtered profile information
+   */
+  default PaginatedResponse<ProfileInfoResponse> getProfilesByStatusPaginated(
+          String profileStatus, Integer pageNumber, Integer pageSize) {
     return null;
   }
 

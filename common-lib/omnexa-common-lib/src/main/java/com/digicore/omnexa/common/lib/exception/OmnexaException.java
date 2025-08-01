@@ -52,6 +52,7 @@ public class OmnexaException extends RuntimeException {
   public OmnexaException(String message, HttpStatus httpStatus) {
     super(message);
     this.httpStatus = httpStatus;
+    this.errors = List.of(new ApiError(message));
   }
 
   /**

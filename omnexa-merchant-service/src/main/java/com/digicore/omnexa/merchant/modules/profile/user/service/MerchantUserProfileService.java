@@ -9,7 +9,7 @@ package com.digicore.omnexa.merchant.modules.profile.user.service;
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.REQUIRED;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.PROFILE;
-import static com.digicore.omnexa.merchant.modules.profile.helper.ProfileHelper.MERCHANT_ROLE;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.*;
 
 import com.digicore.omnexa.common.lib.api.ApiError;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
@@ -127,7 +127,9 @@ public class MerchantUserProfileService implements ProfileService {
   private MerchantUserOnboardingRequest castToMerchantUserRequest(OnboardingRequest profile) {
     if (!(profile instanceof MerchantUserOnboardingRequest)) {
       throw new OmnexaException(
-          profileHelper.getMessagePropertyConfig().getOnboardMessage(INVALID),
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
           HttpStatus.BAD_REQUEST);
     }
     return (MerchantUserOnboardingRequest) profile;
@@ -146,7 +148,7 @@ public class MerchantUserProfileService implements ProfileService {
     userProfile.setMerchantProfile(
         profileHelper.getMerchantProfileByReference(request.getMerchantProfileId()));
 
-    userProfile.setRole(MERCHANT_ROLE);
+    userProfile.setRole(SYSTEM_MERCHANT_ROLE_NAME);
 
     return userProfile;
   }
@@ -179,7 +181,7 @@ public class MerchantUserProfileService implements ProfileService {
             String message =
                 profileHelper
                     .getMessagePropertyConfig()
-                    .getOnboardMessage(REQUIRED)
+                    .getOnboardMessage(REQUIRED, SYSTEM_DEFAULT_REQUIRED_FIELD_MISSING_ERROR)
                     .replace(PROFILE, fieldName);
             errors.add(new ApiError(message));
           }
@@ -200,7 +202,9 @@ public class MerchantUserProfileService implements ProfileService {
           error -> log.warn("Merchant user onboarding validation failed: {}", error.getMessage()));
 
       throw new OmnexaException(
-          profileHelper.getMessagePropertyConfig().getOnboardMessage(INVALID),
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
           HttpStatus.BAD_REQUEST,
           errors);
     }

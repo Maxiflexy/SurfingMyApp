@@ -7,6 +7,7 @@
 package com.digicore.omnexa.backoffice.modules.user.authorization.helper;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.CONFLICT;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.*;
 
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.BackOfficeUserPermission;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.repository.BackOfficeUserPermissionRepository;
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AuthorizationHelper {
+  private AuthorizationHelper() {}
 
   public static Set<BackOfficeUserPermission> retrieveSelectedPermissions(
       Set<String> selectedPermissions,
@@ -33,16 +35,17 @@ public class AuthorizationHelper {
     boolean treatRequestAdded = false;
 
     for (String permission : selectedPermissions) {
-      if (permission.startsWith("approve-")) {
-        String basePermission = permission.substring("approve-".length());
+      if (permission.startsWith(APPROVE_PERMISSION_PREFIX)) {
+        String basePermission = permission.substring(APPROVE_PERMISSION_PREFIX.length());
 
         if (selectedPermissions.contains(basePermission)) {
           throw new OmnexaException(
-              messagePropertyConfig.getRoleMessage(CONFLICT), HttpStatus.BAD_REQUEST);
+              messagePropertyConfig.getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR),
+              HttpStatus.BAD_REQUEST);
         }
 
-        if (!selectedPermissions.contains("treat-requests") && !treatRequestAdded) {
-          effectivePermissions.add("treat-requests");
+        if (!selectedPermissions.contains(SYSTEM_TREAT_REQUEST_PERMISSION) && !treatRequestAdded) {
+          effectivePermissions.add(SYSTEM_TREAT_REQUEST_PERMISSION);
           treatRequestAdded = true;
         }
       }

@@ -11,6 +11,7 @@ import com.digicore.omnexa.common.lib.converter.ProfileVerificationStatusConvert
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
 import com.digicore.omnexa.common.lib.model.BaseUserModel;
+import com.digicore.omnexa.common.lib.util.RequestUtil;
 import com.digicore.omnexa.merchant.modules.authentication.data.model.MerchantUserAuthProfile;
 import com.digicore.omnexa.merchant.modules.profile.data.model.MerchantProfile;
 import jakarta.persistence.*;
@@ -86,4 +87,10 @@ public class MerchantUserProfile extends BaseUserModel implements Serializable {
 
   @OneToOne(mappedBy = "merchantUserProfile", cascade = CascadeType.ALL, optional = false)
   private MerchantUserAuthProfile merchantUserAuthProfile;
+
+  @PrePersist
+  public void generateProfileId() {
+    if (RequestUtil.nullOrEmpty(getProfileId()))
+      setProfileId("MU".concat(RequestUtil.generateProfileId()));
+  }
 }
