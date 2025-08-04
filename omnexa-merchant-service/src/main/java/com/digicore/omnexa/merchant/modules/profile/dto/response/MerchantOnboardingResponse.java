@@ -20,5 +20,10 @@ public class MerchantOnboardingResponse implements OnboardingResponse {
   /** The ID of the merchant profile associated with the user. */
   private Long merchantProfileId;
 
+  private String merchantId;
+  private String profileId;
+  private String email;
+  private String lastName;
+
   private String username;
 }

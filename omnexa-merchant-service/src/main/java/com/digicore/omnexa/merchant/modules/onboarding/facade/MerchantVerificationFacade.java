@@ -16,6 +16,7 @@ import com.digicore.omnexa.common.lib.profile.contract.ProfileService;
 import com.digicore.omnexa.merchant.modules.profile.helper.ProfileHelper;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Component;
  * @author Oluwatobi Ogunwuyi
  * @createdOn Jul-28(Mon)-2025
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class MerchantVerificationFacade implements Facade<String, Void> {
@@ -36,6 +38,7 @@ public class MerchantVerificationFacade implements Facade<String, Void> {
   public Optional<Void> process(String request) {
     String[] parts = request.split("-");
     if (parts.length < 2) {
+      log.error("Invalid request format. Expected: merchantId-profileId");
       throw new OmnexaException("Invalid request format. Expected: merchantId-profileId");
     }
 

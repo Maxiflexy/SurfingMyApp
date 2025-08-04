@@ -47,6 +47,7 @@ public class LoginHelper {
     userDetails.setPermissions(
         getGrantedAuthorities(userDetails.getRole(), userDetails.getMerchantId()));
     Map<String, String> claims = JwtUtil.buildClaims(loginRequestDTO.getUsername(), userDetails);
+    claims.put("merchantId", userDetails.getMerchantId());
     Map<String, Object> additionalInformation = getAdditionalInformation(userDetails);
 
     return LoginResponseDTO.builder()

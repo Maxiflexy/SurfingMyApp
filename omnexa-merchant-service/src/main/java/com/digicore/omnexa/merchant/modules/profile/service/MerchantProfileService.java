@@ -89,14 +89,20 @@ public class MerchantProfileService implements ProfileService {
           request.getBusinessName(),
           e);
       throw new OmnexaException(
-          "Merchant profile creation failed due to data constraint violation", HttpStatus.CONFLICT);
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(FAILED, SYSTEM_DEFAULT_FAILED_FOUND_ERROR),
+          HttpStatus.CONFLICT);
     } catch (Exception e) {
       log.error(
           "Unexpected error during merchant profile creation for business: {}",
           request.getBusinessName(),
           e);
       throw new OmnexaException(
-          "Merchant profile creation failed", HttpStatus.INTERNAL_SERVER_ERROR);
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(FAILED, SYSTEM_DEFAULT_FAILED_FOUND_ERROR),
+          HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -240,6 +246,7 @@ public class MerchantProfileService implements ProfileService {
   private MerchantOnboardingResponse buildOnboardingResponse(MerchantProfile merchantProfile) {
     MerchantOnboardingResponse response = new MerchantOnboardingResponse();
     response.setMerchantProfileId(merchantProfile.getId());
+    response.setEmail(merchantProfile.getBusinessEmail());
     response.setUsername(merchantProfile.getBusinessEmail());
     return response;
   }

@@ -32,6 +32,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Oluwatobi Ogunwuyi
@@ -65,6 +66,7 @@ public class MerchantStartUpService implements StartupService {
   @Override
   @EventListener(ContextRefreshedEvent.class)
   @Order(2)
+  @Transactional
   public void updateSystemRoles() {
     MerchantUserRole userRole =
         merchantUserRoleRepository

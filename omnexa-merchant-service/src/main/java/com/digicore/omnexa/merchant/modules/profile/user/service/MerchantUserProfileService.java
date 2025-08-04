@@ -85,7 +85,11 @@ public class MerchantUserProfileService implements ProfileService {
           "Merchant profile not found during user profile creation. MerchantProfileId: {}",
           request.getMerchantProfileId(),
           e);
-      throw new OmnexaException("Referenced merchant profile not found", HttpStatus.BAD_REQUEST);
+      throw new OmnexaException(
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(FAILED, SYSTEM_DEFAULT_FAILED_FOUND_ERROR),
+          HttpStatus.BAD_REQUEST);
     } catch (DataIntegrityViolationException e) {
       log.error(
           "Database constraint violation during merchant user profile creation for merchant: {}",
@@ -100,7 +104,10 @@ public class MerchantUserProfileService implements ProfileService {
           request.getMerchantProfileId(),
           e);
       throw new OmnexaException(
-          "Merchant user profile creation failed", HttpStatus.INTERNAL_SERVER_ERROR);
+          profileHelper
+              .getMessagePropertyConfig()
+              .getOnboardMessage(FAILED, SYSTEM_DEFAULT_FAILED_FOUND_ERROR),
+          HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -149,6 +156,7 @@ public class MerchantUserProfileService implements ProfileService {
         profileHelper.getMerchantProfileByReference(request.getMerchantProfileId()));
 
     userProfile.setRole(SYSTEM_MERCHANT_ROLE_NAME);
+    userProfile.setEmail(request.getUsername());
 
     return userProfile;
   }
@@ -219,6 +227,11 @@ public class MerchantUserProfileService implements ProfileService {
   private MerchantOnboardingResponse buildOnboardingResponse(MerchantUserProfile userProfile) {
     MerchantOnboardingResponse response = new MerchantOnboardingResponse();
     response.setMerchantProfileId(userProfile.getId());
+    response.setProfileId(userProfile.getProfileId());
+    response.setEmail(userProfile.getEmail());
+    response.setLastName(userProfile.getLastName());
+    response.setMerchantId(userProfile.getMerchantProfile().getMerchantId().split("-")[1]);
+
     return response;
   }
 }

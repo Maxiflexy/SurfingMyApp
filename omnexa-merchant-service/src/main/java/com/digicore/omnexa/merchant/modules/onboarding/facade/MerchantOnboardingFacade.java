@@ -15,7 +15,13 @@ import com.digicore.omnexa.common.lib.util.BeanUtilWrapper;
 import com.digicore.omnexa.merchant.modules.profile.dto.request.MerchantApiKeyOnboardingRequest;
 import com.digicore.omnexa.merchant.modules.profile.dto.response.MerchantOnboardingResponse;
 import com.digicore.omnexa.merchant.modules.profile.user.dto.request.MerchantUserOnboardingRequest;
+import com.digicore.omnexa.notification.lib.contract.NotificationRequestType;
+import com.digicore.omnexa.notification.lib.contract.email.model.EmailRequest;
+import com.digicore.omnexa.notification.lib.service.PluggableEmailService;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,10 +47,16 @@ public class MerchantOnboardingFacade implements Facade<OnboardingRequest, Void>
 
   public static final String MERCHANT_ONBOARDING = "merchantOnboarding";
 
+  public static final String VERIFICATION_LINK = "verificationLink";
+  public static final String SEND_VERIFICATION_EMAIL_TEMPLATE = "SEND_VERIFICATION_EMAIL";
+  public static final String LAST_NAME = "lastName";
+  public static final String ONBOARDING_VERIFICATION = "Onboarding verification";
+
   private final ProfileService merchantProfileService;
   private final ProfileService merchantUserProfileService;
   private final ProfileService merchantUserAuthProfileService;
   private final ProfileService merchantApiKeyProfileService;
+  private final PluggableEmailService pluggableEmailService;
 
   /**
    * Processes the merchant onboarding request atomically.
@@ -77,7 +89,9 @@ public class MerchantOnboardingFacade implements Facade<OnboardingRequest, Void>
           buildApiKeyOnboardingRequest(merchantOnboardingResponse);
       merchantApiKeyProfileService.createProfile(apiKeyRequest);
 
-      // TODO: send verification email
+      pluggableEmailService
+          .getEngine(pluggableEmailService.getNotificationPropConfig().getEmailChannelType())
+          .sendEmailAsync(buildMerchantOnboardVerificationMail(userOnboardingResponse));
 
       log.info(
           "Successfully completed merchant onboarding for merchant: {}",
@@ -85,8 +99,13 @@ public class MerchantOnboardingFacade implements Facade<OnboardingRequest, Void>
       return Optional.empty();
 
     } catch (Exception e) {
-      log.error(
-          "Merchant onboarding failed for request: {} because of: {}", request, e.getMessage());
+      log.error("Merchant onboarding failed because : {}", e.getMessage());
+      if (e instanceof OmnexaException omnexaException) {
+        throw new OmnexaException(
+            omnexaException.getMessage(),
+            omnexaException.getHttpStatus(),
+            omnexaException.getErrors());
+      }
       throw new OmnexaException("Merchant onboarding process failed", e);
     }
   }
@@ -115,6 +134,7 @@ public class MerchantOnboardingFacade implements Facade<OnboardingRequest, Void>
     MerchantUserOnboardingRequest userRequest = new MerchantUserOnboardingRequest();
     BeanUtilWrapper.copyNonNullProperties(originalRequest, userRequest);
     userRequest.setMerchantProfileId(merchantResponse.getMerchantProfileId());
+    userRequest.setUsername(merchantResponse.getEmail());
     return userRequest;
   }
 
@@ -144,6 +164,44 @@ public class MerchantOnboardingFacade implements Facade<OnboardingRequest, Void>
     MerchantApiKeyOnboardingRequest userRequest = new MerchantApiKeyOnboardingRequest();
     userRequest.setMerchantProfileId(merchantResponse.getMerchantProfileId());
     return userRequest;
+  }
+
+  private EmailRequest buildMerchantOnboardVerificationMail(
+      MerchantOnboardingResponse merchantOnboardingResponse) {
+    Map<String, Object> placeHolders = new HashMap<>();
+    placeHolders.put(LAST_NAME, merchantOnboardingResponse.getLastName());
+    placeHolders.put(
+        VERIFICATION_LINK,
+        pluggableEmailService
+            .getNotificationPropConfig()
+            .getServiceBaseUrl()
+            .concat(
+                "?verificationCode="
+                    .concat(
+                        merchantOnboardingResponse
+                            .getMerchantId()
+                            .concat("-")
+                            .concat(merchantOnboardingResponse.getProfileId()))));
+    return EmailRequest.builder()
+        .useTemplate(true)
+        .sender(
+            pluggableEmailService
+                .getNotificationPropConfig()
+                .getSender(NotificationRequestType.SEND_VERIFICATION_EMAIL, null))
+        .subject(
+            pluggableEmailService
+                .getNotificationPropConfig()
+                .getSubject(
+                    NotificationRequestType.SEND_VERIFICATION_EMAIL, ONBOARDING_VERIFICATION))
+        .placeHolders(placeHolders)
+        .recipients(Set.of(merchantOnboardingResponse.getEmail()))
+        .templateName(
+            pluggableEmailService
+                .getNotificationPropConfig()
+                .getTemplate(
+                    NotificationRequestType.SEND_VERIFICATION_EMAIL,
+                    SEND_VERIFICATION_EMAIL_TEMPLATE))
+        .build();
   }
 
   @Override
