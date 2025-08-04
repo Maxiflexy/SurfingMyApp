@@ -53,7 +53,7 @@ public interface ProfileService {
    * @param request the profile edit request containing updated profile details.
    * @return the response containing the result of the profile update.
    */
-  default ProfileEditResponse updateProfile(ProfileEditRequest request) {
+  default ProfileEditResponse updateProfile(ProfileEditRequest request, String profileId) {
     return null;
   }
 
@@ -68,6 +68,15 @@ public interface ProfileService {
       String profileId,
       ProfileStatus profileStatus,
       ProfileVerificationStatus profileVerificationStatus) {}
+
+  /**
+   * Updates the status of a profile.
+   * @param profileId the ID of the profile to update.
+   * @param profileStatus the new status to set for the profile.
+   */
+  default void updateProfileStatus(
+          String profileId,
+          ProfileStatus profileStatus) {}
 
   /**
    * Retrieves a profile by its ID.
@@ -101,7 +110,7 @@ public interface ProfileService {
    * @return a paginated response containing filtered profile information
    */
   default PaginatedResponse<ProfileInfoResponse> searchProfilesPaginated(
-          String search, Integer pageNumber, Integer pageSize) {
+      String search, Integer pageNumber, Integer pageSize) {
     return null;
   }
 
@@ -114,7 +123,12 @@ public interface ProfileService {
    * @return a paginated response containing filtered profile information
    */
   default PaginatedResponse<ProfileInfoResponse> getProfilesByStatusPaginated(
-          String profileStatus, Integer pageNumber, Integer pageSize) {
+      ProfileStatus profileStatus, Integer pageNumber, Integer pageSize) {
+    return null;
+  }
+
+  default PaginatedResponse<ProfileInfoResponse> searchProfile(
+      String searchTerm, ProfileStatus status, Integer pageNumber, Integer pageSize) {
     return null;
   }
 

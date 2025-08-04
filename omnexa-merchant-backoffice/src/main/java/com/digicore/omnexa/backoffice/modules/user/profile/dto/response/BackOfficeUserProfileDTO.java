@@ -46,10 +46,15 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
     this.role = role;
   }
 
-
   public BackOfficeUserProfileDTO(
-      String email, String firstName, String lastName, String profileId, String role, ProfileStatus profileStatus,
-      ProfileVerificationStatus profileVerificationStatus, LocalDateTime createdDate) {
+      String email,
+      String firstName,
+      String lastName,
+      String profileId,
+      String role,
+      ProfileStatus profileStatus,
+      ProfileVerificationStatus profileVerificationStatus,
+      LocalDateTime createdDate) {
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -62,7 +67,7 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
 
   // Add this constructor to BackOfficeUserProfileDTO class
   public BackOfficeUserProfileDTO(
-          Long id,
+      Long id,
       String profileId,
       ProfileStatus profileStatus,
       ProfileVerificationStatus profileVerificationStatus,
@@ -79,7 +84,6 @@ public class BackOfficeUserProfileDTO implements ProfileInfoResponse {
     this.lastName = lastName;
     this.createdDate = createdDate != null ? createdDate.atZone(ZoneId.systemDefault()) : null;
   }
-
 
   public BackOfficeUserProfileDTO(
       String profileId,

@@ -33,10 +33,12 @@ public class SystemConstant {
   public static final String SYSTEM_DEFAULT_REQUIRED_FIELD_MISSING_ERROR =
       "Required field is missing";
   public static final String SYSTEM_DEFAULT_NOT_FOUND_ERROR = "Required field is missing";
-  public static final String SYSTEM_DEFAULT_DUPLICATE_ERROR = "Required field is missing";
+  public static final String SYSTEM_DEFAULT_FAILED_FOUND_ERROR = "Request processing failed";
+  public static final String SYSTEM_DEFAULT_DUPLICATE_ERROR = "Duplicate data found";
   public static final String SYSTEM_DEFAULT_CONFLICT_ERROR =
       "There is a conflict with the existing data";
   public static final String SYSTEM_DEFAULT_LOCKED_ERROR = "Profile is locked";
   public static final String SYSTEM_DEFAULT_WARNING_ERROR = "Continue with caution";
   public static final String SYSTEM_DEFAULT_DENIED_ERROR = "Access denied";
+  public static final String SYSTEM_MERCHANT_ID_PLACEHOLDER = "merchantId";
 }

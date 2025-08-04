@@ -1,18 +1,18 @@
-///*
+/// *
 // * Copyright (c) 2025 Digicore Limited. All Rights Reserved.
 // * Unauthorized use or distribution is strictly prohibited.
 // * For details, see the LICENSE file.
 // */
 //
-//package com.digicore.omnexa.backoffice.modules.user.management.facade;
+// package com.digicore.omnexa.backoffice.modules.user.management.facade;
 //
-//import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.PaginatedUserResponse;
-//import com.digicore.omnexa.common.lib.profile.contract.ProfileService;
-//import lombok.RequiredArgsConstructor;
-//import lombok.extern.slf4j.Slf4j;
-//import org.springframework.stereotype.Component;
+// import com.digicore.omnexa.backoffice.modules.user.profile.dto.response.PaginatedUserResponse;
+// import com.digicore.omnexa.common.lib.profile.contract.ProfileService;
+// import lombok.RequiredArgsConstructor;
+// import lombok.extern.slf4j.Slf4j;
+// import org.springframework.stereotype.Component;
 //
-///**
+/// **
 // * Facade for back office user management operations.
 // *
 // * <p>Coordinates between the controller layer and service layer for user management operations.
@@ -28,10 +28,10 @@
 // * <p>Author: Onyekachi Ejemba
 // * Created On: Jul-29(Tue)-2025
 // */
-//@Component
-//@RequiredArgsConstructor
-//@Slf4j
-//public class BackOfficeUserManagementFacade {
+// @Component
+// @RequiredArgsConstructor
+// @Slf4j
+// public class BackOfficeUserManagementFacade {
 //
 //    private final ProfileService backOfficeUserProfileService;
 //
@@ -46,7 +46,8 @@
 //     * @return paginated user response
 //     */
 //    public PaginatedUserResponse getAllUsers(Integer pageNumber, Integer pageSize) {
-//        log.debug("Facade: Retrieving all users with pagination: page={}, size={}", pageNumber, pageSize);
+//        log.debug("Facade: Retrieving all users with pagination: page={}, size={}", pageNumber,
+// pageSize);
 //        return backOfficeUserProfileService.getAllProfiles(pageNumber, pageSize);
 //    }
 //
@@ -61,8 +62,10 @@
 //     * @param pageSize the page size (max 16, optional)
 //     * @return paginated user response filtered by search term
 //     */
-//    public PaginatedUserResponse searchUsers(String search, Integer pageNumber, Integer pageSize) {
-//        log.debug("Facade: Searching users with term='{}', page={}, size={}", search, pageNumber, pageSize);
+//    public PaginatedUserResponse searchUsers(String search, Integer pageNumber, Integer pageSize)
+// {
+//        log.debug("Facade: Searching users with term='{}', page={}, size={}", search, pageNumber,
+// pageSize);
 //        return backOfficeUserProfileService.searchProfiles(search, pageNumber, pageSize);
 //    }
 //
@@ -77,8 +80,11 @@
 //     * @param pageSize the page size (max 16, optional)
 //     * @return paginated user response filtered by profile status
 //     */
-//    public PaginatedUserResponse getUsersByStatus(String profileStatus, Integer pageNumber, Integer pageSize) {
-//        log.debug("Facade: Retrieving users with status='{}', page={}, size={}", profileStatus, pageNumber, pageSize);
-//        return backOfficeUserProfileService.getProfilesByStatus(profileStatus, pageNumber, pageSize);
+//    public PaginatedUserResponse getUsersByStatus(String profileStatus, Integer pageNumber,
+// Integer pageSize) {
+//        log.debug("Facade: Retrieving users with status='{}', page={}, size={}", profileStatus,
+// pageNumber, pageSize);
+//        return backOfficeUserProfileService.getProfilesByStatus(profileStatus, pageNumber,
+// pageSize);
 //    }
-//}
+// }

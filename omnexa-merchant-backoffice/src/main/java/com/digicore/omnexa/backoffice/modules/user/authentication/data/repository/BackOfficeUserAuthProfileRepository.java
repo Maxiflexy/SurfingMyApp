@@ -6,16 +6,14 @@
 
 package com.digicore.omnexa.backoffice.modules.user.authentication.data.repository;
 
+import static com.digicore.omnexa.backoffice.modules.user.authentication.helper.BackOfficeLoginHelper.LOGIN_DETAIL_DTO_CLASS_NAME;
+
 import com.digicore.omnexa.backoffice.modules.user.authentication.data.model.BackOfficeUserAuthProfile;
-import java.util.Optional;
 import com.digicore.omnexa.backoffice.modules.user.authentication.dto.response.BackOfficeLoginProfileDTO;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.Optional;
-
-import static com.digicore.omnexa.backoffice.modules.user.authentication.helper.BackOfficeLoginHelper.LOGIN_DETAIL_DTO_CLASS_NAME;
 
 /**
  * @author Oluwatobi Ogunwuyi
@@ -34,15 +32,17 @@ public interface BackOfficeUserAuthProfileRepository
    * @return an Optional containing the BackOfficeLoginProfileDTO if found, empty if not found
    */
   @Query(
-          "SELECT new " + LOGIN_DETAIL_DTO_CLASS_NAME + "(" +
-                  "       bup.profileId, " +
-                  "       bup.role, " +
-                  "       bua.username, " +
-                  "       bup.firstName, " +
-                  "       bup.lastName, " +
-                  "       bua.password) " +
-                  "FROM BackOfficeUserAuthProfile bua " +
-                  "JOIN bua.backOfficeUserProfile bup " +
-                  "WHERE bua.username = :username")
+      "SELECT new "
+          + LOGIN_DETAIL_DTO_CLASS_NAME
+          + "("
+          + "       bup.profileId, "
+          + "       bup.role, "
+          + "       bua.username, "
+          + "       bup.firstName, "
+          + "       bup.lastName, "
+          + "       bua.password) "
+          + "FROM BackOfficeUserAuthProfile bua "
+          + "JOIN bua.backOfficeUserProfile bup "
+          + "WHERE bua.username = :username")
   Optional<BackOfficeLoginProfileDTO> findByUsername(@Param("username") String username);
 }

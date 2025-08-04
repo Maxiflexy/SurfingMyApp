@@ -52,9 +52,13 @@ public class OnboardingSwaggerDoc {
 
   public static final String ONBOARDING_CONTROLLER_RETRIEVE_TITLE = "Retrieve a user";
   public static final String ONBOARDING_CONTROLLER_RETRIEVE_DESCRIPTION =
-      "This API is used to retrieve a user awaiting verification";
+      "This API is used to retrieve a user awaiting verification by email address";
 
   public static final String ONBOARDING_CONTROLLER_VERIFY_TITLE = "Verify a user status";
   public static final String ONBOARDING_CONTROLLER_VERIFY_DESCRIPTION =
       "This API is used to update a user verification status";
+
+  public static final String ONBOARDING_CONTROLLER_COMPLETE_SIGNUP_TITLE = "Complete user signup";
+  public static final String ONBOARDING_CONTROLLER_COMPLETE_SIGNUP_DESCRIPTION =
+      "This API is used to complete the signup process for an invited user, finalizing their onboarding";
 }

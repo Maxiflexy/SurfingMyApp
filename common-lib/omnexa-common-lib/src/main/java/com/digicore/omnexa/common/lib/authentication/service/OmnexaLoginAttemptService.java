@@ -105,6 +105,7 @@ public class OmnexaLoginAttemptService implements LoginAttemptService {
     }
   }
 
+  //
   @Override
   public void verifyLoginAccess(LoginAttemptDTO loginAttemptDTO, boolean credentialMatches) {
     loginAttemptDTO.setLastLoginIp(RequestUtil.getIpAddress(httpServletRequest));

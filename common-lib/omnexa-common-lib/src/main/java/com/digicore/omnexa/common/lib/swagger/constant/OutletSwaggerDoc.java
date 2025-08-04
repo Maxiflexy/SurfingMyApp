@@ -33,4 +33,25 @@ public class OutletSwaggerDoc {
   /** Description for the create outlet API operation. */
   public static final String OUTLET_CONTROLLER_CREATE_DESCRIPTION =
       "This API is used to create a new merchant outlet.";
+
+  /** Summary for the get outlets API operation. */
+  public static final String OUTLET_CONTROLLER_GET = "Get Merchant Outlets";
+
+  /** Description for the get outlets API operation. */
+  public static final String OUTLET_CONTROLLER_GET_DESCRIPTION =
+      "This API is used to retrieve a paginated list of merchant outlets.";
+
+  /** Summary for the update outlet API operation. */
+  public static final String OUTLET_CONTROLLER_UPDATE = "Update Merchant Outlet";
+
+  /** Description for the update outlet API operation. */
+  public static final String OUTLET_CONTROLLER_UPDATE_DESCRIPTION =
+      "This API is used to update an existing merchant outlet profile.";
+
+  /** Summary for the update outlet status API operation. */
+  public static final String OUTLET_CONTROLLER_UPDATE_STATUS = "Update Merchant Outlet Status";
+
+  /** Description for the update outlet status API operation. */
+  public static final String OUTLET_CONTROLLER_UPDATE_STATUS_DESCRIPTION =
+      "This API is used to update the status of a merchant outlet.";
 }

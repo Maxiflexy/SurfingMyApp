@@ -9,7 +9,6 @@ package com.digicore.omnexa.backoffice.modules.user.onboarding.controller;
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
 import static com.digicore.omnexa.common.lib.swagger.constant.OnboardingSwaggerDoc.*;
 
-import com.digicore.omnexa.backoffice.modules.user.profile.service.BackOfficeUserProfileService;
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.facade.contract.Facade;
 import com.digicore.omnexa.common.lib.facade.resolver.FacadeResolver;
@@ -21,7 +20,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -45,7 +43,6 @@ public class BackOfficeUserOnboardingController {
   private final FacadeResolver facadeResolver;
   private final ProfileService backOfficeUserProfileService;
 
-
   /**
    * Retrieves the profile of a back office user by email.
    *
@@ -54,8 +51,8 @@ public class BackOfficeUserOnboardingController {
    */
   @GetMapping()
   @Operation(
-      summary = ONBOARDING_CONTROLLER_ONBOARD_TITLE,
-      description = ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION)
+      summary = ONBOARDING_CONTROLLER_RETRIEVE_TITLE,
+      description = ONBOARDING_CONTROLLER_RETRIEVE_DESCRIPTION)
   public ResponseEntity<Object> retrieveBackOfficeUser(@RequestParam("email") String email) {
     return ControllerResponse.buildCreateSuccessResponse(
         backOfficeUserProfileService.getProfileByEmail(email));
@@ -69,8 +66,8 @@ public class BackOfficeUserOnboardingController {
    */
   @PatchMapping()
   @Operation(
-      summary = ONBOARDING_CONTROLLER_ONBOARD_TITLE,
-      description = ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION)
+      summary = ONBOARDING_CONTROLLER_COMPLETE_SIGNUP_TITLE,
+      description = ONBOARDING_CONTROLLER_COMPLETE_SIGNUP_DESCRIPTION)
   public ResponseEntity<Object> completeSignUp(@Valid @RequestBody SignupRequest signupRequest) {
     Facade<UserInviteRequest, Void> facade = facadeResolver.resolve("backOfficeUserOnboarding");
     facade.process(signupRequest);

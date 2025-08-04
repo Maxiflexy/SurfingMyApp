@@ -99,6 +99,7 @@ public class OmnexaException extends RuntimeException {
    */
   public OmnexaException(ApiError error) {
     super(REQUEST_ERROR);
+    this.httpStatus = HttpStatus.BAD_REQUEST;
     this.errors = List.of(error);
   }
 
@@ -110,6 +111,13 @@ public class OmnexaException extends RuntimeException {
    */
   public OmnexaException(String message, Throwable inner) {
     super(message, inner);
+    this.errors = List.of(new ApiError(message));
+  }
+
+  public OmnexaException(String message, Throwable inner, HttpStatus httpStatus) {
+    super(message, inner);
+    this.httpStatus = httpStatus;
+    this.errors = List.of(new ApiError(message));
   }
 
   /**
@@ -119,5 +127,6 @@ public class OmnexaException extends RuntimeException {
    */
   public OmnexaException(String message) {
     super(message);
+    this.errors = List.of(new ApiError(message));
   }
 }

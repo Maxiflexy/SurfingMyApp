@@ -5,7 +5,7 @@ spring:
   application:
     name: "omnexa-backoffice"
   profiles:
-    active: "dev,messages,mails,validation"
+    active: "pilot,messages,mails,validation,smtp"
   config:
     import: "configserver:http://localhost:8071/"
   messages:

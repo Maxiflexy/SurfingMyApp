@@ -6,8 +6,8 @@
 
 package com.digicore.omnexa.backoffice.modules.user.authentication.controller;
 
-import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
 import static com.digicore.omnexa.backoffice.modules.user.authentication.facade.BackOfficeUserAuthenticationFacade.BACKOFFICE_AUTHENTICATION;
+import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
 import static com.digicore.omnexa.common.lib.swagger.constant.AuthenticationSwaggerDocConstant.*;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
@@ -31,15 +31,12 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Controller for back office user authentication operations.
  *
- * <p>Provides endpoints for back office user login and authentication processes.
- * This controller follows the established architecture pattern with proper
- * separation of concerns through facade delegation.
+ * <p>Provides endpoints for back office user login and authentication processes. This controller
+ * follows the established architecture pattern with proper separation of concerns through facade
+ * delegation.
  *
- * <p>Features:
- * - User authentication with JWT token generation
- * - Integration with Spring Security
- * - Comprehensive API documentation with Swagger
- * - Proper error handling and validation
+ * <p>Features: - User authentication with JWT token generation - Integration with Spring Security -
+ * Comprehensive API documentation with Swagger - Proper error handling and validation
  *
  * @author Onyekachi Ejemba
  * @createdOn Jul-31(Thu)-2025
@@ -50,25 +47,25 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = AUTHENTICATION_CONTROLLER_TITLE, description = AUTHENTICATION_CONTROLLER_DESCRIPTION)
 public class BackOfficeUserAuthenticationController {
 
-    private final FacadeResolver facadeResolver;
+  private final FacadeResolver facadeResolver;
 
-    /**
-     * Authenticates a back office user with the provided credentials.
-     *
-     * @param loginRequestDTO the login request containing username and password
-     * @param httpServletRequest the HTTP servlet request
-     * @return ResponseEntity containing the authentication response with JWT token
-     */
-    @PostMapping()
-    @Operation(
-            summary = AUTHENTICATION_CONTROLLER_LOGIN_TITLE,
-            description = AUTHENTICATION_CONTROLLER_LOGIN_DESCRIPTION)
-    public ResponseEntity<Object> login(
-            @Valid @RequestBody LoginRequestDTO loginRequestDTO, HttpServletRequest httpServletRequest) {
+  /**
+   * Authenticates a back office user with the provided credentials.
+   *
+   * @param loginRequestDTO the login request containing username and password
+   * @param httpServletRequest the HTTP servlet request
+   * @return ResponseEntity containing the authentication response with JWT token
+   */
+  @PostMapping()
+  @Operation(
+      summary = AUTHENTICATION_CONTROLLER_LOGIN_TITLE,
+      description = AUTHENTICATION_CONTROLLER_LOGIN_DESCRIPTION)
+  public ResponseEntity<Object> login(
+      @Valid @RequestBody LoginRequestDTO loginRequestDTO, HttpServletRequest httpServletRequest) {
 
-        Facade<AuthenticationRequest, AuthenticationResponse> facade =
-                facadeResolver.resolve(BACKOFFICE_AUTHENTICATION);
-        Optional<AuthenticationResponse> response = facade.process(loginRequestDTO);
-        return ControllerResponse.buildSuccessResponse(response, "Authentication Successful");
-    }
+    Facade<AuthenticationRequest, AuthenticationResponse> facade =
+        facadeResolver.resolve(BACKOFFICE_AUTHENTICATION);
+    Optional<AuthenticationResponse> response = facade.process(loginRequestDTO);
+    return ControllerResponse.buildSuccessResponse(response, "Authentication Successful");
+  }
 }

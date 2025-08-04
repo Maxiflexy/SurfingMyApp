@@ -6,19 +6,27 @@
 
 package com.digicore.omnexa.common.lib.exception;
 
+import static com.digicore.omnexa.common.lib.api.ControllerResponse.buildFailureResponse;
+
 import com.digicore.omnexa.common.lib.api.ApiError;
 import com.digicore.omnexa.common.lib.api.ApiResponseJson;
-import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.server.resource.InvalidBearerTokenException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -118,7 +126,7 @@ public class OmnexaControllerAdvice {
       errors.add(error);
     }
 
-    return ControllerResponse.buildFailureResponse(errors, HttpStatus.BAD_REQUEST);
+    return buildFailureResponse(errors, HttpStatus.BAD_REQUEST);
   }
 
   /**
@@ -131,7 +139,7 @@ public class OmnexaControllerAdvice {
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ResponseEntity<Object> handleMissingServletRequestParameter(
       MissingServletRequestParameterException ex, WebRequest request) {
-    return ControllerResponse.buildFailureResponse(
+    return buildFailureResponse(
         List.of(new ApiError(ex.getMessage(), request.getDescription(false))),
         HttpStatus.BAD_REQUEST);
   }
@@ -145,8 +153,7 @@ public class OmnexaControllerAdvice {
   @ExceptionHandler(OmnexaException.class)
   public ResponseEntity<Object> handleOmnexaException(OmnexaException exception) {
     log.debug("cause of error is : {}", exception.getMessage());
-    return ControllerResponse.buildFailureResponse(
-        exception.getErrors(), exception.getHttpStatus());
+    return buildFailureResponse(exception.getErrors(), exception.getHttpStatus());
   }
 
   /**
@@ -160,7 +167,7 @@ public class OmnexaControllerAdvice {
   @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
   public ResponseEntity<Object> handleHttpRequestMethodNotSupported(
       HttpRequestMethodNotSupportedException ex, WebRequest request) {
-    return ControllerResponse.buildFailureResponse(
+    return buildFailureResponse(
         List.of(
             new ApiError(
                 ex.getMethod().concat(" is not supported"), request.getDescription(false))),
@@ -177,7 +184,8 @@ public class OmnexaControllerAdvice {
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<Object> handleHttpMessageNotReadable(
       HttpMessageNotReadableException ex, WebRequest request) {
-    return ControllerResponse.buildFailureResponse(
+    log.error("Required payload is missing error : {}", ex.getMessage());
+    return buildFailureResponse(
         List.of(new ApiError("The required payload is missing", request.getDescription(false))),
         HttpStatus.BAD_REQUEST);
   }
@@ -192,7 +200,7 @@ public class OmnexaControllerAdvice {
   @ExceptionHandler(ClassNotFoundException.class)
   public ResponseEntity<Object> handleClassNotFoundException(
       ClassNotFoundException exception, WebRequest request) {
-    return ControllerResponse.buildFailureResponse(
+    return buildFailureResponse(
         List.of(
             new ApiError("Kindly reach out to support for help", request.getDescription(false))),
         HttpStatus.INTERNAL_SERVER_ERROR);
@@ -208,7 +216,7 @@ public class OmnexaControllerAdvice {
   @ExceptionHandler(DateTimeParseException.class)
   public ResponseEntity<Object> handleDateTimeParseException(
       DateTimeParseException exception, WebRequest request) {
-    return ControllerResponse.buildFailureResponse(
+    return buildFailureResponse(
         List.of(
             new ApiError(
                 exception.getParsedString().concat(" is not in the valid date format"),
@@ -235,5 +243,47 @@ public class OmnexaControllerAdvice {
             .message(exception.getMessage())
             .build();
     return new ResponseEntity<>(responseJson, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler({
+    AuthenticationException.class,
+    InvalidBearerTokenException.class,
+    AccessDeniedException.class
+  })
+  public ResponseEntity<Object> handleAuthenticationException(Exception ex, WebRequest request) {
+
+    HttpStatus status = HttpStatus.UNAUTHORIZED;
+    String message = "You are not authorized to make this request";
+
+    if (ex instanceof InvalidBearerTokenException
+        || ex instanceof BadCredentialsException
+        || ex instanceof AuthorizationDeniedException) {
+      message = "The access token supplied is invalid or expired";
+    }
+
+    if (ex instanceof AccessDeniedException) {
+      message = "You do not have permission to make this request";
+      status = HttpStatus.FORBIDDEN;
+    }
+
+    if (ex instanceof OmnexaException ze) {
+      message = ex.getMessage();
+      status = ze.getHttpStatus() != null ? ze.getHttpStatus() : HttpStatus.UNAUTHORIZED;
+    }
+
+    ApiError error = new ApiError(message, request.getDescription(false));
+    return buildFailureResponse(Collections.singletonList(error), status);
+  }
+
+  @ExceptionHandler({UnknownHostException.class})
+  public ResponseEntity<Object> handleServiceUnavailableException(
+      Exception ex, WebRequest request) {
+
+    HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+    String message = "oops, there was an error while completing request";
+    log.error("<<< unable to connect to this service {} >>>", ex.getMessage());
+    ApiError error = new ApiError(message, request.getDescription(false));
+
+    return buildFailureResponse(Collections.singletonList(error), status);
   }
 }

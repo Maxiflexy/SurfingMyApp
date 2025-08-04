@@ -16,11 +16,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface BackOfficeUserRoleRepository extends JpaRepository<BackOfficeUserRole, Long> {
 
-    /**
-     * Finds the first back office user role by name.
-     *
-     * @param name the name of the role to search for
-     * @return an Optional containing the BackOfficeUserRole if found, empty if not found
-     */
-    Optional<BackOfficeUserRole> findFirstByName(String name);
+  /**
+   * Finds the first back office user role by name.
+   *
+   * @param name the name of the role to search for
+   * @return an Optional containing the BackOfficeUserRole if found, empty if not found
+   */
+  Optional<BackOfficeUserRole> findFirstByName(String name);
 }

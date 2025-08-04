@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OmnexaMerchantBackofficeApplication {
+public class OmnexaBackofficeApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(OmnexaMerchantBackofficeApplication.class, args);
+    SpringApplication.run(OmnexaBackofficeApplication.class, args);
   }
 }
