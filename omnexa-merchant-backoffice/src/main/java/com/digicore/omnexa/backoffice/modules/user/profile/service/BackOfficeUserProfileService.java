@@ -92,7 +92,10 @@ public class BackOfficeUserProfileService implements ProfileService {
       user.setLastName("");
       user.setRole(request.getRole());
       backOfficeUserProfileRepository.save(user);
-      return new UserInviteResponse();
+      UserInviteResponse userInviteResponse = new UserInviteResponse();
+      userInviteResponse.setEmail(request.getEmail());
+      userInviteResponse.setFirstName(request.getFirstName());
+      return userInviteResponse;
     }
     throw new OmnexaException(
         messagePropertyConfig.getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),
