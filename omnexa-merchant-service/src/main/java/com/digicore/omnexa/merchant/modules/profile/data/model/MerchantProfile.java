@@ -69,7 +69,7 @@ import lombok.ToString;
     })
 @Getter
 @Setter
-@ToString
+@ToString//use this
 public class MerchantProfile extends BaseModel implements Serializable {
 
   /** The name of the merchant's business. */
