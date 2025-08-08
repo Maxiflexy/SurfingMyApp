@@ -1,0 +1,285 @@
+<!--
+  ~ Copyright (c) 2025 Digicore Limited. All Rights Reserved.
+  ~ Unauthorized use or distribution is strictly prohibited.
+  ~ For details, see the LICENSE file.
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+        body {
+          font-size: 12px;
+          background-color: #e8e8e8;
+          position: relative;
+          font-family: "Outfit", sans-serif;
+        }
+
+        * {
+          position: relative;
+        }
+
+        table {
+          border-collapse: collapse;
+          border: none;
+        }
+        td,
+        tr {
+          border: none !important;
+        }
+
+        svg {
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+        }
+
+        /* Dark Mode Styles */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #e8e8e8;
+            color: #fff;
+            font-size: 13px;
+          }
+
+          table,
+          td {
+            border-color: #30303028;
+            border-width: 0px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          td {
+            padding: 0 10px !important;
+          }
+        }
+    </style>
+</head>
+
+<body>
+<div
+        style="
+        background-color: #e8e8e8;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 600px;
+      "
+>
+    <table
+            style="padding: 0; border: 0; margin: 0; width: 100%"
+            align="center;"
+    >
+        <tbody style="background-color: #fff">
+        <tr>
+            <td>
+                <img src="https://lucid-prod-bucket.s3.amazonaws.com/templates/imgs/12.png" width="600px" height="188px" alt="">
+            </td>
+        </tr>
+
+        <tr>
+            <td style="color: #101541b2; padding: 0px 50px">
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <span style="color: #101541; font-weight: 500">
+                Dear
+                <span th:text="${firstName}">[Signatory Name]</span>,
+              </span>
+
+                <br />
+                <br />
+
+                <span style="color: #101541b2; line-height: 20px">
+               You have been invited to join Omnexa, the world's leading payment gateway for digital transactions.
+               To complete this process, please click the link below:
+              </span>
+            </td>
+        </tr>
+
+        <tr style="border-color: white">
+            <td style="color: #101541b2; padding: 0px 50px">
+                <br />
+                <br />
+
+                <span style="color: #101541; font-weight: 600">
+                Onboarding Details:
+              </span>
+
+                <br />
+                <br />
+
+                <div
+                        style="
+                  border: 1px solid #3434341a;
+                  border-radius: 16px;
+                  position: relative;
+                  padding: 15px;
+                  overflow-y: hidden;
+                "
+                >
+
+                    <!--                <span style="color: #101541">-->
+                    <!--                  <b>Bank Name: </b>-->
+                    <!--                  <span style="font-weight: 300" th:text="${role}">-->
+                    <!--                    [Bank Name]</span-->
+                    <!--                  >-->
+                    <!--                </span>-->
+
+                    <!--                <br />-->
+                    <!--                <br />-->
+
+                    <!--                <span style="color: #101541">-->
+                    <!--                  <b>Invition Date: </b>-->
+                    <!--                  <span style="font-weight: 300" th:text="${username}"-->
+                    <!--                    >[Invitation Date]</span-->
+                    <!--                  >-->
+                    <!--                </span>-->
+
+                    <!--                <br />-->
+                    <!--                <br />-->
+
+                    <span style="color: #101541">
+                  <b>Onboarding Link: </b>
+                  <span
+                          style="font-weight: 300"
+                          th:text="${invitationLink}"
+                  ></span>
+                  [Onboarding URL]</span
+                    >
+                </div>
+
+                <br />
+
+                <br />
+                <br />
+
+                <span style="color: #101541; font-weight: 600">
+                Next Steps:
+              </span>
+
+                <br />
+                <br />
+
+                <div
+                        style="
+                  border: 1px solid #3434341a;
+                  border-radius: 16px;
+                  padding: 15px;
+                  overflow-y: hidden;
+                "
+                >
+                <span style="color: #101541; font-weight: 300">
+                  <span style="font-weight: 600">1. | </span> Click the
+                  onboarding link to complete your profile.
+                </span>
+
+                    <br />
+                    <br />
+
+                    <span style="color: #101541; font-weight: 300">
+                  <span style="font-weight: 600">2.|</span>
+                  Upload the necessary documents.
+                </span>
+
+                    <br />
+                    <br />
+
+                    <span style="color: #101541; font-weight: 300">
+                  <span style="font-weight: 600">3.| </span>
+                  Verify your identity and set up security preferences.
+                </span>
+                </div>
+
+                <br /><br />
+                <br />
+
+                <div>
+                    <a
+                            th:href="${invitationLink}"
+                            target="_blank"
+                            th:style="'padding: 1rem 2rem; color: #fff; text-decoration: none; background: #5026fb; border-radius: 32.35px; font-size: 12px; font-weight: 700;'"
+                    >
+                        Complete Onboarding
+                    </a>
+                </div>
+
+                <br />
+
+                <br />
+                <br />
+
+                <span style="line-height: 20px">
+                If you have any questions, feel free to reach out to
+              </span>
+
+                <br /><br />
+
+                <a
+                        th:href="${linkUrl}"
+                        target="_blank"
+                        th:style="'color: #5026fb; text-decoration: underline; font-size: 14px; font-weight: 500;'"
+                >
+                    Our Support Email
+                </a>
+
+                <br /><br />
+                <br />
+
+                <div style="border-top: 1px #3434341a solid"></div>
+
+                <br /><br />
+
+                <span>Best Regards</span>
+
+                <br /><br />
+                <b> <span th:text="${bankName}">Digicore Ltd</span></b> Security
+                Team
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <br /><br /><br />
+
+                <div
+                        style="
+                        min-height: 150px;
+                        color: #101541;
+                        padding: 30px;
+                        border-top: 1px solid #3434341a;
+                "
+                >
+                    <img th:src="${logoUrl}" alt="logo" style="width: auto; height: 55px;" />
+                    <br />
+                    <a
+                            th:href="${helpUrl}"
+                            target="_blank"
+                            th:style="'color: #5026fb; text-decoration: none; font-size: 12px; font-weight: 500; opacity: 80%;'"
+                    >
+                        Visit our help centre
+                    </a>
+
+                    <br />
+
+                    <span style="font-size: 12px; opacity: 80%"  th:text="${bankAddress}">
+                  Brocker Derive Suite 90, Chicago, IL, 702030, United States
+                  <br />
+                  Copyright &#169;2025
+                  <span th:text="${bankName}">Digicore Ltd</span>, All rights
+                  reserved.
+                </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

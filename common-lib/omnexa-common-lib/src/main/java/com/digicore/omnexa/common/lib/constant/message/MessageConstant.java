@@ -89,4 +89,7 @@ public class MessageConstant {
 
   /** Represents an "onboard" action message key. */
   public static final String ONBOARD = "onboard";
+
+  /** Represents an "onboard" action message key. */
+  public static final String CONFIGURATION_REQUIRED = "configuration_required";
 }

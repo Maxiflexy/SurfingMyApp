@@ -97,4 +97,5 @@ omnexa:
     invalid: "An error occurred while processing the document."
   onboard:
     not_found: "No onboarding found"
-    duplicate: "Onboarding already exists"
+    duplicate: "{profile} already exists"
+    failed: "Merchant profile creation failed"

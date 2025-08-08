@@ -1,0 +1,301 @@
+pipeline {
+    agent any
+    
+    // setting environment variables
+    environment {
+        // Application configuration
+        SERVICE_NAME = 'omnexa-gateway-service'
+        JAR_NAME = "omnexa-gateway-server-1.0.0-SNAPSHOT.jar"
+        DEPLOY_PATH = '/home/ubuntu/omnexa/infra-services/gateway-server' // Path where the JAR will be deployed
+        
+        // Server configuration
+        TARGET_SERVER = '10.0.0.68' // target server
+        DEPLOY_USER = 'ubuntu' // User with SSH access to target server
+        
+    }
+
+    tools {
+        maven 'maven-3.8'
+        jdk 'java-21'
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5')) // Keep last 5 builds
+        timeout(time: 30, unit: 'MINUTES') // Timeout after 30 minutes
+        skipStagesAfterUnstable() // Skip remaining stages if any stage is unstable
+    }
+    
+    triggers {
+        // Trigger on GitLab webhook for push/merge events
+        gitlab(triggerOnPush: true, triggerOnMergeRequest: true, branchFilterType: 'NameBasedFilter', includeBranchesSpec: 'main')
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    echo "Deploying from branch: release"
+                    checkout scm: [
+                        $class: 'GitSCM',
+                        branches: [[name: "*/main"]]
+                    ]
+                }
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                script {
+                        // Set up SSH key for deployment
+                        sh """
+                            echo "Setting up SSH key..."
+                            mkdir -p ~/.ssh
+                            echo "\$SSH_KEY" > ~/.ssh/id_rsa
+                            chmod 600 ~/.ssh/id_rsa
+                            ssh-keyscan -H ${env.TARGET_SERVER} >> ~/.ssh/known_hosts
+                        """
+    
+                    echo "☕ Building Java application..."
+                    
+                    // Use configFileProvider to inject settings.xml
+                    configFileProvider([configFile(
+                        fileId: 'd8104a7b-cd35-46ea-82ee-b5870ee44981', 
+                        variable: 'MAVEN_SETTINGS_XML'
+                    )]) {
+                        // Single Maven command with custom settings
+                        sh '''
+                            echo "Maven version:"
+                            mvn --version
+                            
+                            echo "Building with Maven..."
+                            mvn clean package \
+                                -s $MAVEN_SETTINGS_XML \
+                                -DskipTests
+                        '''
+                    }
+                    
+                    // Verify JAR was created
+                    def jarName = sh(script: 'ls target/*.jar | head -1', returnStdout: true).trim()
+                    env.JAR_NAME = jarName.split('/').last()
+                    
+                    sh """
+                        echo "✅ Build successful!"
+                        echo "JAR location: target/${env.JAR_NAME}"
+                        ls -lh target/${env.JAR_NAME}
+                    """
+                }
+            }
+            post {
+                success {
+                    echo "🎉 Build succeeded! Artifacts archived."
+                }
+                failure {
+                    echo "❌ Build failed! Check logs."
+                }
+            }
+        } 
+
+        stage('Pre-deployment Checks') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'lucid-dev-server-key', keyFileVariable: 'SSH_KEY' )]) {
+                    script {
+                        echo "🔍 Running pre-deployment checks..."
+                        
+                        // Verify servers are reachable
+                        def server = env.TARGET_SERVER 
+                            sh """
+                                echo "Checking connectivity to ${server}..."
+                                ssh -o ConnectTimeout=10 -o BatchMode=yes -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} 'echo "✅ Connected to ${server}"'
+                            """
+                        
+                        // Check disk space on target servers
+                        sh """
+                                echo "Checking disk space on ${server}..."
+                                ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} 'df -h ${env.DEPLOY_PATH}'
+                            """
+                        
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'lucid-dev-server-key', keyFileVariable: 'SSH_KEY' )]) {
+                    script {
+                        echo "🚀 Starting deployment process..."
+                        
+                        def server = env.TARGET_SERVER
+                        def deploymentSuccess = true
+                        
+                            try {
+                                echo "📡 Deploying to ${server}..."
+                                
+                                // Create backup of current JAR
+                                sh """
+                                    echo "💾 Creating backup on ${server}..."
+                                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                        cd ${env.DEPLOY_PATH}
+                                        if [ -f ${env.JAR_NAME} ]; then
+                                            cp ${env.JAR_NAME} ${env.SERVICE_NAME}-\$(date +%Y%m%d-%H%M%S)-bk.jar
+                                            echo "✅ Backup created: ${env.SERVICE_NAME}-\$(date +%Y%m%d-%H%M%S)-bk.jar"
+                                        fi
+                                    '
+                                """
+                                
+                                // Stop the service
+                                sh """
+                                    echo "⏹️ Stopping ${env.SERVICE_NAME} service on ${server}..."
+                                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                        sudo systemctl stop ${env.SERVICE_NAME}
+                                        sleep 3
+                                        echo "✅ Service stopped on ${server}"
+                                    '
+                                """
+                                
+                                // Copy new JAR file
+                                sh """
+                                    echo "📦 Copying new JAR to ${server}..."
+                                    scp -o StrictHostKeyChecking=no -i ${SSH_KEY} target/${env.JAR_NAME} ${env.DEPLOY_USER}@${server}:${env.DEPLOY_PATH}
+                                    echo "✅ JAR copied to ${server}"
+                                """
+                                
+                                // Set correct permissions
+                                sh """
+                                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                        cd ${env.DEPLOY_PATH}
+                                        chmod 755 ${env.JAR_NAME}
+                                        chown ${env.DEPLOY_USER}:${env.DEPLOY_USER} ${env.JAR_NAME}
+                                    '
+                                """
+                                
+                                // Start the service
+                                sh """
+                                    echo "▶️ Starting ${env.SERVICE_NAME} service on ${server}..."
+                                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                        sudo systemctl start ${env.SERVICE_NAME}
+                                        sleep 5
+                                        sudo systemctl enable ${env.SERVICE_NAME}
+                                    '
+                                """
+                                
+                                // Verify service is running
+                                sh """
+                                    echo "🔍 Verifying service status on ${server}..."
+                                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                        if sudo systemctl is-active --quiet ${env.SERVICE_NAME}; then
+                                            echo "✅ Service is running on ${server}"
+                                            sudo systemctl status ${env.SERVICE_NAME} --no-pager -l
+                                        else
+                                            echo "❌ Service failed to start on ${server}"
+                                            sudo systemctl status ${env.SERVICE_NAME} --no-pager -l
+                                            exit 1
+                                        fi
+                                    '
+                                """
+                                
+                            } catch (Exception e) {
+                                deploymentSuccess = false
+                                echo "❌ Deployment failed on ${server}: ${e.getMessage()}"
+                                
+                                // Attempt rollback
+                                echo "🔄 Attempting rollback on ${server}..."
+                                sh """
+                                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                        cd ${env.DEPLOY_PATH}
+                                        BACKUP_FILE=\$(ls -t ${env.SERVICE_NAME}-*-bk.jar | head -1)
+                                        if [ -f "\$BACKUP_FILE" ]; then
+                                            sudo systemctl stop ${env.SERVICE_NAME}
+                                            cp "\$BACKUP_FILE" ${env.JAR_NAME}
+                                            sudo systemctl start ${env.SERVICE_NAME}
+                                            echo "🔄 Rollback completed on ${server}"
+                                        else
+                                            echo "❌ No backup found for rollback on ${server}"
+                                        fi
+                                    '
+                                """
+                                throw e
+                            }
+                        
+                        
+                        if (deploymentSuccess) {
+                            echo "🎉 Deployment completed successfully on all servers!"
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Post-Deployment Verification') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'lucid-dev-server-key', keyFileVariable: 'SSH_KEY' )]) {
+                    script {
+                        echo "🔍 Running post-deployment health checks..."
+                        
+                        def server = env.TARGET_SERVER
+                            // Check service status
+                            sh """
+                                echo "Checking service health on ${server}..."
+                                ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                    # Check if service is active
+                                    sudo systemctl is-active ${env.SERVICE_NAME}
+                                    
+                                '
+                            """
+                    }
+                }
+            }
+        }
+        
+        stage('Cleanup') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'lucid-dev-server-key', keyFileVariable: 'SSH_KEY' )]) {
+                    script {
+                        echo "🧹 Performing cleanup tasks..."
+                        
+                        def server = env.TARGET_SERVER
+                            // Clean up old backup files (keep last 5)
+                            sh """
+                                ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${env.DEPLOY_USER}@${server} '
+                                    cd ${env.DEPLOY_PATH}
+                                    echo "Cleaning up old backups on ${server}..."
+                                    ls -t ${env.SERVICE_NAME}-*-bk.jar | tail -n +6 | xargs -r rm -f
+                                    echo "Backup cleanup completed on ${server}"
+                                '
+                            """
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Clean workspace
+            cleanWs()
+        }
+        
+    success {
+        slackSend(
+            channel: '#team-infrastructure-and-devops',
+            color: 'good',
+            message: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}"
+        )
+    }
+    failure {
+        slackSend(
+            channel: '#team-infrastructure-and-devops',
+            color: 'danger',
+            message: "❌ FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}"
+        )
+    }
+    unstable {
+        slackSend(
+            channel: '#team-infrastructure-and-devops',
+            color: 'warning',
+            message: "⚠️ UNSTABLE: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}"
+        )
+    }
+    }
+}
+

@@ -1,0 +1,10 @@
+omnexa:
+    notification:
+      templatePath: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//templates//merchant//"
+      templates:
+        send_verification_email: "merchant_onboarding_verification_email"
+      subjects:
+        send_verification_email: "Merchant Onboarding Verification"
+      senders:
+        send_verification_email: "soloto@digicoreltd.com"
+      serviceBaseUrl: "https://omnexa-gateway.digicoreltds.com/omnexa-merchant/api/v1/onboarding"

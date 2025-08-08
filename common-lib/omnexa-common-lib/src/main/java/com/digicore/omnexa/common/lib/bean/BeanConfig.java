@@ -7,6 +7,9 @@
 package com.digicore.omnexa.common.lib.bean;
 
 import com.auth0.jwt.JWT;
+import com.digicore.omnexa.common.lib.approval.workflow.constant.RequestHandlerType;
+import com.digicore.omnexa.common.lib.approval.workflow.request.RequestHandlerPostProcessor;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,5 +31,10 @@ public class BeanConfig {
   @Bean
   public JWT jwt() {
     return new JWT();
+  }
+
+  @Bean
+  public RequestHandlerPostProcessor requestHandlerPostProcessor() {
+    return new RequestHandlerPostProcessor(List.of(RequestHandlerType.PROCESS_MAKER_REQUESTS));
   }
 }

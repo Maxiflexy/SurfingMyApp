@@ -6,6 +6,9 @@
 
 package com.digicore.omnexa.common.lib.properties;
 
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_FAILED_FOUND_ERROR;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_DEFAULT_NOT_FOUND_ERROR;
+
 import java.util.Map;
 import lombok.Getter;
 import lombok.Setter;
@@ -56,6 +59,18 @@ public class MessagePropertyConfig {
   /** Map containing onboarding-related messages. */
   private Map<String, String> onboard;
 
+  /** Map containing activation-related messages. */
+  private Map<String, String> activation;
+
+  /** Map containing terminal-related messages. */
+  private Map<String, String> terminal;
+
+  /** Map containing approval-related messages. */
+  private Map<String, String> approval;
+
+  /** Map containing audit-related messages. */
+  private Map<String, String> audit;
+
   /**
    * Retrieves a user-related message by key.
    *
@@ -63,7 +78,7 @@ public class MessagePropertyConfig {
    * @return the user message corresponding to the key, or defaultValue if not found.
    */
   public String getUserMessage(String key, String defaultValue) {
-    return user != null ? user.getOrDefault(key, defaultValue) : null;
+    return user != null ? user.getOrDefault(key, defaultValue) : defaultValue;
   }
 
   /**
@@ -73,7 +88,7 @@ public class MessagePropertyConfig {
    * @return the role message corresponding to the key, or defaultValue if not found.
    */
   public String getRoleMessage(String key, String defaultValue) {
-    return role != null ? role.getOrDefault(key, defaultValue) : null;
+    return role != null ? role.getOrDefault(key, defaultValue) : defaultValue;
   }
 
   /**
@@ -83,7 +98,7 @@ public class MessagePropertyConfig {
    * @return the login message corresponding to the key, or defaultValue if not found.
    */
   public String getLoginMessage(String key, String defaultValue) {
-    return login != null ? login.getOrDefault(key, defaultValue) : null;
+    return login != null ? login.getOrDefault(key, defaultValue) : defaultValue;
   }
 
   /**
@@ -93,6 +108,48 @@ public class MessagePropertyConfig {
    * @return the onboarding message corresponding to the key, or defaultValue if not found.
    */
   public String getOnboardMessage(String key, String defaultValue) {
-    return onboard != null ? onboard.getOrDefault(key, defaultValue) : null;
+    return onboard != null ? onboard.getOrDefault(key, defaultValue) : defaultValue;
+  }
+
+  /**
+   * Retrieves an activation-related message by key.
+   *
+   * @param key the key for the activation message.
+   * @return the activation message corresponding to the key, or defaultValue if not found.
+   */
+  public String getActivationMessage(String key) {
+    return activation != null
+        ? activation.getOrDefault(key, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
+        : SYSTEM_DEFAULT_NOT_FOUND_ERROR;
+  }
+
+  /**
+   * Retrieves an onboarding-related message by key.
+   *
+   * @param key the key for the onboarding message.
+   * @return the onboarding message corresponding to the key, or defaultValue if not found.
+   */
+  public String getTerminalMessage(String key, String defaultValue) {
+    return terminal != null ? terminal.getOrDefault(key, defaultValue) : null;
+  }
+
+  /**
+   * Retrieves an onboarding-related message by key.
+   *
+   * @param key the key for the onboarding message.
+   * @return the onboarding message corresponding to the key, or defaultValue if not found.
+   */
+  public String getApprovalMessage(String key) {
+    return approval != null ? approval.getOrDefault(key, SYSTEM_DEFAULT_FAILED_FOUND_ERROR) : null;
+  }
+
+  /**
+   * Retrieves an onboarding-related message by key.
+   *
+   * @param key the key for the onboarding message.
+   * @return the onboarding message corresponding to the key, or defaultValue if not found.
+   */
+  public String getAuditMessage(String key) {
+    return approval != null ? approval.getOrDefault(key, SYSTEM_DEFAULT_FAILED_FOUND_ERROR) : null;
   }
 }

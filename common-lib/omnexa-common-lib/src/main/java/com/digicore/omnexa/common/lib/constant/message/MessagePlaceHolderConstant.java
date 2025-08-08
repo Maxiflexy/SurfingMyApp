@@ -62,4 +62,7 @@ public class MessagePlaceHolderConstant {
 
   /** Placeholder for the permissions list. */
   public static final String PERMISSIONS = "{permissions}";
+
+  /** Placeholder for the serialId list. */
+  public static final String SERIAL_IDS = "{serialIds}";
 }

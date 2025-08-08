@@ -45,7 +45,10 @@ public interface ProfileService {
    * @param request the onboarding request containing profile details.
    * @return the response containing the result of the profile creation.
    */
-  OnboardingResponse createProfile(OnboardingRequest request);
+  default OnboardingResponse createProfile(OnboardingRequest request) {
+    return null;
+  }
+  ;
 
   /**
    * Updates an existing profile based on the provided edit request.
@@ -53,6 +56,10 @@ public interface ProfileService {
    * @param request the profile edit request containing updated profile details.
    * @return the response containing the result of the profile update.
    */
+  default ProfileEditResponse updateProfile(ProfileEditRequest request) {
+    return null;
+  }
+
   default ProfileEditResponse updateProfile(ProfileEditRequest request, String profileId) {
     return null;
   }
@@ -71,12 +78,11 @@ public interface ProfileService {
 
   /**
    * Updates the status of a profile.
+   *
    * @param profileId the ID of the profile to update.
    * @param profileStatus the new status to set for the profile.
    */
-  default void updateProfileStatus(
-          String profileId,
-          ProfileStatus profileStatus) {}
+  default void updateProfileStatus(String profileId, ProfileStatus profileStatus) {}
 
   /**
    * Retrieves a profile by its ID.

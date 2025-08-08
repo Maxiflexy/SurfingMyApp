@@ -101,5 +101,7 @@ omnexa:
   misc:
     locationsPath: "/Users//maximillian//digicore//sofri//configuration//omnexa-config-server//config//locations//nigeria-states-and-cities.json"
     onboardingPath: "/auth/onboarding/signatory-account?organizationId=%s&email=%s"
+  maker_checker:
+    enabled: true
 
 

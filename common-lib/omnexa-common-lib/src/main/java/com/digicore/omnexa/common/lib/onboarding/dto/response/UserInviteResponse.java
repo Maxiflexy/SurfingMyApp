@@ -19,4 +19,7 @@ import lombok.*;
 @Getter
 @Setter
 @Schema(description = "User invitation response")
-public class UserInviteResponse implements OnboardingResponse {}
+public class UserInviteResponse implements OnboardingResponse {
+  private String firstName;
+  private String email;
+}

@@ -8,7 +8,7 @@ package com.digicore.omnexa.backoffice.modules.user.authentication.controller;
 
 import static com.digicore.omnexa.backoffice.modules.user.authentication.facade.BackOfficeUserAuthenticationFacade.BACKOFFICE_AUTHENTICATION;
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-import static com.digicore.omnexa.common.lib.swagger.constant.AuthenticationSwaggerDocConstant.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.authentication.AuthenticationSwaggerDocConstant.*;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationRequest;

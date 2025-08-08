@@ -23,5 +23,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class RoleCreationDTO extends BaseRoleDTO implements AuthorizationRequest, Serializable {
+  public static final String ROLE_CREATION_DTO =
+      "com.digicore.omnexa.common.lib.authorization.dto.request.RoleCreationDTO";
   private Set<String> permissions = new HashSet<>();
 }

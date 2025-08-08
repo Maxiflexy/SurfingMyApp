@@ -6,17 +6,21 @@
 
 package com.digicore.omnexa.common.lib.util;
 
+import com.digicore.omnexa.common.lib.config.LocalDateTimeTypeAdapter;
+import com.digicore.omnexa.common.lib.exception.OmnexaException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import jakarta.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.core.Authentication;
@@ -55,6 +59,12 @@ public class RequestUtil {
 
   private RequestUtil() {}
 
+  @Getter
+  private static final Gson gsonMapper =
+      new GsonBuilder()
+          .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
+          .create();
+
   /**
    * Checks if a string is null or empty.
    *
@@ -83,6 +93,10 @@ public class RequestUtil {
    */
   public static boolean nullOrEmpty(List<?> collection) {
     return collection == null || collection.isEmpty();
+  }
+
+  public static boolean nullOrEmpty(Object object) {
+    return object == null;
   }
 
   /**
@@ -134,5 +148,67 @@ public class RequestUtil {
     }
 
     return ip;
+  }
+
+  public static long getTotalAmountInMinor(String jsonString) {
+    try {
+      JsonNode root = getObjectMapper().readTree(jsonString);
+      return sumAmountInMinor(root);
+    } catch (Exception e) {
+      throw new OmnexaException("Error parsing JSON for amountInMinor", e);
+    }
+  }
+
+  private static long sumAmountInMinor(JsonNode node) {
+    long total = 0;
+
+    if (node.isObject()) {
+      Iterator<Map.Entry<String, JsonNode>> fields = node.fields();
+      while (fields.hasNext()) {
+        Map.Entry<String, JsonNode> entry = fields.next();
+        if ("amountInMinor".equals(entry.getKey())) {
+          String value = entry.getValue().asText();
+          try {
+            total += Long.parseLong(value);
+          } catch (NumberFormatException e) {
+            log.error("Error parsing amountInMinor: {}", value, e);
+          }
+        } else {
+          total += sumAmountInMinor(entry.getValue());
+        }
+      }
+    } else if (node.isArray()) {
+      for (JsonNode item : node) {
+        total += sumAmountInMinor(item);
+      }
+    }
+
+    return total;
+  }
+
+  public static String camelCaseToSentence(String methodName) {
+    if (methodName == null || methodName.isEmpty()) {
+      return "";
+    }
+
+    // Split the camelCase method name into words
+    String[] words = methodName.split("(?<!^)(?=[A-Z])");
+
+    StringBuilder description = new StringBuilder("A request to ");
+    for (int i = 0; i < words.length; i++) {
+      if (i == 0) {
+        description.append(words[i].toLowerCase());
+      } else {
+        description.append(" ").append(words[i].toLowerCase());
+      }
+    }
+
+    return description.toString();
+  }
+
+  public static String getLoggedInUsername() {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if (auth == null) return "SYSTEM";
+    return auth.getName();
   }
 }

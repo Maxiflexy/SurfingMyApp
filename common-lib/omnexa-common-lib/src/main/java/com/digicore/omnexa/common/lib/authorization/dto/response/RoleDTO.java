@@ -22,7 +22,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class RoleDTO extends BaseRoleDTO implements AuthorizationResponse, Serializable {
+  public static final String ROLE_DTO =
+      "com.digicore.omnexa.common.lib.authorization.dto.response.RoleDTO";
   private Set<PermissionDTO> permissions = new HashSet<>();
+
+  public RoleDTO() {}
 
   public RoleDTO(String name, String description, boolean active, Set<PermissionDTO> permissions) {
     super(name, description, active);

@@ -6,7 +6,9 @@
 
 package com.digicore.omnexa.common.lib.audit.data.model;
 
+import com.digicore.omnexa.common.lib.approval.data.model.ApprovalRequest;
 import com.digicore.omnexa.common.lib.model.Auditable;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -39,4 +41,9 @@ public class AuditLog extends Auditable<String> implements Serializable {
 
   @Column(columnDefinition = "text")
   private String requestData;
+
+  @JsonBackReference
+  @ManyToOne
+  @JoinColumn(name = "approval_request_id")
+  private ApprovalRequest approvalRequest;
 }

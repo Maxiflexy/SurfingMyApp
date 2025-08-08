@@ -12,6 +12,7 @@ package com.digicore.omnexa.common.lib.enums;
  */
 public enum KycStatus {
   PENDING,
+  SUBMITTED,
   REVIEWING,
   REJECTED,
   APPROVED

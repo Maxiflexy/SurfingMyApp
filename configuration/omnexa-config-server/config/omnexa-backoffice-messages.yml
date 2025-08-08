@@ -82,7 +82,6 @@ omnexa:
     not_found: "No support information found"
     duplicate: "{support_information} support information already exists"
   onboard:
-    not_found: "Onboard request not found"
     duplicate: "{profile} already exists"
-    invalid: "Invalid onboard request details provided"
+    invalid: "Request is invalid"
 

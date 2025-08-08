@@ -33,7 +33,7 @@ info:
 #    key-store-type: PKCS12
 #    use-forward-headers: true
 
-lucid:
+omnexa:
   gateway:
     server:
       encryptPayload: false
@@ -61,14 +61,13 @@ lucid:
         - response-id
       filteredUrl:
         - /omnexa-merchant/documentation
-        - /lucid-customer-transfer/documentation
-        - /lucid-administration/documentation
-        - /lucid-backoffice/documentation
+        - /omnexa-backoffice/documentation
+        - /omnexa-terminal-management/documentation
         - /actuator
       redisHost: localhost
       redisPort: 6379
 
 logging:
   file:
-    name: lucid-gateway-server.log
+    name: omnexa-gateway-server.log
 

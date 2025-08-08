@@ -1,0 +1,10 @@
+omnexa:
+    notification:
+      templatePath: "/Users//togunwuyi//Documents//digicore-projects//omnexa-projects//configuration//omnexa-config-server//config//templates//backoffice//"
+      templates:
+        send_invite_email: "backoffice_invite_email"
+      subjects:
+        send_invite_email: "Omnexa Backoffice Invitation"
+      senders:
+        send_invite_email: "soloto@digicoreltd.com"
+      serviceBaseUrl: "https://omnexa-gateway.digicoreltds.com/omnexa-backoffice/api/v1/onboarding"
