@@ -10,12 +10,9 @@ import com.digicore.omnexa.common.lib.converter.KycStatusConverter;
 import com.digicore.omnexa.common.lib.enums.KycStatus;
 import com.digicore.omnexa.common.lib.model.BaseModel;
 import com.digicore.omnexa.merchant.modules.profile.data.model.MerchantProfile;
-import com.digicore.omnexa.merchant.modules.profile.user.data.model.MerchantUserProfile;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -72,6 +69,7 @@ public class MerchantKycProfile extends BaseModel implements Serializable {
   @Convert(converter = KycStatusConverter.class)
   private KycStatus kycStatus = KycStatus.PENDING;
 
+  @Lob
   @Column(columnDefinition = "text")
   private String kycData;
 
@@ -80,10 +78,8 @@ public class MerchantKycProfile extends BaseModel implements Serializable {
   private String approvedBy;
   private ZonedDateTime approvedDate;
 
-  /**
-   * A list of user profiles associated with the merchant. Defines a one-to-many relationship with
-   * {@link MerchantUserProfile}.
-   */
-  @OneToMany(mappedBy = "merchantKycProfile", cascade = CascadeType.ALL)
-  private List<MerchantKycComment> merchantKycComments = new ArrayList<>();
+  /** Comments associated with the merchant KYC. */
+  @Lob
+  @Column(columnDefinition = "text")
+  private String merchantKycComment;
 }

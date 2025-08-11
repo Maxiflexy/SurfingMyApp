@@ -8,9 +8,9 @@ package com.digicore.omnexa.backoffice.modules.user.management.controller;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
 import static com.digicore.omnexa.common.lib.swagger.constant.CommonEndpointSwaggerDoc.*;
-import static com.digicore.omnexa.common.lib.swagger.constant.onboarding.OnboardingSwaggerDoc.ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION;
-import static com.digicore.omnexa.common.lib.swagger.constant.onboarding.OnboardingSwaggerDoc.ONBOARDING_CONTROLLER_ONBOARD_TITLE;
-import static com.digicore.omnexa.common.lib.swagger.constant.user.UserSwaggerDoc.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.OnboardingSwaggerDoc.ONBOARDING_CONTROLLER_ONBOARD_DESCRIPTION;
+import static com.digicore.omnexa.common.lib.swagger.constant.OnboardingSwaggerDoc.ONBOARDING_CONTROLLER_ONBOARD_TITLE;
+import static com.digicore.omnexa.common.lib.swagger.constant.UserSwaggerDoc.*;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;

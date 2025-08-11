@@ -76,6 +76,7 @@ public class JwtUtil {
       String username, MerchantLoginProfileDTO userDetails) {
     Map<String, String> claims = new HashMap<>();
     claims.put("username", username);
+    claims.put("name", userDetails.getName());
 
     String authorities =
         userDetails.getAuthorities().stream()

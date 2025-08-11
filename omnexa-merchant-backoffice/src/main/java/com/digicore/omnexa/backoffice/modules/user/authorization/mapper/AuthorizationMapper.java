@@ -22,6 +22,7 @@ public class AuthorizationMapper {
   public static PermissionDTO mapEntityToDTO(BackOfficeUserPermission permission) {
     PermissionDTO permissionDTO = new PermissionDTO();
     BeanUtilWrapper.copyNonNullProperties(permission, permissionDTO);
+    permissionDTO.setId(null);
     return permissionDTO;
   }
 }

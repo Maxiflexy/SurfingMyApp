@@ -7,7 +7,7 @@
 package com.digicore.omnexa.merchant.modules.onboarding.controller;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-import static com.digicore.omnexa.common.lib.swagger.constant.OnboardingSwaggerDoc.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.onboarding.OnboardingSwaggerDoc.*;
 import static com.digicore.omnexa.merchant.modules.onboarding.facade.MerchantOnboardingFacade.MERCHANT_ONBOARDING;
 import static com.digicore.omnexa.merchant.modules.onboarding.facade.MerchantVerificationFacade.MERCHANT_EMAIL_VERIFICATION;
 

@@ -16,8 +16,8 @@ import lombok.Setter;
 /**
  * Response DTO for merchant user profile information.
  *
- * <p>This class implements {@link ProfileInfoResponse} to provide merchant user profile details for
- * external service consumption.
+ * <p>This class implements {@link ProfileInfoResponse} to provide merchant user profile
+ * details for external service consumption.
  *
  * @author Onyekachi Ejemba
  * @createdOn Aug-05(Tue)-2025
@@ -28,17 +28,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MerchantProfileInfoResponse implements ProfileInfoResponse {
 
-  /** The profile ID of the merchant user. */
-  private String merchantId;
+    /** The profile ID of the merchant user. */
+    private String merchantId;
 
-  private String businessName;
+    private String businessName;
 
-  /** The email address of the merchant user. */
-  private String businessEmail;
+    /** The email address of the merchant user. */
+    private String businessEmail;
 
-  /** The phone number of the merchant user. */
-  private String businessPhoneNumber;
+    /** The phone number of the merchant user. */
+    private String businessPhoneNumber;
 
-  /** The current status of the merchant user profile. */
-  private ProfileStatus profileStatus;
+    /** The current status of the merchant user profile. */
+    private ProfileStatus profileStatus;
 }

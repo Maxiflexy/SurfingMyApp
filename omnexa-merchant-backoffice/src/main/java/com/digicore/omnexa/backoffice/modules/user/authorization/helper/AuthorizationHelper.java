@@ -7,6 +7,7 @@
 package com.digicore.omnexa.backoffice.modules.user.authorization.helper;
 
 import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.*;
+import static com.digicore.omnexa.common.lib.constant.message.MessageConstant.INVALID;
 import static com.digicore.omnexa.common.lib.constant.message.MessagePlaceHolderConstant.ROLE_NAME;
 import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.*;
 
@@ -14,17 +15,13 @@ import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.Back
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.model.BackOfficeUserRole;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.repository.BackOfficeUserPermissionRepository;
 import com.digicore.omnexa.backoffice.modules.user.authorization.data.repository.BackOfficeUserRoleRepository;
-import com.digicore.omnexa.common.lib.authorization.dto.response.PermissionDTO;
-import com.digicore.omnexa.common.lib.authorization.dto.response.RoleDTO;
 import com.digicore.omnexa.common.lib.exception.OmnexaException;
 import com.digicore.omnexa.common.lib.properties.MessagePropertyConfig;
-import com.digicore.omnexa.common.lib.util.BeanUtilWrapper;
-import com.digicore.omnexa.common.lib.util.RequestUtil;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import lombok.Getter;
+
+import com.digicore.omnexa.common.lib.util.RequestUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -38,13 +35,18 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Slf4j
 public class AuthorizationHelper {
-  @Getter private final BackOfficeUserRoleRepository backOfficeUserRoleRepository;
-  @Getter private final BackOfficeUserPermissionRepository backOfficeUserPermissionRepository;
-  @Getter private final MessagePropertyConfig messagePropertyConfig;
 
-  /** Set of system reserved role names that cannot be modified or deleted. */
-  private static final Set<String> SYSTEM_RESERVED_ROLES =
-      Set.of(SYSTEM_MERCHANT_ROLE_NAME, SYSTEM_AUTHORIZER_ROLE_NAME, SYSTEM_INITIATOR_ROLE_NAME);
+  private final BackOfficeUserRoleRepository backOfficeUserRoleRepository;
+  private final MessagePropertyConfig messagePropertyConfig;
+
+  /**
+   * Set of system reserved role names that cannot be modified or deleted.
+   */
+  private static final Set<String> SYSTEM_RESERVED_ROLES = Set.of(
+          SYSTEM_MERCHANT_ROLE_NAME,
+          SYSTEM_AUTHORIZER_ROLE_NAME,
+          SYSTEM_INITIATOR_ROLE_NAME
+  );
 
   /**
    * Finds and validates that a role exists and can be operated on.
@@ -53,21 +55,52 @@ public class AuthorizationHelper {
    * @return the found role
    * @throws OmnexaException if role is not found
    */
-  //  public BackOfficeUserRole findRoleById(Long roleId) {
-  //    log.debug("Finding role with ID: {}", roleId);
-  //
-  //    return backOfficeUserRoleRepository
-  //        .findById(roleId)
-  //        .orElseThrow(
-  //            () -> {
-  //              String errorMessage =
-  //                  messagePropertyConfig
-  //                      .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
-  //                      .replace(ROLE_NAME, "Role with ID: " + roleId);
-  //              log.error("Role not found with ID: {}", roleId);
-  //              return new OmnexaException(errorMessage, HttpStatus.NOT_FOUND);
-  //            });
-  //  }
+  public BackOfficeUserRole findRoleById(Long roleId) {
+    log.debug("Finding role with ID: {}", roleId);
+
+    return backOfficeUserRoleRepository.findById(roleId)
+            .orElseThrow(() -> {
+              String errorMessage = messagePropertyConfig
+                      .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
+                      .replace(ROLE_NAME, "Role with ID: " + roleId);
+              log.error("Role not found with ID: {}", roleId);
+              return new OmnexaException(errorMessage, HttpStatus.NOT_FOUND);
+            });
+  }
+
+  /**
+   * Validates that a role can be modified (not a system reserved role).
+   *
+   * @param role the role to validate
+   * @throws OmnexaException if the role is system reserved
+   */
+  public void validateRoleCanBeModified(BackOfficeUserRole role) {
+    log.debug("Validating if role can be modified: {}", role.getName());
+
+    if (isSystemReservedRole(role.getName())) {
+      String errorMessage = messagePropertyConfig
+              .getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR)
+              .replace(ROLE_NAME, role.getName() + " (System reserved role cannot be modified)");
+      log.error("Attempted to modify system reserved role: {}", role.getName());
+      throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    log.debug("Role {} can be modified", role.getName());
+  }
+
+  /**
+   * Validates that a role can be deleted.
+   *
+   * <p>A role can be deleted if:
+   * - It's not a system reserved role
+   * - It's not currently assigned to any users (future enhancement)
+   *
+   * @param role the role to validate for deletion
+   * @throws OmnexaException if the role cannot be deleted
+   */
+  public void validateRoleCanBeDeleted(BackOfficeUserRole role) {
+    validateRoleCanBeModified(role);
+  }
 
   /**
    * Validates that a role can be activated.
@@ -79,8 +112,7 @@ public class AuthorizationHelper {
     log.debug("Validating if role can be activated: {}", role.getName());
 
     if (role.isActive()) {
-      String errorMessage =
-          messagePropertyConfig
+      String errorMessage = messagePropertyConfig
               .getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR)
               .replace(ROLE_NAME, role.getName() + " (Role is already active)");
       log.error("Attempted to activate already active role: {}", role.getName());
@@ -99,9 +131,11 @@ public class AuthorizationHelper {
   public void validateRoleCanBeDeactivated(BackOfficeUserRole role) {
     log.debug("Validating if role can be deactivated: {}", role.getName());
 
+    // System reserved roles cannot be deactivated
+    validateRoleCanBeModified(role);
+
     if (!role.isActive()) {
-      String errorMessage =
-          messagePropertyConfig
+      String errorMessage = messagePropertyConfig
               .getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR)
               .replace(ROLE_NAME, role.getName() + " (Role is already inactive)");
       log.error("Attempted to deactivate already inactive role: {}", role.getName());
@@ -109,6 +143,29 @@ public class AuthorizationHelper {
     }
 
     log.debug("Role {} can be deactivated", role.getName());
+  }
+
+  /**
+   * Validates that a role name can be updated (checking for duplicates excluding current role).
+   *
+   * @param newRoleName the new role name
+   * @param currentRoleId the ID of the role being updated
+   * @throws OmnexaException if the new role name already exists
+   */
+  public void validateRoleNameForUpdate(String newRoleName, Long currentRoleId) {
+    log.debug("Validating role name for update: {} (excluding ID: {})", newRoleName, currentRoleId);
+
+    backOfficeUserRoleRepository.findFirstByName(newRoleName.trim())
+            .filter(existingRole -> !existingRole.getId().equals(currentRoleId))
+            .ifPresent(existingRole -> {
+              String errorMessage = messagePropertyConfig
+                      .getRoleMessage(DUPLICATE, SYSTEM_DEFAULT_DUPLICATE_ERROR)
+                      .replace(ROLE_NAME, newRoleName);
+              log.error("Role name already exists: {}", newRoleName);
+              throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
+            });
+
+    log.debug("Role name {} is unique for update", newRoleName);
   }
 
   /**
@@ -135,36 +192,43 @@ public class AuthorizationHelper {
     return Set.copyOf(SYSTEM_RESERVED_ROLES);
   }
 
-  public void validateRolePermissions(Set<String> permissions) {
-    // Fetch valid permission names from DB
-    List<String> validPermissions =
-        backOfficeUserPermissionRepository.findByNameIn(permissions).stream()
-            .map(BackOfficeUserPermission::getName)
-            .toList();
-
-    // Identify invalid ones
-    List<String> invalidPermissions =
-        permissions.stream().filter(p -> !validPermissions.contains(p)).toList();
-
-    if (!invalidPermissions.isEmpty()) {
-      String errorMessage = "Invalid permission(s): " + String.join(", ", invalidPermissions);
+  /**
+   * Validates that the role ID is valid (not null and positive).
+   *
+   * @param roleId the role ID to validate
+   * @throws OmnexaException if the role ID is invalid
+   */
+  public void validateRoleId(Long roleId) {
+    if (roleId == null || roleId <= 0) {
+      String errorMessage = messagePropertyConfig
+              .getRoleMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR)
+              .replace(ROLE_NAME, "Role ID");
+      log.error("Invalid role ID provided: {}", roleId);
       throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
     }
   }
 
+
+
   /**
    * Validates a role name for creation against all validation rules.
    *
-   * <p>This method performs comprehensive role name validation for creation including: - Null/empty
-   * checks - System reserved role conflicts - Duplicate role name checks
+   * <p>This method performs comprehensive role name validation for creation including:
+   * - Null/empty checks
+   * - System reserved role conflicts
+   * - Duplicate role name checks
    *
    * @param roleName the role name to validate
    * @throws OmnexaException if validation fails
    */
   public void validateRoleName(String roleName) {
+    log.debug("Starting role name validation for creation: {}", roleName);
+
     validateRoleNameNotEmpty(roleName);
     validateNotSystemReservedRole(roleName);
     validateRoleUniqueness(roleName);
+
+    log.debug("Role name validation successful for creation: {}", roleName);
   }
 
   /**
@@ -175,8 +239,7 @@ public class AuthorizationHelper {
    */
   private void validateRoleNameNotEmpty(String roleName) {
     if (RequestUtil.nullOrEmpty(roleName)) {
-      String errorMessage =
-          messagePropertyConfig
+      String errorMessage = messagePropertyConfig
               .getRoleMessage(REQUIRED, SYSTEM_DEFAULT_REQUIRED_FIELD_MISSING_ERROR)
               .replace(ROLE_NAME, "Role name");
       log.error("Role name validation failed: Role name is required");
@@ -185,8 +248,7 @@ public class AuthorizationHelper {
 
     String trimmedRoleName = roleName.trim();
     if (trimmedRoleName.isEmpty()) {
-      String errorMessage =
-          messagePropertyConfig
+      String errorMessage = messagePropertyConfig
               .getRoleMessage(REQUIRED, SYSTEM_DEFAULT_REQUIRED_FIELD_MISSING_ERROR)
               .replace(ROLE_NAME, "Role name");
       log.error("Role name validation failed: Role name cannot be empty after trimming");
@@ -202,13 +264,14 @@ public class AuthorizationHelper {
    */
   private void validateNotSystemReservedRole(String roleName) {
     if (isSystemReservedRole(roleName)) {
-      String errorMessage =
-          messagePropertyConfig
+      String errorMessage = messagePropertyConfig
               .getRoleMessage(CONFLICT, SYSTEM_DEFAULT_CONFLICT_ERROR)
               .replace(ROLE_NAME, roleName + " (System reserved role)");
       log.error("Role name validation failed: {} is a system reserved role", roleName);
       throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
     }
+
+    log.debug("Role name {} is not a system reserved role", roleName);
   }
 
   /**
@@ -219,53 +282,24 @@ public class AuthorizationHelper {
    */
   private void validateRoleUniqueness(String roleName) {
     boolean roleExists = backOfficeUserRoleRepository.findFirstByName(roleName.trim()).isPresent();
+
     if (roleExists) {
-      String errorMessage =
-          messagePropertyConfig
+      String errorMessage = messagePropertyConfig
               .getRoleMessage(DUPLICATE, SYSTEM_DEFAULT_DUPLICATE_ERROR)
               .replace(ROLE_NAME, roleName);
       log.error("Role uniqueness validation failed: Role {} already exists", roleName);
       throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
     }
+
+    log.debug("Role name {} is unique", roleName);
   }
 
-  public RoleDTO retrieveRole(String roleName) {
-    BackOfficeUserRole userRole =
-        backOfficeUserRoleRepository
-            .findFirstByName(roleName)
-            .orElseThrow(
-                () ->
-                    new OmnexaException(
-                        messagePropertyConfig
-                            .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
-                            .replace(ROLE_NAME, roleName)));
-    return new RoleDTO(
-        userRole.getName(),
-        userRole.getDescription(),
-        userRole.isActive(),
-        userRole.getPermissions().stream()
-            .map(
-                merchantUserPermission -> {
-                  PermissionDTO permissionDTO = new PermissionDTO();
-                  BeanUtilWrapper.copyNonNullProperties(merchantUserPermission, permissionDTO);
-                  return permissionDTO;
-                })
-            .collect(Collectors.toSet()));
-  }
 
-  public BackOfficeUserRole retrieveRoleEnity(String roleName) {
-    return backOfficeUserRoleRepository
-        .findFirstByName(roleName)
-        .orElseThrow(
-            () ->
-                new OmnexaException(
-                    messagePropertyConfig
-                        .getRoleMessage(NOT_FOUND, SYSTEM_DEFAULT_NOT_FOUND_ERROR)
-                        .replace(ROLE_NAME, roleName)));
-  }
 
-  public Set<BackOfficeUserPermission> retrieveSelectedPermissions(
-      Set<String> selectedPermissions) {
+  public static Set<BackOfficeUserPermission> retrieveSelectedPermissions(
+      Set<String> selectedPermissions,
+      MessagePropertyConfig messagePropertyConfig,
+      BackOfficeUserPermissionRepository permissionRepository) {
     Set<String> effectivePermissions = new HashSet<>(selectedPermissions);
     boolean treatRequestAdded = false;
 
@@ -287,7 +321,7 @@ public class AuthorizationHelper {
     }
 
     List<BackOfficeUserPermission> permissions =
-        backOfficeUserPermissionRepository.findByNameIn(effectivePermissions);
+        permissionRepository.findByNameIn(effectivePermissions);
 
     return new HashSet<>(permissions);
   }

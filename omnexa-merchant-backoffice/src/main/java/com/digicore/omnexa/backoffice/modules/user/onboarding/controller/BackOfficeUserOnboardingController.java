@@ -7,7 +7,7 @@
 package com.digicore.omnexa.backoffice.modules.user.onboarding.controller;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-import static com.digicore.omnexa.common.lib.swagger.constant.onboarding.OnboardingSwaggerDoc.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.OnboardingSwaggerDoc.*;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.facade.contract.Facade;

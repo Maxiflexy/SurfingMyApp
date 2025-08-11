@@ -7,7 +7,7 @@
 package com.digicore.omnexa.merchant.modules.authentication.controller;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-import static com.digicore.omnexa.common.lib.swagger.constant.AuthenticationSwaggerDocConstant.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.authentication.AuthenticationSwaggerDocConstant.*;
 import static com.digicore.omnexa.merchant.modules.authentication.facade.MerchantUserAuthenticationFacade.MERCHANT_AUTHENTICATION;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;

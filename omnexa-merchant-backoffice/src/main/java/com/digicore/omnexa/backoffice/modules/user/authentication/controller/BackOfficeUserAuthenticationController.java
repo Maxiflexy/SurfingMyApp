@@ -8,8 +8,9 @@ package com.digicore.omnexa.backoffice.modules.user.authentication.controller;
 
 import static com.digicore.omnexa.backoffice.modules.user.authentication.facade.BackOfficeUserAuthenticationFacade.BACKOFFICE_AUTHENTICATION;
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-import static com.digicore.omnexa.common.lib.swagger.constant.authentication.AuthenticationSwaggerDocConstant.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.AuthenticationSwaggerDocConstant.*;
 
+import com.digicore.omnexa.backoffice.modules.user.authentication.service.BackOfficeUserAuthProfileService;
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationRequest;
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationResponse;
@@ -23,10 +24,7 @@ import jakarta.validation.Valid;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller for back office user authentication operations.
@@ -48,6 +46,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BackOfficeUserAuthenticationController {
 
   private final FacadeResolver facadeResolver;
+  private final BackOfficeUserAuthProfileService backOfficeUserAuthProfileService;
 
   /**
    * Authenticates a back office user with the provided credentials.
@@ -67,5 +66,18 @@ public class BackOfficeUserAuthenticationController {
         facadeResolver.resolve(BACKOFFICE_AUTHENTICATION);
     Optional<AuthenticationResponse> response = facade.process(loginRequestDTO);
     return ControllerResponse.buildSuccessResponse(response, "Authentication Successful");
+  }
+
+
+  @PostMapping(FORGOT_PASSWORD_INIT_API)
+  @Operation(
+          summary = FORGOT_PASSWORD_INIT_CONTROLLER_TITLE,
+          description = FORGOT_PASSWORD_INIT_CONTROLLER_DESCRIPTION)
+  public ResponseEntity<Object> forgotPassword(
+          @RequestParam String username, HttpServletRequest httpServletRequest) {
+
+    backOfficeUserAuthProfileService.initResetPassword(username);
+    return ControllerResponse.buildSuccessResponse(
+            "Success, a passcode will be sent to your email.");
   }
 }
