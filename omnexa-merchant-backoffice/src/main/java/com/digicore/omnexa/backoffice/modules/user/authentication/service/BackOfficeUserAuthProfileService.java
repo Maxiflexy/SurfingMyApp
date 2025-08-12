@@ -31,8 +31,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author Oluwatobi Ogunwuyi
  * @createdOn Jul-06(Sun)-2025
@@ -79,16 +77,5 @@ public class BackOfficeUserAuthProfileService implements ProfileService {
       logger.error(errorMessage);
       throw new OmnexaException(errorMessage, HttpStatus.BAD_REQUEST);
     }
-  }
-
-  public void initResetPassword(String username) {
-    AuthProfileDTO authProfileDTO =
-            backOfficeUserAuthProfileService.retrieveAuthProfile(username, false);
-//    otpService.send(
-//            notificationHelper.buildPasswordUpdateInitRequest(
-//                    List.of(authProfileDTO.getUserProfile().getEmail()),
-//                    authProfileDTO.getUserProfile().getFirstName()),
-//            OtpType.EMAIL_VERIFICATION,
-//            notificationHelper.getTemplateName(PASSWORD_RESET_OTP));
   }
 }
