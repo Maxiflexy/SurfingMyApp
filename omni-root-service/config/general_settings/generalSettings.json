@@ -1,0 +1,10 @@
+[
+  {
+    "name": "MERCHANT_VALIDATION_TYPE",
+    "value": "AUTOMATIC"
+  },
+  {
+    "name": "AFRIGO_PROCESSOR",
+    "value": "ACTIVATED"
+  }
+]

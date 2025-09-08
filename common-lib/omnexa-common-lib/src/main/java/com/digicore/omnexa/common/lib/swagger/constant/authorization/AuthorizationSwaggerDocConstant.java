@@ -19,11 +19,21 @@ public class AuthorizationSwaggerDocConstant {
 
   // API Path Constants
   public static final String ROLES_API = "roles/";
+  public static final String PERMISSION_API = "permissions/";
 
   // Controller Constants
   public static final String ROLE_MANAGEMENT_CONTROLLER_TITLE = "Role Management";
   public static final String ROLE_MANAGEMENT_CONTROLLER_DESCRIPTION =
       "Endpoints for managing back office user roles";
+
+  public static final String PERMISSIONS_MANAGEMENT_CONTROLLER_TITLE = "Permission Management";
+  public static final String PERMISSIONS_MANAGEMENT_CONTROLLER_DESCRIPTION =
+      "Endpoints for fetching all back office permissions";
+
+  public static final String PERMISSION_CONTROLLER_RETRIEVE_ALL_PERMISSIONS_TITLE =
+      "Endpoints for fetching all back office permissions";
+  public static final String PERMISSION_CONTROLLER_RETRIEVE_ALL_PERMISSIONS_DESCRIPTION =
+      "Endpoints for fetching all back office permissions";
 
   public static final String GET_ROLE_BY_ID_TITLE = "Retrieve a specific role";
   public static final String GET_ROLE_BY_ID_DESCRIPTION =

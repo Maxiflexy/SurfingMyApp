@@ -24,6 +24,11 @@ public interface DocumentUploadService<T, V> {
         new ApiError("implementation not found for this contract", "DOC_IMP_002"));
   }
 
+  default T uploadMultipleDocument(V request, String profileId) {
+    throw new OmnexaException(
+        new ApiError("implementation not found for this contract", "DOC_IMP_002"));
+  }
+
   default T downloadSingleDocument(V request) {
     throw new OmnexaException(
         new ApiError("implementation not found for this contract", "DOC_IMP_003"));

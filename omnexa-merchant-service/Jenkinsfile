@@ -68,7 +68,7 @@ pipeline {
                             mvn --version
                             
                             echo "Building with Maven..."
-                            mvn clean package \
+                            mvn clean package -U \
                                 -s $MAVEN_SETTINGS_XML \
                                 -DskipTests
                         '''

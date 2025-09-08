@@ -1,0 +1,11 @@
+[
+  {
+    "issuerName": "",
+    "bankCode": "",
+    "acceptorId": "",
+    "acceptorName":"",
+    "issuerClearZmkComponentOne": "",
+    "issuerClearZmkComponentTwo": "",
+    "source": "ZONE"
+  }
+]

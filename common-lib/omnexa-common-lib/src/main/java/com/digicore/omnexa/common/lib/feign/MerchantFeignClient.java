@@ -1,15 +1,16 @@
 package com.digicore.omnexa.common.lib.feign;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
-import static com.digicore.omnexa.common.lib.swagger.constant.CommonEndpointSwaggerDoc.MERCHANT_API;
+import static com.digicore.omnexa.common.lib.swagger.constant.CommonEndpointSwaggerDoc.*;
+import static com.digicore.omnexa.common.lib.swagger.constant.kyc.KycSwaggerDoc.BACKOFFICE_KYC_API;
 
 import com.digicore.omnexa.common.lib.api.ApiResponseJson;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.feign.config.FeignClientConfig;
+import com.digicore.omnexa.common.lib.feign.dto.request.MerchantKycProfileDocumentUploadDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Onyekachi Ejemba
@@ -57,4 +58,49 @@ public interface MerchantFeignClient {
       @RequestParam ProfileStatus profileStatus,
       @RequestParam(required = false) Integer pageNumber,
       @RequestParam(required = false) Integer pageSize);
+
+  /**
+   * Retrieves a merchant KYC profile by profile ID.
+   *
+   * @param profileId the profile ID to retrieve
+   * @return response containing merchant KYC profile information
+   */
+  @GetMapping(API_V1 + BACKOFFICE_KYC_API)
+  ResponseEntity<ApiResponseJson<Object>> getMerchantKycProfile(
+      @RequestParam("merchantId") String profileId);
+
+  /**
+   * Updates a merchant KYC profile.
+   *
+   * @param profileId the profile ID to update
+   * @param request the KYC profile update request
+   * @return response containing update result
+   */
+  @PostMapping(API_V1 + BACKOFFICE_KYC_API)
+  ResponseEntity<ApiResponseJson<Object>> updateMerchantKycProfile(
+          @RequestParam("merchantId") String profileId,
+          @RequestBody Object request);
+
+  /**
+   * Uploads documents for a merchant KYC profile.
+   *
+   * @param profileId the profile ID to upload documents for
+   * @param request the document upload request
+   * @return response containing upload result
+   */
+  @PostMapping(API_V1 + BACKOFFICE_KYC_API + DOCUMENT_API)
+  ResponseEntity<ApiResponseJson<Object>> uploadMerchantKycDocuments(
+      @RequestParam("merchantId") String profileId,
+      @RequestPart("request") MerchantKycProfileDocumentUploadDTO request);
+
+  /**
+   * Toggles the status of a merchant profile between ACTIVE and INACTIVE.
+   *
+   * @param profileId the profile ID to toggle status for
+   * @param enabled   true to activate the profile, false to deactivate
+   */
+  @PostMapping(API_V1 + BACKOFFICE_KYC_API + PROFILE_STATUS_UPDATE_API)
+  void toggleMerchantProfileStatus(
+          @RequestParam("merchantId") String profileId,
+          @RequestParam("enabled") boolean enabled);
 }

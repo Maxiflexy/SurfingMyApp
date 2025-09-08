@@ -1,0 +1,217 @@
+[
+        {
+            "permission": "view-transactions",
+            "description": "This enables user view transaction transfer histories",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "This enables user view export transaction  histories",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "initiate-user-creation-or-change-of-role",
+            "description": "This enables user view initiated user creation or change of role  histories",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "approved-user-creation-or-change-of-role",
+            "description": "This enables user view approved-user-creation or change of role  histories",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "initiate-user-access-deactivation-or-reactivation",
+            "description": "This enables user view initiated user access deactivation or reactivation  histories",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "approve-user-access-deactivation-or-reactivation",
+            "description": "This enables user view aprroved user access deactivation or reactivation  histories",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "create-custom-role-or-edit-existing-role",
+            "description": "This enables user view created custom role or edit existing role histories",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "approve-creation-of-custom-role-edit-of-existing-role",
+            "description": "This enables user view approved creation of custom role edit of existing role histories",
+            "permissionType": "USER"
+        },
+    {
+        "permission": "view-transactions",
+        "description": "This enables user view transaction transfer histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "export-transactions",
+        "description": "This enables user view export transaction  histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-refunds",
+        "description": "This enables user view refunds histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-business-performance-metrics",
+        "description": "This enables user view business performance metrics histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-charges",
+        "description": "This enables user view charges histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-merchants",
+        "description": "This enables user view merchants available on the system",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "view-merchants-users-roles",
+        "description": "This enables user view merchants users and their roles",
+        "permissionType": "MERCHANT"
+    },
+
+    {
+        "permission": "view-blacklisted-merchants",
+        "description": "This enables user view blacklisted merchants",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "view-dispute",
+        "description": "This enables user view dispute histories",
+        "permissionType": "DISPUTE"
+    },
+    {
+        "permission": "view-api-keys",
+        "description": "This enables user view api keys histories",
+        "permissionType": "TOOLS"
+    },
+    {
+        "permission": "view-transactions",
+        "description": "This enables user view transaction transfer histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "export-transactions",
+        "description": "This enables user view export transaction  histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-merchants",
+        "description": "This enables user view merchants available on the system",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "view-merchants-users-roles",
+        "description": "This enables user view merchants users and their roles",
+        "permissionType": "MERCHANT"
+    },
+
+    {
+        "permission": "view-blacklisted-merchants",
+        "description": "This enables user view blacklisted merchants",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "view-transfers",
+        "description": "This enables user view transfers",
+        "permissionType": "SETTLEMENT"
+    },
+
+    {
+        "permission": "view-beneficiaries",
+        "description": "This enables user view beneficiaries histories",
+        "permissionType": "SETTLEMENT"
+    },
+    {
+        "permission": "view-dispute",
+        "description": "This enables user view dispute histories",
+        "permissionType": "DISPUTE"
+    },
+    {
+        "permission": "view-transactions",
+        "description": "This enables user view transaction transfer histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "export-transactions",
+        "description": "This enables user view export transaction  histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-refunds",
+        "description": "This enables user view refunds histories",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "log-funds",
+        "description": "This enables user log funds",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "view-merchants",
+        "description": "This enables user view merchants available on the system",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "view-merchants-users-roles",
+        "description": "This enables user view merchants users and their roles",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "view-blacklisted-merchants",
+        "description": "This enables user view blacklisted merchants",
+        "permissionType": "MERCHANT"
+    },
+
+    {
+        "permission": "view-transfers",
+        "description": "This enables user view transfers",
+        "permissionType": "SETTLEMENT"
+    },
+
+    {
+        "permission": "view-dispute",
+        "description": "This enables user view dispute histories",
+        "permissionType": "DISPUTE"
+    },
+    {
+        "permission": "view-api-keys",
+        "description": "This enables user view api-keys histories",
+        "permissionType": "TOOLS"
+    },
+    {
+        "permission": "view-webhooks",
+        "description": "This enables user view webhooks histories",
+        "permissionType": "TOOLS"
+    },
+    {
+        "permission": "update-fee-configuration",
+        "description": "This enables user update fee configuration",
+        "permissionType": "TRANSACTION"
+    },
+    {
+        "permission": "approve-edited-merchant-info",
+        "description": "This enables user to approve edited",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "edit-merchant-info",
+        "description": "This enables user to edit merchant information",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "edit-business-preferences",
+        "description": "This enables user to view and edit business preferences",
+        "permissionType": "MERCHANT"
+    },
+    {
+        "permission": "approve-or-decline-fee-config-update",
+        "description": "Approve or Decline Fee Config Update",
+        "permissionType": "TRANSACTION"
+    }
+]

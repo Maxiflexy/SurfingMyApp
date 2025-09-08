@@ -125,6 +125,22 @@ public class RequestUtil {
         .toUpperCase();
   }
 
+  public static String generateTransactionID() {
+    return "S0_"
+        .concat(
+            ZonedDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+                .concat(RandomStringUtils.secure().nextAlphanumeric(7))
+                .toUpperCase());
+  }
+
+  public static String generateTransactionRef() {
+    return ZonedDateTime.now()
+        .format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+        .concat(RandomStringUtils.secure().nextAlphanumeric(5))
+        .toUpperCase();
+  }
+
   public static ObjectMapper getObjectMapper() {
     objectMapper.registerModule(new JavaTimeModule());
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);

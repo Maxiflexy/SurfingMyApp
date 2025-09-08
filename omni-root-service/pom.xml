@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<artifactId>omni-root-service</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<packaging>jar</packaging> <!-- add jar packaging -->
+	<name>omni-root-service</name>
+	<description>root service for omni payment gateway</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<java.version>17</java.version>
+		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<lombok.version>1.18.34</lombok.version>
+<!--		<zest.url>https://pkgs.dev.azure.com/ZestPaymentsLimited/3d1c1200-eedd-4e75-9fa3-f7cb9b6a8cf3/_packaging/Dev/maven/v1/</zest.url>-->
+		<archiva.url>https://archiva.digicoreltds.com/repository/internal/</archiva.url>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>terminal-management-lib</artifactId>
+			<version>1.0.30-SNAPSHOT</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>registhentication-lib</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom2</artifactId>
+		</dependency>
+
+
+		<!-- Apache HttpClient version 5 -->
+
+
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>5.1.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5-fluent -->
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5-fluent</artifactId>
+			<version>5.1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>otp-lib</artifactId>
+			<version>1.0.4-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>common-util</artifactId>
+			<version>1.0.15-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>3.11.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.shared</groupId>
+			<artifactId>maven-shared-utils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>omni-root-lib</artifactId>
+			<version>8.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>dom4j</groupId>
+					<artifactId>dom4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.11.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire</artifactId>
+			<version>2.22.2</version>
+			<type>pom</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.maven.shared</groupId>
+					<artifactId>maven-shared-utils</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>notification-lib</artifactId>
+			<version>1.0.11-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.9.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.digicore</groupId>
+			<artifactId>omnexa-notification-lib</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+
+
+
+		<dependencies>
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-api -->
+			<!--			<dependency>-->
+			<!--				<groupId>org.apache.maven.surefire</groupId>-->
+			<!--				<artifactId>surefire-api</artifactId>-->
+			<!--				<version>3.0.0</version>-->
+			<!--			</dependency>-->
+			<!--			&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.surefire/maven-surefire-common &ndash;&gt;-->
+			<!--			<dependency>-->
+			<!--				<groupId>org.apache.maven.surefire</groupId>-->
+			<!--				<artifactId>maven-surefire-common</artifactId>-->
+			<!--				<version>3.0.0</version>-->
+			<!--			</dependency>-->
+
+			<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+			<dependency>
+				<groupId>org.yaml</groupId>
+				<artifactId>snakeyaml</artifactId>
+				<version>2.0</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+			<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom2</artifactId>
+				<version>2.0.6.1</version>
+			</dependency>
+
+
+
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>3.0.24</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.shared/maven-shared-utils -->
+			<dependency>
+				<groupId>org.apache.maven.shared</groupId>
+				<artifactId>maven-shared-utils</artifactId>
+				<version>3.3.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.digicore</groupId>
+				<artifactId>zeus-api-helper</artifactId>
+				<version>1.0.9-SNAPSHOT</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+
+
+	<!--Zest-Repo Start, when pushing to digicore repo comment out the plugin repo, repo and distributionMGN in between the start and end-->
+
+<!--		<repositories>-->
+<!--			<repository>-->
+<!--				<id>Dev</id>-->
+<!--				<name>Archiva Managed Internal Repository</name>-->
+<!--				<url>${zest.url}</url>-->
+<!--			</repository>-->
+<!--			<repository>-->
+<!--				<id>oss-jfrog-artifactory</id>-->
+<!--				<name>oss-jfrog-artifactory-releases</name>-->
+<!--				<url>https://oss.jfrog.org/artifactory/oss-release-local</url>-->
+<!--			</repository>-->
+<!--		</repositories>-->
+
+<!--			<pluginRepositories>-->
+<!--				<pluginRepository>-->
+<!--					<id>Dev</id>-->
+<!--					<name>Archiva Repository</name>-->
+<!--					<url>${zest.url}</url>-->
+<!--				</pluginRepository>-->
+<!--			</pluginRepositories>-->
+
+<!--			<distributionManagement>-->
+<!--				<repository>-->
+<!--					<id>Dev</id>-->
+<!--					<name>Internal Release Repository</name>-->
+<!--					<url>${zest.url}</url>-->
+<!--				</repository>-->
+<!--		 	</distributionManagement>-->
+
+	<!--Zest-Repo End, when pushing to digicore repo comment out the plugin repo, repo and distributionMGN in between the start and end-->
+
+
+	<!--Digicore-Repo Start  when pushing to zest repo comment out the plugin repo, repo and distributionMGN in between the start and end-->
+
+	<repositories>
+		<repository>
+			<id>archiva</id>
+			<name>Archiva Managed Internal Repository</name>
+			<url>${archiva.url}</url>
+		</repository>
+		<repository>
+			<id>oss-jfrog-artifactory</id>
+			<name>oss-jfrog-artifactory-releases</name>
+			<url>http://oss.jfrog.org/artifactory/oss-release-local</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>archiva</id>
+			<name>Archiva Repository</name>
+			<url>${archiva.url}</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<repository>
+			<id>archiva</id>
+			<name>Internal Release Repository</name>
+			<url>${archiva.url}</url>
+		</repository>
+	</distributionManagement>
+
+	<!--Digicore-Repo End,  when pushing to zest repo comment out the plugin repo, repo and distributionMGN in between the start and end-->
+
+	<build>
+		<!--		<pluginManagement>-->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!--		</pluginManagement>-->
+	</build>
+
+</project>

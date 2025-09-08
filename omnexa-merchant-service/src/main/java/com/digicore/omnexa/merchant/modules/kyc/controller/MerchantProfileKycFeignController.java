@@ -7,7 +7,6 @@
 package com.digicore.omnexa.merchant.modules.kyc.controller;
 
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
-import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.file.contract.DocumentUploadService;
 import com.digicore.omnexa.common.lib.file.dto.FileUploadedDTO;
 import com.digicore.omnexa.common.lib.profile.contract.ProfileService;
@@ -15,6 +14,7 @@ import com.digicore.omnexa.merchant.modules.profile.dto.request.MerchantKycProfi
 import com.digicore.omnexa.merchant.modules.profile.dto.response.MerchantKycProfileResponse;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +34,8 @@ import static com.digicore.omnexa.common.lib.swagger.constant.kyc.KycSwaggerDoc.
 @Hidden
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(API_V1 + KYC_API_FEIGN)
-@Tag(name = KYC_CONTROLLER_TITLE_FEIGN, description = KYC_CONTROLLER_DESCRIPTION)
+@RequestMapping(API_V1 + BACKOFFICE_KYC_API)
+@Tag(name = BACKOFFICE_KYC_CONTROLLER_TITLE_, description = KYC_CONTROLLER_DESCRIPTION)
 public class MerchantProfileKycFeignController {
 
   private final ProfileService merchantKycProfileService;
@@ -45,46 +45,42 @@ public class MerchantProfileKycFeignController {
   @PostMapping()
   @Operation(summary = KYC_CONTROLLER_UPDATE_TITLE, description = KYC_CONTROLLER_UPDATE_DESCRIPTION)
   public ResponseEntity<Object> updateKyc(
-          @RequestParam("profileId") String profileId,
+          @RequestParam("merchantId") String merchantId,
           @Valid @RequestBody MerchantKycProfileResponse merchantKycProfileOnboardingRequest) {
     return ControllerResponse.buildSuccessResponse(
-            merchantKycProfileService.updateProfile(merchantKycProfileOnboardingRequest, profileId),
+            merchantKycProfileService.updateProfile(merchantKycProfileOnboardingRequest, merchantId),
             "Merchant KYC Profile Updated Successfully");
   }
 
   @GetMapping()
   @Operation(summary = KYC_CONTROLLER_GET_TITLE, description = KYC_CONTROLLER_GET_DESCRIPTION)
   public ResponseEntity<Object> getProfile(
-          @RequestParam("profileId") String profileId) {
+          @RequestParam("merchantId") String merchantId) {
     return ControllerResponse.buildSuccessResponse(
-            merchantKycProfileService.getProfileById(profileId),
+            merchantKycProfileService.getProfileById(merchantId),
             "Merchant KYC Profile Retrieved Successfully");
   }
 
   @PostMapping(DOCUMENT_API)
   @Operation(summary = UPLOAD_DOCUMENT_TITLE, description = UPLOAD_DOCUMENT_DESCRIPTION)
   public ResponseEntity<Object> uploadDocuments(
-          @RequestParam("profileId") String profileId,
+          @RequestParam("merchantId") String merchantId,
           @ModelAttribute MerchantKycProfileDocumentUploadDTO request) {
     return ControllerResponse.buildSuccessResponse(
-            merchantKycProfileDocumentUploadService.uploadMultipleDocument(request,profileId));
+            merchantKycProfileDocumentUploadService.uploadMultipleDocument(request,merchantId));
   }
 
 
-  @PatchMapping("/status")
-  @Operation(
-          summary = "Toggle Merchant Profile Status",
-          description = "Updates the merchant profile status between ACTIVE and INACTIVE")
+  @PostMapping(PROFILE_STATUS_UPDATE_API)
+  @Operation(summary = UPDATE_PROFILE_STATUS_TITLE, description = UPDATE_PROFILE_STATUS_DESCRIPTION)
   public ResponseEntity<Object> toggleProfileStatus(
-          @RequestParam("profileId") String profileId,
+          @Parameter(description = "The unique identifier of the merchant profile", example = "S-123456", required = true)
+          @RequestParam("merchantId") String merchantId,
+          @Parameter(description = "Enable or disable the merchant profile", example = "true", required = true)
           @RequestParam("enabled") boolean enabled) {
-
-    ProfileStatus newStatus = enabled ? ProfileStatus.ACTIVE : ProfileStatus.INACTIVE;
-    merchantKycProfileService.updateProfileStatus(profileId, newStatus);
-
-    String statusMessage = enabled ? "activated" : "deactivated";
+    merchantKycProfileService.updateProfileStatus(merchantId, enabled);
     return ControllerResponse.buildSuccessResponse(
             null,
-            String.format("Merchant profile %s successfully", statusMessage));
+            String.format("Merchant profile %s successfully", enabled ? "activated" : "deactivated"));
   }
 }

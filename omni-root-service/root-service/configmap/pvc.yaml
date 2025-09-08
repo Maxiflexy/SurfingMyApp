@@ -1,0 +1,42 @@
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: efs.csi.aws.com
+  namespace: billeraggregation
+spec:
+  attachRequired: false
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: root-efs-sc
+provisioner: efs.csi.aws.com
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: root-efs-pv
+spec:
+  capacity:
+    storage: 15Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: root-efs-sc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-0eadfde87b023f93e::fsap-02be49a3200c4ff82
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: root-efs-claim
+  namespace: billeraggregation
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: root-efs-sc
+  resources:
+    requests:
+      storage: 15Gi

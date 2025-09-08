@@ -1,0 +1,53 @@
+{
+    "name": "ADMIN",
+    "description": "This role enables user manage admin",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions": [
+        {
+            "permission": "view-transactions",
+            "description": "View Transaction Transfer",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "View Export Transaction",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "initiate-user-creation-or-change-of-role",
+            "description": "Initiate User Creation or Change of Role",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "approved-user-creation-or-change-of-role",
+            "description": "Approve User Creation or Change of Role",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "initiate-user-access-deactivation-or-reactivation",
+            "description": "Initiate User Access Deactivation or Reactivation",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "approve-user-access-deactivation-or-reactivation",
+            "description": "Approve User Access Deactivation or Reactivation",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "create-custom-role-or-edit-existing-role",
+            "description": "Create Custom Role or Edit Existing Role",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "approve-creation-of-custom-role-edit-of-existing-role",
+            "description": "Approve Creation of Custom Role or Edit of Existing Role",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "toggle-merchant-validation-type",
+            "description": "Toggle Merchant Validation Type",
+            "permissionType": "USER"
+        }
+    ]
+}

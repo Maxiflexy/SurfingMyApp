@@ -1,0 +1,133 @@
+{
+  "name": "ENGINEERING",
+  "description": "This role enables user manage financial report",
+  "roleScope": "FOR_BOTH",
+  "active": true,
+  "permissions": [
+    {
+      "permission": "view-transactions",
+      "description": "View Transaction",
+      "permissionType": "TRANSACTION"
+    },
+    {
+      "permission": "view-api-keys",
+      "description": "View API Keys",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "view-webhooks",
+      "description": "View Webhook",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "add-settlement-account",
+      "description": "Add Settlement Account",
+      "permissionType": "SETTINGS"
+    },
+    {
+      "permission": "edit-webhooks",
+      "description": "Edit Webhook",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "enable-disable-webhooks-for-failed-transactions",
+      "description": "Enable or Disable Webhooks for Failed Transactions",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "add-terminal-to-inventory",
+      "description": "Add a terminal to the inventory",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "decommission-terminal",
+      "description": "Decommission a terminal on the inventory",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "accept-terminal-request",
+      "description": "Accept terminal request from merchant",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "decline-terminal-request",
+      "description": "Decline terminal request from merchant",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "upload-pos-application-build",
+      "description": "Request to upload pos application build",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "send-pos-application-build",
+      "description": "Request to send pos application build",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "address-merchant-terminal-request",
+      "description": "Accept or Decline Merchant Terminal Request",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "block-terminal",
+      "description": "Block a Terminal",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "unblock-terminal",
+      "description": "Unblock a Terminal",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "retrieve-terminal",
+      "description": "Retrieve a Terminal",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "assign-terminal",
+      "description": "Assign terminal to merchant",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "upload-issuer-keys",
+      "description": "Upload issuer component keys json file",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "reload-issuer-keys",
+      "description": "Trigger all issuer keys exchange",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "delete-issuer-keys",
+      "description": "Delete an issuer",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "activate-issuer-keys",
+      "description": "Activate an issuer",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "deactivate-issuer-keys",
+      "description": "Deactivate an issuer",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "reload-PTSP-keys",
+      "description": "Trigger key exchange for PTSP",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "set-keys-exchange-date",
+      "description": "Configure key exchange next attempt date",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "view-key-exchange",
+      "description": "View key exchange module",
+      "permissionType": "TERMINAL"
+    }
+  ]
+}

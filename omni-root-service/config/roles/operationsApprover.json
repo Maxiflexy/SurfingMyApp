@@ -1,0 +1,193 @@
+{
+    "name": "OPERATIONS",
+    "description": "This role enables user manage customers",
+    "roleScope": "FOR_MERCHANT",
+    "active": true,
+    "permissions": [
+        {
+            "permission": "view-transactions",
+            "description": "View Transaction Transfer",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "log-refunds",
+            "description": "Log Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-settlements",
+            "description": "View Settlement Histories",
+            "permissionType": "BALANCE"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute/Chargebacks",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "view-store",
+            "description": "View Store Information",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "create-edit-store",
+            "description": "Create and Manage Stores",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-orders",
+            "description": "View Orders",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-products",
+            "description": "View Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "add-products",
+            "description": "Add Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "edit-delete-products",
+            "description": "Edit or Delete Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-products-categories",
+            "description": "View Product Categories",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-payment-page",
+            "description": "View Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "create-payment-page",
+            "description": "Create Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "edit-payment-page",
+            "description": "Edit Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "deactivate-payment-page",
+            "description": "Deactivate Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "view-settlements",
+            "description": "View Settlement Histories",
+            "permissionType": "BALANCE"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute/Chargebacks",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "view-store",
+            "description": "View Store Information",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "create-edit-store",
+            "description": "Create and Manage Stores",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-orders",
+            "description": "View Orders",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-products",
+            "description": "View Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "add-products",
+            "description": "Add Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "edit-delete-products",
+            "description": "Edit or Delete Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-products-categories",
+            "description": "View Product Categories",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-payment-page",
+            "description": "View Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "create-payment-page",
+            "description": "Create Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "edit-payment-page",
+            "description": "Edit Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "deactivate-payment-page",
+            "description": "Deactivate Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "view-invoices",
+            "description": "View Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "create-invoices",
+            "description": "Create Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "delete-invoices",
+            "description": "Delete Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "edit-invoices",
+            "description": "Edit Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "send-invoices",
+            "description": "Send Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "delete-invoices",
+            "description": "Delete Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "edit-invoices",
+            "description": "Edit Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "send-invoices",
+            "description": "Send Invoices",
+            "permissionType": "INVOICE"
+        }
+    ]
+  }

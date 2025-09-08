@@ -1,0 +1,55 @@
+{ 
+    "name" : "FRANCHISE_RISK",
+    "description" : "This role enables users manage franchise risk",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions" : [
+        {
+            "permission": "view-transactions",
+            "description": "View Transaction",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "Export Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-merchants-users-roles",
+            "description": "View Merchant Users Roles",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-blacklisted-merchants",
+            "description": "View Blacklisted Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-transfers",
+            "description": "View Transfers",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-beneficiaries",
+            "description": "View Beneficiaries",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Disputes",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "update-routing-rule",
+            "description": "Update Routing Rule",
+            "permissionType": "ROUTING_RULE"
+        }
+
+
+    ]
+}

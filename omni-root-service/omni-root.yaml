@@ -1,0 +1,155 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omni-root-service
+  namespace: zest-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: omni-root-service
+  strategy: 
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: omni-root-service
+    spec:
+      containers:
+      - name: omni-root-service
+        image: zestdevaksreg.azurecr.io/omnirootservice:latest
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: secrets-store-inline
+            mountPath: "/mnt/secrets-store"
+            readOnly: true
+          - name: payment-gateway-container-volume
+            mountPath: "/mnt/paymentgateway"
+          - name: payment-gateway-files
+            mountPath: /mnt/payment-gateway-file
+        resources:
+          requests:
+            cpu: 100m
+            memory: 600Mi
+          limits:
+            cpu: 100m
+            memory: 1024Mi
+        ports:
+        - containerPort: 2759
+          name: http-omni-root
+        env:
+        - name: ZEST_DB_NAME
+          value: "zest_pay"
+
+        - name: QR_SERVICE_HOST
+          value: https://api.dev.gateway.zestpayment.com/qr
+
+        - name: MYSQL_PORT
+          value: "3306"
+          
+        - name: VIRTUAL_ACCOUNT_SERVICE_BASE_URL
+          value: https://api.dev.gateway.zestpayment.com/virtual-account
+
+        - name: MYSQL_HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              name: dev-secrets
+              key: db-host
+
+        - name: MYSQL_USERNAME
+          valueFrom:  
+            secretKeyRef:
+              name: dev-secrets
+              key: db-user
+
+        - name: MYSQL_PASSWORD
+          valueFrom:  
+            secretKeyRef:
+              name: dev-secrets
+              key: db-password
+
+        - name: RABBITMQ_HOST
+          value: $(RABBIT_MQ_SERVICE_HOST)
+
+        - name: RABBITMQ_USERNAME
+          valueFrom:  
+            secretKeyRef:
+              name: dev-secrets
+              key: rabbitmq-user
+
+        - name: RABBITMQ_PASSWORD
+          valueFrom:  
+            secretKeyRef:
+              name: dev-secrets
+              key: rabbitmq-password
+
+        - name: ZEST_STORAGE_ACCOUNT_NAME
+          valueFrom:  
+            secretKeyRef:
+              name: dev-secrets
+              key: azurestorageaccountname
+
+        - name: ZEST_STORAGE_ACCOUNT_KEY
+          valueFrom:  
+            secretKeyRef:
+              name: dev-secrets
+              key: azurestorageaccountkey
+
+        - name: KEYSTORE_PASSPHRASE
+          valueFrom:
+            secretKeyRef:
+              name: dev-secrets
+              key: app-security-jwt-private-key-passphrase
+
+        - name: KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dev-secrets
+              key: app-security-jwt-keystore-password
+
+        - name: KEYSTORE_ALIAS
+          valueFrom:
+            secretKeyRef:
+              name: dev-secrets
+              key: app-security-jwt-key-alias
+
+        - name: APPLE_SSL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dev-secrets
+              key: apple-ssl-password
+
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: timezone-config
+              key: TZ
+
+        command: ["sh"]
+        args: ["-c", "ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && exec java -jar omni-root-service-1.0.0-SNAPSHOT.jar"]      
+
+      volumes:
+      - name: secrets-store-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "azure-secret"
+      - name: payment-gateway-container-volume
+        persistentVolumeClaim:
+              claimName: payment-gateway-container-pvc
+      - name: payment-gateway-files
+        configMap:
+          name: payment-gateway-files
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: omni-root
+  namespace: zest-dev
+spec:
+  ports:
+  - port: 80
+    targetPort: http-omni-root
+  selector:
+    app: omni-root-service

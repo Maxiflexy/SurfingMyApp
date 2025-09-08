@@ -1,0 +1,87 @@
+{
+    "name" : "FRANCHISE_RISK_APPROVER",
+    "description" : "This role enables users manage franchise risk approver",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions" : [
+        {
+            "permission": "view-transactions",
+            "description": "View Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "Export Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-merchants-users-roles",
+            "description": "View Merchant Users Role",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-blacklisted-merchants",
+            "description": "View Blacklisted Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "approve-blacklist-or-whitelist-merchants",
+            "description": "Approve Blacklist or Whitelist Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "approve-new-merchant",
+            "description": "Approve New Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "approve-disable-merchant",
+            "description": "Approve Disabled Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-transfers",
+            "description": "View Transfers",
+            "permissionType": "SETTLEMENT"
+        },
+       
+        {
+            "permission": "view-beneficiaries",
+            "description": "View Beneficiaries",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "delete-beneficiaries",
+            "description": "Delete Beneficiaries",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "approve-or-decline-routing-rule",
+            "description": "Approve Or Decline Routing Rule",
+            "permissionType": "ROUTING_RULE"
+        },
+        {
+            "permission": "approve-edited-merchant-info",
+            "description": "Approve Edited Merchant Info",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "approve-or-decline-fee-config-update",
+            "description": "Approve or Decline Fee Config Update",
+            "permissionType": "TRANSACTION"
+        }
+
+
+    ]
+
+}

@@ -14,6 +14,7 @@ import static com.digicore.omnexa.common.lib.util.RequestUtil.getValueFromAccess
 import static com.digicore.omnexa.common.lib.util.RequestUtil.nullOrEmpty;
 
 import com.digicore.omnexa.common.lib.enums.KycStatus;
+import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.exception.OmnexaException;
 import com.digicore.omnexa.common.lib.profile.contract.ProfileService;
 import com.digicore.omnexa.common.lib.profile.dto.request.ProfileEditRequest;
@@ -23,6 +24,7 @@ import com.digicore.omnexa.common.lib.properties.MessagePropertyConfig;
 import com.digicore.omnexa.common.lib.util.RequestUtil;
 import com.digicore.omnexa.merchant.modules.profile.data.model.kyc.MerchantKycProfile;
 import com.digicore.omnexa.merchant.modules.profile.data.repository.MerchantKycProfileRepository;
+import com.digicore.omnexa.merchant.modules.profile.data.repository.MerchantProfileRepository;
 import com.digicore.omnexa.merchant.modules.profile.dto.response.MerchantKycProfileResponse;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ import org.springframework.stereotype.Service;
 public class MerchantKycProfileService implements ProfileService {
   private final MessagePropertyConfig messagePropertyConfig;
   private final MerchantKycProfileRepository merchantKycProfileRepository;
+  private final MerchantProfileRepository merchantProfileRepository;
 
   @Override
   public ProfileEditResponse updateProfile(ProfileEditRequest request) {
@@ -78,7 +81,7 @@ public class MerchantKycProfileService implements ProfileService {
 
 
   @Override
-  public ProfileEditResponse updateProfile(ProfileEditRequest request, String profileId) {
+  public ProfileEditResponse updateProfile(Object request, String profileId) {
     MerchantKycProfileResponse merchantKycProfileUpdateRequest =
             castToMerchantKycProfileUpdateRequest(request);
     MerchantKycProfile merchantKycProfile =
@@ -107,6 +110,40 @@ public class MerchantKycProfileService implements ProfileService {
 
     merchantKycProfileRepository.save(merchantKycProfile);
     return null;
+  }
+
+  /**
+   * Toggles the profile status for a merchant profile based on enabled flag.
+   *
+   * @param profileId the merchant ID (profileId)
+   * @param enabled true to set status to ACTIVE, false to set status to INACTIVE
+   */
+  @Override
+  public void updateProfileStatus(String profileId, boolean enabled) {
+    ProfileStatus newStatus = enabled ? ProfileStatus.ACTIVE : ProfileStatus.INACTIVE;
+    updateProfileStatus(profileId, newStatus);
+  }
+
+  /**
+   * Updates the profile status for a merchant profile.
+   *
+   * @param profileId the merchant ID (profileId)
+   * @param profileStatus the new profile status to set
+   */
+  public void updateProfileStatus(String profileId, ProfileStatus profileStatus) {
+    log.info("Updating profile status for merchantId: {} to status: {}", profileId, profileStatus);
+    try {
+      merchantProfileRepository.conditionalUpdateProfileStatuses(
+              profileStatus != null ? profileStatus.toString() : null,
+              null, // We're not updating verification status in this case
+              profileId
+      );
+    } catch (Exception e) {
+      log.error("Error updating profile status for merchantId: {} to status: {}", profileId, profileStatus, e);
+      throw new OmnexaException(
+              "Failed to update merchant profile status",
+              HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Override
@@ -164,7 +201,7 @@ public class MerchantKycProfileService implements ProfileService {
   }
 
   private MerchantKycProfileResponse castToMerchantKycProfileUpdateRequest(
-      ProfileEditRequest profile) {
+          Object profile) {
     if (!(profile instanceof MerchantKycProfileResponse)) {
       throw new OmnexaException(
           messagePropertyConfig.getOnboardMessage(INVALID, SYSTEM_DEFAULT_INVALID_REQUEST_ERROR),

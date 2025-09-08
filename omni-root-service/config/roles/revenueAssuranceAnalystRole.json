@@ -1,0 +1,48 @@
+{
+    "name": "REVENUE_ASSURANCE_ANALYST",
+    "description": "This role enables user manage revenue assurance analyst",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions": [
+        {
+            "permission": "view-transactions",
+            "description": "View Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "Export Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-business-performance-metrics",
+            "description": "View Business Performance Metrics",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-charges",
+            "description": "View Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-transfers",
+            "description": "View Transfers",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute",
+            "permissionType": "DISPUTE"
+        }
+    ]
+}

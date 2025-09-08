@@ -1,0 +1,61 @@
+ {
+    "name": "CUSTOMER_ENGAGEMENT_USER",
+    "description": "This role enables user manage customers",
+    "permissions": [
+      {
+        "permission": "view-transactions",
+        "description": "This enables user view transaction transfer histories",
+        "permissionType": "TRANSACTION"
+      },
+      {
+        "permission": "export-transactions",
+        "description": "This enables user export transaction  histories",
+        "permissionType": "TRANSACTION"
+      },
+      {
+        "permission": "view-refunds",
+        "description": "This enables user view refunds histories",
+        "permissionType": "TRANSACTION"
+      },
+      {
+        "permission": "log-funds",
+        "description": "This enables user log funds",
+        "permissionType": "TRANSACTION"
+      },
+      {
+        "permission": "view-merchants",
+        "description": "This enables user view merchants available on the system",
+        "permissionType": "MERCHANT"
+      },
+      {
+        "permission": "view-merchants-users-roles",
+        "description": "This enables user view merchants users and their roles",
+        "permissionType": "MERCHANT"
+      },
+      {
+        "permission": "view-blacklisted-merchants",
+        "description": "This enables user view blacklisted merchants",
+        "permissionType": "MERCHANT"
+      },
+      {
+        "permission": "edit-merchant-bank-information",
+        "description": "This enables user edit merchant bank information",
+        "permissionType": "MERCHANT"
+      },
+      {
+        "permission": "approve-merchant-bank-information-update",
+        "description": "This enables user approve merchant bank information update",
+        "permissionType": "MERCHANT"
+      },
+      {
+        "permission": "view-blacklisted-merchants",
+        "description": "This enables user view blacklisted merchants",
+        "permissionType": "MERCHANT"
+      },
+      {
+        "permission": "view-settlement-transfer",
+        "description": "This enables user view settlement transfer histories",
+        "permissionType": "SETTLEMENT"
+      }
+    ]
+  }

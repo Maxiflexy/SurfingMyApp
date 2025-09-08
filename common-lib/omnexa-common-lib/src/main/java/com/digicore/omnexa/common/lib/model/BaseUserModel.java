@@ -7,7 +7,6 @@
 package com.digicore.omnexa.common.lib.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -45,10 +44,8 @@ public class BaseUserModel extends BaseModel implements Serializable {
 
   private String email;
 
-  @Column(nullable = false)
   private String firstName;
 
-  @Column(nullable = false)
   private String lastName;
 
   private String phoneNumber;

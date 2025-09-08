@@ -1,0 +1,142 @@
+[
+  {
+    "processor": "INTERSWITCH",
+    "active": true,
+    "feeConfigurationType": "WEB_CARD"
+  },
+  {
+    "processor": "AFRIGO",
+    "active": true,
+    "feeConfigurationType": "WEB_CARD"
+  },
+  {
+    "processor": "MASTERCARD",
+    "active": true,
+    "feeConfigurationType": "WEB_CARD"
+  },
+  {
+    "processor": "PELPAY",
+    "active": true,
+    "feeConfigurationType": "WEB_CARD"
+  },
+  {
+    "processor": "STANBIC",
+    "active": true,
+    "feeConfigurationType": "WEB_TRANSFER"
+  },
+  {
+    "processor": "UBA",
+    "active": true,
+    "feeConfigurationType": "WEB_TRANSFER"
+  },
+  {
+    "processor": "PROVIDUS",
+    "active": true,
+    "feeConfigurationType": "WEB_TRANSFER"
+  },
+  {
+    "processor": "NQR",
+    "active": true,
+    "feeConfigurationType": "WEB_QR"
+  },
+  {
+    "processor": "VISA_QR",
+    "active": true,
+    "feeConfigurationType": "WEB_QR"
+  },
+  {
+    "processor": "CORAL_PAY",
+    "active": true,
+    "feeConfigurationType": "WEB_USSD"
+  },
+  {
+    "processor": "STANBIC",
+    "active": true,
+    "feeConfigurationType": "POS_TRANSFER"
+  },
+  {
+    "processor": "UBA",
+    "active": true,
+    "feeConfigurationType": "POS_TRANSFER"
+  },
+  {
+    "processor": "PROVIDUS",
+    "active": true,
+    "feeConfigurationType": "POS_TRANSFER"
+  },
+  {
+    "processor": "NQR",
+    "active": true,
+    "feeConfigurationType": "POS_QR"
+  },
+  {
+    "processor": "VISA_QR",
+    "active": true,
+    "feeConfigurationType": "POS_QR"
+  },
+  {
+    "processor": "CORAL_PAY",
+    "active": true,
+    "feeConfigurationType": "POS_USSD"
+  },
+  {
+    "processor": "INTERSWITCH",
+    "active": true,
+    "feeConfigurationType": "API_CARD"
+  },
+  {
+    "processor": "AFRIGO",
+    "active": true,
+    "feeConfigurationType": "API_CARD"
+  },
+  {
+    "processor": "MASTERCARD",
+    "active": true,
+    "feeConfigurationType": "API_CARD"
+  },
+  {
+    "processor": "PELPAY",
+    "active": true,
+    "feeConfigurationType": "API_CARD"
+  },
+  {
+    "processor": "STANBIC",
+    "active": true,
+    "feeConfigurationType": "API_TRANSFER"
+  },
+  {
+    "processor": "UBA",
+    "active": true,
+    "feeConfigurationType": "API_TRANSFER"
+  },
+  {
+    "processor": "PROVIDUS",
+    "active": true,
+    "feeConfigurationType": "API_TRANSFER"
+  },
+  {
+    "processor": "NQR",
+    "active": true,
+    "feeConfigurationType": "API_QR"
+  },
+  {
+    "processor": "VISA_QR",
+    "active": true,
+    "feeConfigurationType": "API_QR"
+  },
+  {
+    "processor": "CORAL_PAY",
+    "active": true,
+    "feeConfigurationType": "API_USSD"
+  },
+  {
+    "processor": "ZONESWITCH",
+    "active": true,
+    "feeConfigurationType": "POS_CARD"
+  },
+  {
+    "processor": "NIBSS",
+    "active": true,
+    "feeConfigurationType": "POS_CARD"
+  }
+]

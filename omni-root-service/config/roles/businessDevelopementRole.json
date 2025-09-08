@@ -1,0 +1,58 @@
+{
+    "name": "BUSINESS_DEVELOPMENT",
+    "description": "This role enables user manage business development",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions": [
+        {
+            "permission": "view-transactions",
+            "description": "View Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "Export Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-business-performance-metrics",
+            "description": "View Business Performance Metrics",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-charges",
+            "description": "View Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-merchants-users-roles",
+            "description": "View Merchant Users Roles",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-blacklisted-merchants",
+            "description": "View Blacklisted Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "view-api-keys",
+            "description": "View API keys",
+            "permissionType": "TOOLS"
+        }
+    ]
+}

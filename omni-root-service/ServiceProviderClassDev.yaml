@@ -1,0 +1,253 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: azure-secret
+spec:
+  provider: azure
+  secretObjects:
+  - data:
+    - key: db-host
+      objectName: zest-dev-gateway-db-hostname
+    - key: db-user
+      objectName: zest-dev-gateway-db-username
+    - key: db-password
+      objectName: zest-dev-gateway-db-password
+    - key: rabbitmq-user
+      objectName: zest-dev-gateway-rabbitmq-username
+    - key: rabbitmq-password
+      objectName: zest-dev-gateway-rabbitmq-password
+    - key: rabbitmq-host
+      objectName: zest-dev-gateway-rabbitmq-hostname
+    - key: zest-dev-comm-conn-string
+      objectName: zest-dev-comm-conn-string
+    - key: zest-noreply-comm-conn-string
+      objectName: zest-noreply-comm-conn-string
+    - key: zest-onboarding-comm-conn-string
+      objectName: zest-onboarding-comm-conn-string
+    - key: zest-support-comm-conn-string
+      objectName: zest-support-comm-conn-string
+    - key: zest-transaction-comm-conn-string
+      objectName: zest-transaction-comm-conn-string
+    - key: azurestorageaccountname
+      objectName: azurestorageaccountname
+    - key: azurestorageaccountkey
+      objectName: azurestorageaccountkey
+    - key: azure-ad-backoffice-client-id
+      objectName: azure-ad-backoffice-client-id
+    - key: terminal-baseurl
+      objectName: terminal-baseurl
+    - key: terminal-authtoken
+      objectName: terminal-authtoken
+    - key: tenant-id
+      objectName: tenant-id
+    - key: terminal-packaging
+      objectName: terminal-packaging
+    - key: credit-switch-api-url
+      objectName: credit-switch-api-url
+    - key: credit-switch-login-id
+      objectName: credit-switch-login-id
+    - key: credit-switch-public-key
+      objectName: credit-switch-public-key
+    - key: credit-switch-private-key
+      objectName: credit-switch-private-key
+    - key: afrigo-base-url
+      objectName: afrigo-base-url
+    - key: afrigo-acquirer-id
+      objectName: afrigo-acquirer-id
+    - key: afrigo-secret-key
+      objectName: afrigo-secret-key
+    - key: mpgs-client-secret
+      objectName: mpgs-client-secret
+    - key: interswitch-public-exponent
+      objectName: interswitch-public-exponent
+    - key: interswitch-modulus
+      objectName: interswitch-modulus
+    - key: fraud-nethone-password
+      objectName: fraud-nethone-password
+    - key: fraud-nethone-username
+      objectName: fraud-nethone-username
+    - key: azurepublicstoragename
+      objectName: azurepublicstoragename
+    - key: azurepublicstoragekey
+      objectName: azurepublicstoragekey
+    - key: ussd-client-id
+      objectName: ussd-client-id
+    - key: ussd-client-key
+      objectName: ussd-client-key
+    - key: ussd-terminal-id
+      objectName: ussd-terminal-id
+    - key: ussd-merchant-id
+      objectName: ussd-merchant-id
+    - key: shiip-token-id
+      objectName: shiip-token-id
+    - key: shiip-user-id
+      objectName: shiip-user-id
+    - key: shiip-base-url
+      objectName: shiip-base-url
+    secretName: dev-secrets
+    type: Opaque
+  parameters:
+    usePodIdentity: "false"         
+    useVMManagedIdentity: "true"
+    userAssignedIdentityID: "0256a3ef-6afb-4aea-9018-d84906cd58cf"
+    keyvaultName: "zest-dev-vault-payment"          #
+    cloudName: ""                   
+    objects:  |
+      array:
+        - |
+          objectName: zest-dev-gateway-db-hostname
+          objectType: secret        # object types: secret, key or cert
+          objectVersion: ""         # [OPTIONAL] object versions, default to latest if empty
+        - |
+          objectName: zest-dev-gateway-db-username
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-dev-gateway-db-password
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-dev-gateway-rabbitmq-username
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-dev-gateway-rabbitmq-password
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-dev-gateway-rabbitmq-hostname
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-dev-comm-conn-string
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-noreply-comm-conn-string
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-support-comm-conn-string
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-onboarding-comm-conn-string
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: zest-transaction-comm-conn-string
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: azurestorageaccountkey
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: azurestorageaccountname
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: azure-ad-backoffice-client-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: terminal-baseurl
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: terminal-authtoken
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: tenant-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: terminal-packaging
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: credit-switch-api-url
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: credit-switch-login-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: credit-switch-public-key
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: credit-switch-private-key
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: afrigo-base-url
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: afrigo-acquirer-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: afrigo-secret-key 
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: mpgs-client-secret
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: interswitch-public-exponent
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: interswitch-modulus 
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: fraud-nethone-password
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: fraud-nethone-username 
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: azurepublicstoragename
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: azurepublicstoragekey
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: ussd-client-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: ussd-client-key
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: ussd-terminal-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: ussd-merchant-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: shiip-token-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: shiip-user-id
+          objectType: secret
+          objectVersion: ""
+        - |
+          objectName: shiip-base-url
+          objectType: secret
+          objectVersion: ""
+    tenantId: "c484c871-957b-40c4-9ca1-01709e73aea5"                 

@@ -1,0 +1,314 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "root-service.fullname" . }}
+  labels:
+    {{- include "root-service.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "root-service.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "root-service.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "root-service.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: OMNI_ENCRYPT_REQUESTS
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_ENCRYPT_REQUESTS
+                optional: false
+
+          - name: AES_ENCRYPTION_KEY
+            valueFrom:
+              secretKeyRef:
+                name: gateway-credentials
+                key: AES_ENCRYPTION_KEY
+                optional: false
+
+          - name: STANBIC_CHECKSUM_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: STANBIC_CHECKSUM_URL
+                 optional: false
+          - name: STANBIC_CHECKSUM_CLIENT_ID
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: STANBIC_CHECKSUM_CLIENT_ID
+                 optional: false
+
+          - name: STANBIC_CHECKSUM_CLIENT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: STANBIC_CHECKSUM_CLIENT_SECRET
+                 optional: false
+
+          - name: VIRTUAL_ACCOUNT_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: VIRTUAL_ACCOUNT_PREFIX
+                 optional: false
+          - name: SPRING_PROFILES_ACTIVE
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: SPRING_PROFILES_ACTIVE
+                 optional: false
+          - name: QR_SERVICE_HOST
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: QR_SERVICE_HOST
+                 optional: false
+          - name: SMILE_API_KEY
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: SMILE_API_KEY
+                 optional: false
+          - name: OMNI_SWAGGER_URL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_SWAGGER_URL
+                optional: false
+          - name: SMILE_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: SMILE_BASE_URL
+                 optional: false
+
+          - name: SMILE_IDENTITY_PARTNER_ID
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: SMILE_IDENTITY_PARTNER_ID
+                 optional: false
+
+          - name: REDPAY_FRONTEND_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: REDPAY_FRONTEND_URL
+                 optional: false
+
+          - name: APPLE_SSL_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: APPLE_SSL_PASSWORD
+                 optional: false
+
+          - name: CHECKOUT_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: CHECKOUT_BASE_URL
+                optional: false
+
+          - name: WEB_ENGINE_CHECKOUT_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: WEB_ENGINE_CHECKOUT_URL
+                 optional: false
+
+          - name: EXTERNAL_USSD_SERVICE_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: EXTERNAL_USSD_SERVICE_URL
+                 optional: false
+
+          - name: EXTERNAL_SETTLEMENT_ENGINE_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: EXTERNAL_SETTLEMENT_ENGINE_URL
+                 optional: false
+
+          - name: VIRTUAL_ACCOUNT_SERVICE_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                 name: gateway-envs
+                 key: VIRTUAL_ACCOUNT_SERVICE_BASE_URL
+                 optional: false
+
+          - name: OMNI_ONBOARDING_SUPPORT_EMAIL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_ONBOARDING_SUPPORT_EMAIL
+                optional: false
+
+          - name: OMNI_PROFILE_ACTIVATION_SUPPORT_EMAIL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_PROFILE_ACTIVATION_SUPPORT_EMAIL
+                optional: false
+
+          - name: OMNI_TRANSACTIONS_SUPPORT_EMAIL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_TRANSACTIONS_SUPPORT_EMAIL
+                optional: false
+
+          - name: OMNI_SETTLEMENT_SUPPORT_EMAIL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_SETTLEMENT_SUPPORT_EMAIL
+                optional: false
+
+          - name: OMNI_DISPUTE_SUPPORT_EMAIL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_DISPUTE_SUPPORT_EMAIL
+                optional: false
+
+          - name: OMNI_GENERAL_ENQUIRIES_SUPPORT_EMAIL
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_GENERAL_ENQUIRIES_SUPPORT_EMAIL
+                optional: false
+
+          - name: OMNI_MERCHANT_ID_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_MERCHANT_ID_PREFIX
+                optional: false
+
+          - name: OMNI_BACKOFFICE_PROFILE_ID_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                name: gateway-envs
+                key: OMNI_BACKOFFICE_PROFILE_ID_PREFIX
+                optional: false
+
+          - name: MYSQL_HOSTNAME
+            valueFrom:
+              secretKeyRef:
+                 name: gateway-credentials
+                 key: MYSQL_HOSTNAME
+                 optional: false
+
+          - name: MYSQL_PORT
+            valueFrom:
+              secretKeyRef:
+                 name: gateway-credentials
+                 key: MYSQL_PORT
+                 optional: false
+
+          - name: REDPAY_DB_NAME
+            valueFrom:
+              secretKeyRef:
+                 name: gateway-credentials
+                 key: REDPAY_DB_NAME
+                 optional: false
+
+          - name: MYSQL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                 name: gateway-credentials
+                 key: MYSQL_USERNAME
+                 optional: false
+
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                 name: gateway-credentials
+                 key: MYSQL_PASSWORD
+                 optional: false
+
+          - name: RABBITMQ_ADDRESSES
+            valueFrom:
+              secretKeyRef:
+                 name: rabbitmq-login-secret
+                 key: RABBITMQ_ADDRESSES
+                 optional: false
+          - name: RABBITMQ_USERNAME
+            valueFrom:
+              secretKeyRef:
+                 name: rabbitmq-login-secret
+                 key: RABBITMQ_USERNAME
+                 optional: false
+          - name: RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                 name: rabbitmq-login-secret
+                 key: RABBITMQ_PASSWORD
+                 optional: false
+          - name: RABBITMQ_PORT
+            valueFrom:
+              secretKeyRef:
+                 name: rabbitmq-login-secret
+                 key: RABBITMQ_PORT
+                 optional: false
+          ports:
+            - name: http
+              containerPort: 2759
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+          volumeMounts:
+          {{- range .Values.efs.mountPaths }}
+            - name: efs-volume
+              mountPath: {{ .path }}
+          {{- end }}
+      volumes:
+        - name: efs-volume
+          persistentVolumeClaim:
+            claimName: root-efs-claim

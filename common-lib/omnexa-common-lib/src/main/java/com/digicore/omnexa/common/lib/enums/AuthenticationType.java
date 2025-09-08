@@ -12,5 +12,6 @@ package com.digicore.omnexa.common.lib.enums;
  */
 public enum AuthenticationType {
   PASSWORD,
+  PIN,
   OTP
 }

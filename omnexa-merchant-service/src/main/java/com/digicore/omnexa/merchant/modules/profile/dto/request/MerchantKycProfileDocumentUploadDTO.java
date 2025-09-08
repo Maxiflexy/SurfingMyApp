@@ -8,6 +8,7 @@ package com.digicore.omnexa.merchant.modules.profile.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Hossana Chukwunyere
@@ -23,6 +24,6 @@ public class MerchantKycProfileDocumentUploadDTO {
   public static class MerchantDocument {
     private String identifier;
     private String documentType;
-    private Object file;
+    private MultipartFile file;
   }
 }

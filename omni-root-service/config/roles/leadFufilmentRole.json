@@ -1,0 +1,63 @@
+{
+    "name" : "LEAD_FULFILLMENT_REVIEWER",
+    "description" : "This role enables users manage Analysis that has already been fulfilled",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions" : [
+        {
+            "permission": "view-transactions",
+            "description": "View Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "TExport Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-charges",
+            "description": "View Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-merchants-users-roles",
+            "description": "View Merchant User Roles",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "edit-merchants",
+            "description": "Edit Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "blacklist-or-whitelist-merchants",
+            "description": "Blacklist or Whitelist Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "disable-merchants",
+            "description": "Disable Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-api-keys",
+            "description": "View API Keys",
+            "permissionType": "TOOLS"
+        },
+        {
+            "permission": "view-webhooks",
+            "description": "View Webhooks",
+            "permissionType": "TOOLS"
+        }
+    ]
+}

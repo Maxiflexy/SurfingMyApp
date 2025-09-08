@@ -1,0 +1,14 @@
+FROM maven:3.9-eclipse-temurin-17
+WORKDIR /root-service
+COPY . /root-service/
+
+#added
+RUN ls /root-service/
+RUN mkdir -p /root/.m2/
+COPY settings.xml /root/.m2/
+#added
+
+RUN mvn clean install -DskipTests
+RUN cp /root-service/target/omni-root-service-1.0.0-SNAPSHOT.jar /root-service/
+EXPOSE 2759
+ENTRYPOINT ["java", "-jar", "omni-root-service-1.0.0-SNAPSHOT.jar"]

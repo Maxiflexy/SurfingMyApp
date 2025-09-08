@@ -44,4 +44,10 @@ public class SystemConstant {
   public static final String SYSTEM_MERCHANT_ID_PLACEHOLDER = "merchantId";
   public static final String SYSTEM_REQUET_SUBMITTED_MESSAGE =
       "Request submitted successfully, await approval";
+  public static final String SYSTEM_SERIAL_ID_PATTERN = "^[a-zA-Z0-9_-]+$";
+  public static final String SYSTEM_SERIAL_ID_PATTERN_ERROR =
+      "Serial ID can only contain alphanumeric characters, underscores, and hyphens. It cannot contain whitespace characters";
+  public static final String SYSTEM_APP_BUILD_ID_PATTERN = "^[a-zA-Z0-9_-]+$";
+  public static final String SYSTEM_APP_BUILD_ID_PATTERN_ERROR =
+      "App Build ID can only contain alphanumeric characters, underscores, and hyphens. It cannot contain whitespace characters";
 }

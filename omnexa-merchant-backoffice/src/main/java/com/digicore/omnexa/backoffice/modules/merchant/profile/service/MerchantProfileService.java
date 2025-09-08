@@ -129,10 +129,6 @@ public class MerchantProfileService implements ProfileService {
   @Override
   public Object updateProfile(Object request, String profileId) {
     try {
-//      if (!(request instanceof MerchantKycProfileResponse kycRequest)) {
-//        throw new IllegalArgumentException("Request must be of type MerchantKycProfileResponse");
-//      }
-
       ResponseEntity<ApiResponseJson<Object>> response =
               merchantFeignClient.updateMerchantKycProfile(profileId, request);
 

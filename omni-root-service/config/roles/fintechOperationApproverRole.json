@@ -1,0 +1,103 @@
+{
+    "name": "FINTECH_OPERATION_APPROVER",
+    "description": "This role enables user manage financial operation approver",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions": [
+        {
+            "permission": "view-transactions",
+            "description": "View Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "Export Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "approve-refunds",
+            "description": "Approve Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-business-performance-metrics",
+            "description": "View Business Performance Metrics",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-charges",
+            "description": "View Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "approve-charges",
+            "description": "Approve Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-blacklisted-merchants",
+            "description": "View Blacklisted Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-transfers",
+            "description": "View Transfers",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "approve-or-disapprove-transfers",
+            "description": "Approve or Disapprove Transfers",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-beneficiaries",
+            "description": "View Beneficiaries",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "delete-beneficiaries",
+            "description": "Delete Beneficiaries",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "approve-beneficiaries",
+            "description": "Approve Beneficiaries",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "approve-accepted-or-declined-dispute",
+            "description": "Approve Accepted or Declined Dispute",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "toggle-merchant-validation-type",
+            "description": "Toggle Merchant Validation Type",
+            "permissionType": "USER"
+        },
+        {
+            "permission": "update-fee-configuration",
+            "description": "Update Fee Configuration",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "edit-merchant-info",
+            "description": "Edit Merchant Info",
+            "permissionType": "MERCHANT"
+        }
+    ]
+}

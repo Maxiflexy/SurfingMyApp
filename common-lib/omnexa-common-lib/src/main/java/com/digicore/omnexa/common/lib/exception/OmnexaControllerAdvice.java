@@ -152,7 +152,7 @@ public class OmnexaControllerAdvice {
    */
   @ExceptionHandler(OmnexaException.class)
   public ResponseEntity<Object> handleOmnexaException(OmnexaException exception) {
-    log.debug("cause of error is : {}", exception.getMessage());
+    log.error("cause of error is : {}", exception.getMessage());
     return buildFailureResponse(exception.getErrors(), exception.getHttpStatus());
   }
 

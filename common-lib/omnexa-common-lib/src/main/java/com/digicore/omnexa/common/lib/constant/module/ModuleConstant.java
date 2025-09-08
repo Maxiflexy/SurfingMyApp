@@ -16,4 +16,6 @@ public class ModuleConstant {
   public static final String AUTHENTICATION = "AUTHENTICATION";
   public static final String MERCHANT = "MERCHANT";
   public static final String APPROVAL_RULE = "APPROVAL_RULE";
+  public static final String TERMINAL = "TERMINAL";
+  public static final String MERCHANT_PROFILE = "MERCHANT_PROFILE";
 }

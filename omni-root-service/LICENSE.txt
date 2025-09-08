@@ -1,0 +1,42 @@
+Omni Root Service Proprietary License
+
+This software is the property of DIGICORE LTD and is protected by intellectual property laws. By downloading, copying, installing or using the software, you agree to the terms and conditions of this license agreement.
+
+1. License Grant :
+
+   DIGICORE LTD hereby grants you a non-exclusive, non-transferable license to use the software for your internal business purposes only. This license does not grant you the right to distribute, resell, or sublicense the software.
+
+
+2. Restrictions :
+
+   You may not modify, adapt, translate, reverse engineer, decompile or disassemble the software, except as permitted by applicable law. You may not remove, obscure or alter any copyright, trademark, or other proprietary rights notices affixed to or contained within the software.
+
+
+3. Ownership :
+
+   The software and all intellectual property rights therein, including but not limited to patents, trademarks, copyrights, trade secrets, and all other proprietary rights, are and shall remain the sole and exclusive property of DIGICORE LTD.
+
+
+4. Termination :
+
+   This license will terminate automatically if you breach any of the terms and conditions herein. Upon termination, you must immediately cease using the software and destroy all copies of the software in your possession.
+
+
+5. Disclaimer of Warranties :
+
+   THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. DIGICORE LTD DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT ITS OPERATION WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+
+6. Limitation of Liability :
+
+   IN NO EVENT SHALL DIGICORE LTD BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+7. Governing Law :
+
+   This license agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which DIGICORE LTD is located, without giving effect to any choice of law or conflict of law provisions.
+
+
+8. Entire Agreement :
+
+   This license agreement constitutes the entire agreement between you and DIGICORE LTD with respect to the software and supersedes all prior or contemporaneous understandings regarding such subject matter.

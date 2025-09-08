@@ -8,9 +8,7 @@ package com.digicore.omnexa.common.lib.authentication.dto.response;
 
 import com.digicore.omnexa.common.lib.authentication.contract.AuthenticationResponse;
 import java.util.Map;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * @author Oluwatobi Ogunwuyi
@@ -19,6 +17,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginResponseDTO implements AuthenticationResponse {
   private String accessToken;
   private Map<String, Object> additionalInformation;

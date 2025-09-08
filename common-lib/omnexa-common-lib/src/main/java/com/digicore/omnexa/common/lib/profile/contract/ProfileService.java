@@ -8,12 +8,16 @@ package com.digicore.omnexa.common.lib.profile.contract;
 
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.enums.ProfileVerificationStatus;
+import com.digicore.omnexa.common.lib.feign.dto.request.MerchantKycProfileDocumentUploadDTO;
+import com.digicore.omnexa.common.lib.file.dto.FileUploadedDTO;
 import com.digicore.omnexa.common.lib.onboarding.contract.OnboardingRequest;
 import com.digicore.omnexa.common.lib.onboarding.contract.OnboardingResponse;
 import com.digicore.omnexa.common.lib.profile.dto.request.ProfileEditRequest;
 import com.digicore.omnexa.common.lib.profile.dto.response.ProfileEditResponse;
 import com.digicore.omnexa.common.lib.profile.dto.response.ProfileInfoResponse;
 import com.digicore.omnexa.common.lib.util.PaginatedResponse;
+
+import java.util.List;
 
 /**
  * Service interface for profile management.
@@ -60,9 +64,16 @@ public interface ProfileService {
     return null;
   }
 
-  default ProfileEditResponse updateProfile(ProfileEditRequest request, String profileId) {
+  default Object updateProfile(Object request, String profileId) {
     return null;
   }
+
+  default List<FileUploadedDTO> uploadMerchantKycDocuments(
+          MerchantKycProfileDocumentUploadDTO request, String profileId) {
+    return null;
+  }
+
+  default void toggleProfileStatus(String profileId, boolean enabled){}
 
   /**
    * Updates the status of a profile, e.g., after invitation acceptance.
@@ -80,9 +91,9 @@ public interface ProfileService {
    * Updates the status of a profile.
    *
    * @param profileId the ID of the profile to update.
-   * @param profileStatus the new status to set for the profile.
+   * @param status the new status to set for the profile.
    */
-  default void updateProfileStatus(String profileId, ProfileStatus profileStatus) {}
+  default void updateProfileStatus(String profileId, boolean status) {}
 
   /**
    * Retrieves a profile by its ID.
@@ -91,7 +102,11 @@ public interface ProfileService {
    * @return an Optional containing the profile information response if found, or an empty Optional
    *     if not found.
    */
-  default ProfileInfoResponse getProfileById(String profileId) {
+  default Object getProfileById(String profileId) {
+    return null;
+  }
+
+  default ProfileInfoResponse getProfileByIdAndIdentifier(String profileId, String identifier) {
     return null;
   }
 

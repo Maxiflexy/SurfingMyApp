@@ -67,7 +67,7 @@ public class MerchantKycProfileDocumentUploadService
 
     for (MerchantKycProfileDocumentUploadDTO.MerchantDocument merchantDocument :
         merchantKycProfileDocumentUploadDTO.getFiles()) {
-      MultipartFile multipartFile = (MultipartFile) merchantDocument.getFile();
+      MultipartFile multipartFile = merchantDocument.getFile();
       if (multipartFile != null) {
         String documentType = merchantDocument.getDocumentType();
         String identifier = merchantDocument.getIdentifier();
@@ -134,8 +134,7 @@ public class MerchantKycProfileDocumentUploadService
 
     MerchantKycDocument merchantKycDocument =
         merchantKycDocumentRepository
-            .findFirstByMerchantProfileMerchantId(
-                RequestUtil.getValueFromAccessToken(SYSTEM_MERCHANT_ID_PLACEHOLDER))
+            .findFirstByMerchantProfileMerchantId(profileId)
             .orElse(new MerchantKycDocument());
 
     List<FileUploadedDTO> fileUploadedDTOS = new ArrayList<>();
@@ -198,7 +197,7 @@ public class MerchantKycProfileDocumentUploadService
     if (RequestUtil.nullOrEmpty(merchantKycDocument.getMerchantProfile()))
       merchantKycDocument.setMerchantProfile(
           merchantProfileRepository
-              .findByMerchantId(RequestUtil.getValueFromAccessToken(SYSTEM_MERCHANT_ID_PLACEHOLDER))
+              .findByMerchantId(profileId)
               .orElseThrow(
                   () ->
                       new OmnexaException(

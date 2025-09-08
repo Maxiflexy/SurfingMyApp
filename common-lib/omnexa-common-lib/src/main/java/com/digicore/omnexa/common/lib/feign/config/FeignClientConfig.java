@@ -1,7 +1,13 @@
 package com.digicore.omnexa.common.lib.feign.config;
 
+import com.digicore.omnexa.common.lib.util.RequestUtil;
 import feign.RequestInterceptor;
+import feign.codec.Encoder;
 import feign.codec.ErrorDecoder;
+import feign.form.spring.SpringFormEncoder;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +24,9 @@ public class FeignClientConfig {
   @Bean
   public RequestInterceptor requestInterceptor() {
     return requestTemplate -> {
-      requestTemplate.header("Authorization", "Bearer " + getBearerToken());
+      String accessToken = getBearerToken();
+      if (!RequestUtil.nullOrEmpty(accessToken))
+        requestTemplate.header("Authorization", "Bearer " + getBearerToken());
     };
   }
 
@@ -26,6 +34,11 @@ public class FeignClientConfig {
   public ErrorDecoder errorDecoder() {
     // Return a custom error decoder if needed
     return new FeignErrorDecoder();
+  }
+
+  @Bean
+  public Encoder feignFormEncoder(ObjectFactory<HttpMessageConverters> messageConverters) {
+    return new DynamicMultipartEncoder(new SpringFormEncoder(new SpringEncoder(messageConverters)));
   }
 
   private String getBearerToken() {

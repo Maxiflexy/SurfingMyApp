@@ -15,8 +15,10 @@ public class KycSwaggerDoc {
   private KycSwaggerDoc() {}
 
   public static final String KYC_API = "kyc/";
+  public static final String BACKOFFICE_KYC_API = "backoffice/kyc/";
 
   public static final String KYC_CONTROLLER_TITLE = "KYC-Module";
+  public static final String BACKOFFICE_KYC_CONTROLLER_TITLE_ = "Backoffice-KYC-Module";
 
   /** Description for the Onboarding controller in Swagger documentation. */
   public static final String KYC_CONTROLLER_DESCRIPTION =

@@ -1,0 +1,85 @@
+{
+    "name" : "FULFILLMENT_ANALYST",
+    "description" : "This role enables users manage Analysis that has already been fufilled",
+    "roleScope": "FOR_BACKOFFICE",
+    "active": true,
+    "permissions" : [
+        {
+            "permission": "view-transactions",
+            "description": "View Transaction",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "create-charges",
+            "description": "Create Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-charges",
+            "description": "View Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "edit-charges",
+            "description": "Edit Charges",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-merchants-users-roles",
+            "description": "View Merchant User Roles",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "edit-merchants",
+            "description": "Edit Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "blacklist-or-whitelist-merchants",
+            "description": "Blacklist or Whitelist Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "disable-merchants",
+            "description": "Disable Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-api-keys",
+            "description": "View API Keys",
+            "permissionType": "TOOLS"
+        },
+        {
+            "permission": "view-webhooks",
+            "description": "View Webhooks",
+            "permissionType": "TOOLS"
+        },
+        {
+            "permission": "enable-or-disable-webhooks",
+            "description": "Enable or Disable Webhooks",
+            "permissionType": "TOOLS"
+        },
+        {
+            "permission": "update-fee-configuration",
+            "description": "Update Fee Configuration",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "edit-merchant-info",
+            "description": "Edit Merchant Info",
+            "permissionType": "MERCHANT"
+        }
+      
+    ]
+
+}

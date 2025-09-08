@@ -1,0 +1,13 @@
+package com.digicore;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class OmniRootServiceApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

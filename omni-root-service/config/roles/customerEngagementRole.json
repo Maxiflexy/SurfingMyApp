@@ -1,0 +1,159 @@
+{
+    "name": "CUSTOMER_ENGAGEMENT",
+    "description": "This role enables user manage customers",
+    "roleScope": "FOR_BOTH",
+    "active": true,
+    "permissions": [
+        {
+            "permission": "view-transactions",
+            "description": "View Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "export-transactions",
+            "description": "Export Transactions",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-refunds",
+            "description": "View Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "log-funds",
+            "description": "Log Refunds",
+            "permissionType": "TRANSACTION"
+        },
+        {
+            "permission": "view-merchants",
+            "description": "View Merchant",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-merchants-users-roles",
+            "description": "View Merchant User Roles",
+            "permissionType": "MERCHANT"
+        },
+        {
+            "permission": "view-blacklisted-merchants",
+            "description": "View Blacklisted Merchant",
+            "permissionType": "MERCHANT"
+        },
+   
+        {
+            "permission": "view-transfers",
+            "description": "View Transfers",
+            "permissionType": "SETTLEMENT"
+        },
+        {
+            "permission": "view-api-keys",
+            "description": "View API Keys",
+            "permissionType": "TOOLS"
+        },
+        {
+            "permission": "view-webhooks",
+            "description": "View Webhooks",
+            "permissionType": "TOOLS"
+        },
+        {
+            "permission": "view-settlements",
+            "description": "View Settlement Histories",
+            "permissionType": "BALANCE"
+        },
+        {
+            "permission": "view-dispute",
+            "description": "View Dispute/Chargebacks",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "accept-dispute",
+            "description": "Accept Dispute/Chargebacks",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "decline-dispute",
+            "description": "Decline Dispute/Chargebacks",
+            "permissionType": "DISPUTE"
+        },
+        {
+            "permission": "view-store",
+            "description": "View Store Information",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "create-edit-store",
+            "description": "Create and Manage Stores",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-orders",
+            "description": "View Orders",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-products",
+            "description": "View Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "add-products",
+            "description": "Add Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "edit-delete-products",
+            "description": "Edit or Delete Products",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-products-categories",
+            "description": "View Product Categories",
+            "permissionType": "STORE"
+        },
+        {
+            "permission": "view-payment-page",
+            "description": "View Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "create-payment-page",
+            "description": "Create Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "edit-payment-page",
+            "description": "Edit Payment Page",
+            "permissionType": "PAYMENT_PAGE"
+        },
+        {
+            "permission": "view-invoices",
+            "description": "View Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "create-invoices",
+            "description": "Create Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "edit-invoices",
+            "description": "Edit Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "send-invoices",
+            "description": "Send Invoices",
+            "permissionType": "INVOICE"
+        },
+        {
+            "permission": "add-settlement-account",
+            "description": "Add Settlement Account",
+            "permissionType": "SETTINGS"
+        },
+        {
+            "permission": "edit-merchant-info",
+            "description": "Edit Merchant Info",
+            "permissionType": "MERCHANT"
+        }
+    ]
+  }

@@ -1,0 +1,138 @@
+{
+  "name": "ENGINEERING_APPROVER",
+  "description": "This role enables user manage engineers approver",
+  "roleScope": "FOR_BACKOFFICE",
+  "active": true,
+  "permissions": [
+    {
+      "permission": "view-transactions",
+      "description": "View Transactions",
+      "permissionType": "TRANSACTION"
+    },
+    {
+      "permission": "export-transactions",
+      "description": "Export Transactions",
+      "permissionType": "TRANSACTION"
+    },
+    {
+      "permission": "view-business-performance-metrics",
+      "description": "View Business Performance Metrics",
+      "permissionType": "TRANSACTION"
+    },
+    {
+      "permission": "view-api-keys",
+      "description": "View API Keys",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "generate-new-api-keys",
+      "description": "Generate New API Keys",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "view-webhooks",
+      "description": "View Webhooks",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "update-webhooks",
+      "description": "Update Webhooks",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "enable-or-disable-webhooks",
+      "description": "Enable or Disable Webhooks",
+      "permissionType": "TOOLS"
+    },
+    {
+      "permission": "approve-add-terminal-to-inventory",
+      "description": "Approve the request to add a terminal to the inventory",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-decommission-terminal",
+      "description": "Approve the request to decommission a terminal on the inventory",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-address-merchant-terminal-request",
+      "description": "Approve the Assessment of Merchant Terminal Request",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-block-terminal",
+      "description": "Approve the Request to Block a Terminal",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-unblock-terminal",
+      "description": "Approve the Request to Unblock a Terminal",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-retrieve-terminal",
+      "description": "Approve the Request to Retrieve a Terminal",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-accept-terminal-request",
+      "description": "Approve the request to accept terminal request from a merchant",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-decline-terminal-request",
+      "description": "Approve the request to decline terminal request from a merchant",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-upload-pos-application-build",
+      "description": "Approve the Request to upload pos application build",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-send-pos-application-build",
+      "description": "Approve the Request to send pos application build",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-assign-terminal",
+      "description": "Approve the Request to assign terminal to merchant",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-upload-issuer-keys",
+      "description": "Approve the Request to upload issuers component keys and perform  issuer key exchange",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-reload-issuer-keys",
+      "description": "Approve the Request to perform all issuer key exchange",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-delete-issuer-keys",
+      "description": "Approve the Request to delete an issuer",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-activate-issuer-keys",
+      "description": "Approve the Request to activate an issuer",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-deactivate-issuer-keys",
+      "description": "Approve the Request to deactivate an issuer",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-set-keys-exchange-date",
+      "description": "Approve the Request to update the issuer next key exchange date",
+      "permissionType": "TERMINAL"
+    },
+    {
+      "permission": "approve-or-decline-reload-PTSP-keys",
+      "description": "Approve the Request to perform PTSP key exchange",
+      "permissionType": "TERMINAL"
+    }
+  ]
+}

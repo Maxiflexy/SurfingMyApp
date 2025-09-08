@@ -6,6 +6,7 @@
 
 package com.digicore.omnexa.backoffice.modules.merchant.profile.controller;
 
+import com.digicore.omnexa.backoffice.modules.merchant.profile.approval.validator.MerchantProfileValidatorService;
 import com.digicore.omnexa.common.lib.api.ControllerResponse;
 import com.digicore.omnexa.common.lib.enums.ProfileStatus;
 import com.digicore.omnexa.common.lib.feign.dto.request.MerchantKycProfileDocumentUploadDTO;
@@ -20,6 +21,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import static com.digicore.omnexa.common.lib.api.ApiVersion.API_V1;
+import static com.digicore.omnexa.common.lib.constant.system.SystemConstant.SYSTEM_REQUET_SUBMITTED_MESSAGE;
 import static com.digicore.omnexa.common.lib.swagger.constant.CommonEndpointSwaggerDoc.*;
 import static com.digicore.omnexa.common.lib.swagger.constant.kyc.KycSwaggerDoc.*;
 import static com.digicore.omnexa.common.lib.swagger.constant.profile.MerchantProfileSwaggerDoc.*;
@@ -37,8 +39,10 @@ import static com.digicore.omnexa.common.lib.swagger.constant.profile.MerchantPr
 public class MerchantProfileController {
 
   private final ProfileService merchantProfileService;
+    private final MerchantProfileValidatorService merchantProfileValidatorService;
 
-  /**
+
+    /**
    * Retrieves all merchant profiles with pagination.
    *
    * <p>This endpoint allows back office users to view a paginated list of all merchant profiles in
@@ -171,9 +175,14 @@ public class MerchantProfileController {
             String merchantId,
             @Valid @RequestBody Object request) {
 
+        merchantProfileValidatorService.updateMerchantProfile(merchantId, request);
         return ControllerResponse.buildSuccessResponse(
-                merchantProfileService.updateProfile(request, merchantId),
-                "Merchant KYC Profile Updated Successfully");
+                SYSTEM_REQUET_SUBMITTED_MESSAGE,
+                "Merchant KYC Profile Update Request Submitted Successfully");
+
+//        return ControllerResponse.buildSuccessResponse(
+//                merchantProfileService.updateProfile(request, merchantId),
+//                "Merchant KYC Profile Updated Successfully");
     }
 
 //    /**
@@ -215,13 +224,14 @@ public class MerchantProfileController {
      * @return a response containing the result of the status toggle operation
      */
     @PatchMapping(STATUS_API)
-    @Operation(summary = TOGGLE_PROFILE_STATUS_TITLE, description = TOGGLE_PROFILE_STATUS_DESCRIPTION)
-    public ResponseEntity<Object> toggleMerchantProfileStatus(
+    @Operation(summary = UPDATE_PROFILE_STATUS_TITLE, description = UPDATE_PROFILE_STATUS_DESCRIPTION)
+    public ResponseEntity<Object> updateMerchantProfileStatus(
             @RequestParam("merchantId") String merchantId,
             @RequestParam("enabled") boolean enabled) {
-        merchantProfileService.toggleProfileStatus(merchantId, enabled);
-        return ControllerResponse.buildSuccessResponse(null,
-                String.format("Merchant profile %s successfully", enabled ? "activated" : "deactivated"));
+        merchantProfileValidatorService.toggleMerchantProfileStatus(merchantId, enabled);
+        return ControllerResponse.buildSuccessResponse(
+                SYSTEM_REQUET_SUBMITTED_MESSAGE,
+                "Merchant Profile Status Change Request Submitted Successfully");
     }
 
 }

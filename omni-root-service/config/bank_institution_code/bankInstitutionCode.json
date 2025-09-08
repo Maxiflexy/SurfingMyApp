@@ -1,0 +1,2034 @@
+[
+  {
+    "bankId": 376,
+    "bankCode": "090270",
+    "bankName": "AB MICROFINANCE BANK",
+    "bankConstant": "AB_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090270.png"
+  },
+  {
+    "bankId": 265,
+    "bankCode": "070010",
+    "bankName": "ABBEY MORTGAGE BANK",
+    "bankConstant": "ABBEY_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070010.png"
+  },
+  {
+    "bankId": 366,
+    "bankCode": "090260",
+    "bankName": "ABOVE ONLY MICROFINANCE BANK",
+    "bankConstant": "ABOVE_ONLY_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090260.png"
+  },
+  {
+    "bankId": 360,
+    "bankCode": "090197",
+    "bankName": "ABU MICROFINANCE BANK",
+    "bankConstant": "ABU_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090197.png"
+  },
+  {
+    "bankId": 457,
+    "bankCode": "090202",
+    "bankName": "ACCELEREX NETWORK",
+    "bankConstant": "ACCELEREX_NETWORK",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090202.png"
+  },
+  {
+    "bankId": 242,
+    "bankCode": "000014",
+    "bankName": "ACCESS BANK",
+    "bankConstant": "ACCESS_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000014.png"
+  },
+  {
+    "bankId": 233,
+    "bankCode": "000005",
+    "bankName": "ACCESS BANK PLC (DIAMOND)",
+    "bankConstant": "ACCESS_DIAMOND_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000005.png"
+  },
+  {
+    "bankId": 426,
+    "bankCode": "100013",
+    "bankName": "ACCESSMONEY",
+    "bankConstant": "ACCESSMONEY",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100013.png"
+  },
+  {
+    "bankId": 305,
+    "bankCode": "090134",
+    "bankName": "ACCION MFB",
+    "bankConstant": "ACCION_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090134.png"
+  },
+  {
+    "bankId": 331,
+    "bankCode": "090160",
+    "bankName": "ADDOSSER MFBB",
+    "bankConstant": "ADDOSSER_MFBB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090160.png"
+  },
+  {
+    "bankId": 374,
+    "bankCode": "090268",
+    "bankName": "ADEYEMI COLLEGE STAFF MICROFINANCE BANK",
+    "bankConstant": "ADEYEMI_COLLEGE_STAFF_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090268.png"
+  },
+  {
+    "bankId": 326,
+    "bankCode": "090155",
+    "bankName": "ADVANS LA FAYETTE MFB",
+    "bankConstant": "ADVANS_LA_FAYETTE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090155.png"
+  },
+  {
+    "bankId": 441,
+    "bankCode": "100028",
+    "bankName": "AG MORTGAGE BANK PLC",
+    "bankConstant": "AG_MORTGAGE_BANK_PLC",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100028.png"
+  },
+  {
+    "bankId": 476,
+    "bankCode": "090371",
+    "bankName": "AGOSASA MICROFINANCE BANK",
+    "bankConstant": "AGOSASA_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090371.png"
+  },
+  {
+    "bankId": 304,
+    "bankCode": "090133",
+    "bankName": "AL-BARKAH MFB",
+    "bankConstant": "AL-BARKAH_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090133.png"
+  },
+  {
+    "bankId": 365,
+    "bankCode": "090259",
+    "bankName": "ALEKUN MICROFINANCE BANK",
+    "bankConstant": "ALEKUN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090259.png"
+  },
+  {
+    "bankId": 398,
+    "bankCode": "090297",
+    "bankName": "ALERT MFB",
+    "bankConstant": "ALERT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090297.png"
+  },
+  {
+    "bankId": 382,
+    "bankCode": "090277",
+    "bankName": "ALHAYAT MFB",
+    "bankConstant": "ALHAYAT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090277.png"
+  },
+  {
+    "bankId": 302,
+    "bankCode": "090131",
+    "bankName": "ALLWORKERS MFB",
+    "bankConstant": "ALLWORKERS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090131.png"
+  },
+  {
+    "bankId": 340,
+    "bankCode": "090169",
+    "bankName": "ALPHAKAPITAL MFB",
+    "bankConstant": "ALPHAKAPITAL_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090169.png"
+  },
+  {
+    "bankId": 351,
+    "bankCode": "090180",
+    "bankName": "AMJU MFB",
+    "bankConstant": "AMJU_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090180.png"
+  },
+  {
+    "bankId": 287,
+    "bankCode": "090116",
+    "bankName": "AMML MFB",
+    "bankConstant": "AMML_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090116.png"
+  },
+  {
+    "bankId": 314,
+    "bankCode": "090143",
+    "bankName": "APEKS MICROFINANCE BANK",
+    "bankConstant": "APEKS_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090143.png"
+  },
+  {
+    "bankId": 480,
+    "bankCode": "090376",
+    "bankName": "APPLE MICROFINANCE BANK",
+    "bankConstant": "APPLE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090376.png"
+  },
+  {
+    "bankId": 489,
+    "bankCode": "110011",
+    "bankName": "ARCA PAYMENTS COMPANY LIMITED",
+    "bankConstant": "ARCA_PAYMENTS_COMPANY_LIMITED",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/110011.png"
+  },
+  {
+    "bankId": 387,
+    "bankCode": "090282",
+    "bankName": "ARISE MFB",
+    "bankConstant": "ARISE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090282.png"
+  },
+  {
+    "bankId": 274,
+    "bankCode": "090001",
+    "bankName": "ASOSAVINGS",
+    "bankConstant": "ASOSAVINGS",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090001.png"
+  },
+  {
+    "bankId": 343,
+    "bankCode": "090172",
+    "bankName": "ASTRAPOLARIS MFB",
+    "bankConstant": "ASTRAPOLARIS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090172.png"
+  },
+  {
+    "bankId": 370,
+    "bankCode": "090264",
+    "bankName": "AUCHI MICROFINANCE BANK",
+    "bankConstant": "AUCHI_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090264.png"
+  },
+  {
+    "bankId": 352,
+    "bankCode": "090188",
+    "bankName": "BAINES CREDIT MFB",
+    "bankConstant": "BAINES_CREDIT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090188.png"
+  },
+  {
+    "bankId": 413,
+    "bankCode": "090326",
+    "bankName": "BALOGUN GAMBARI MFB",
+    "bankConstant": "BALOGUN_GAMBARI_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090326.png"
+  },
+  {
+    "bankId": 406,
+    "bankCode": "090316",
+    "bankName": "BAYERO MICROFINANCE BANK",
+    "bankConstant": "BAYERO_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090316.png"
+  },
+  {
+    "bankId": 298,
+    "bankCode": "090127",
+    "bankName": "BC KASH MFB",
+    "bankConstant": "BC_KASH_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090127.png"
+  },
+  {
+    "bankId": 446,
+    "bankCode": "100052",
+    "bankName": "BETA-ACCESS YELLO",
+    "bankConstant": "BETA-ACCESS_YELLO",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100052.png"
+  },
+  {
+    "bankId": 468,
+    "bankCode": "090336",
+    "bankName": "BIPC MICROFINANCE BANK",
+    "bankConstant": "BIPC_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090336.png"
+  },
+  {
+    "bankId": 288,
+    "bankCode": "090117",
+    "bankName": "BOCTRUST MICROFINANCE BANK",
+    "bankConstant": "BOCTRUST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090117.png"
+  },
+  {
+    "bankId": 347,
+    "bankCode": "090176",
+    "bankName": "BOSAK MFB",
+    "bankConstant": "BOSAK_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090176.png"
+  },
+  {
+    "bankId": 319,
+    "bankCode": "090148",
+    "bankName": "BOWEN MFB",
+    "bankConstant": "BOWEN_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090148.png"
+  },
+  {
+    "bankId": 270,
+    "bankCode": "070015",
+    "bankName": "BRENT MORTGAGE BANK",
+    "bankConstant": "BRENT_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070015.png"
+  },
+  {
+    "bankId": 394,
+    "bankCode": "090293",
+    "bankName": "BRETHREN MICROFINANCE BANK",
+    "bankConstant": "BRETHREN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090293.png"
+  },
+  {
+    "bankId": 403,
+    "bankCode": "090308",
+    "bankName": "BRIGHTWAY MFB",
+    "bankConstant": "BRIGHTWAY_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090308.png"
+  },
+  {
+    "bankId": 469,
+    "bankCode": "090360",
+    "bankName": "CASHCONNECT MICROFINANCE BANK",
+    "bankConstant": "CASHCONNECT_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090360.png"
+  },
+  {
+    "bankId": 418,
+    "bankCode": "100005",
+    "bankName": "CELLULANT",
+    "bankConstant": "CELLULANT",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100005.png"
+  },
+  {
+    "bankId": 325,
+    "bankCode": "090154",
+    "bankName": "CEMCS MFB",
+    "bankConstant": "CEMCS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090154.png"
+  },
+  {
+    "bankId": 312,
+    "bankCode": "090141",
+    "bankName": "CHIKUM MICROFINANCE BANK",
+    "bankConstant": "CHIKUM_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090141.png"
+  },
+  {
+    "bankId": 315,
+    "bankCode": "090144",
+    "bankName": "CIT MICROFINANCE BANK",
+    "bankConstant": "CIT_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090144.png"
+  },
+  {
+    "bankId": 237,
+    "bankCode": "000009",
+    "bankName": "CITI BANK",
+    "bankConstant": "CITI_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000009.png"
+  },
+  {
+    "bankId": 479,
+    "bankCode": "090374",
+    "bankName": "COASTLINE MICROFINANCE BANK",
+    "bankConstant": "COASTLINE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090374.png"
+  },
+  {
+    "bankId": 301,
+    "bankCode": "090130",
+    "bankName": "CONSUMER MFB",
+    "bankConstant": "CONSUMER_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090130.png"
+  },
+  {
+    "bankId": 444,
+    "bankCode": "100032",
+    "bankName": "CONTEC GLOBAL",
+    "bankConstant": "CONTEC_GLOBAL",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100032.png"
+  },
+  {
+    "bankId": 472,
+    "bankCode": "090365",
+    "bankName": "Corestep MICROFINANCE BANK",
+    "bankConstant": "Corestep_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090365.png"
+  },
+  {
+    "bankId": 256,
+    "bankCode": "060001",
+    "bankName": "CORONATION",
+    "bankConstant": "CORONATION",
+    "bankCategory": "6",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/060001.png"
+  },
+  {
+    "bankId": 261,
+    "bankCode": "070006",
+    "bankName": "COVENANT MFB",
+    "bankConstant": "COVENANT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070006.png"
+  },
+  {
+    "bankId": 330,
+    "bankCode": "090159",
+    "bankName": "CREDIT AFRIQUE MFB",
+    "bankConstant": "CREDIT_AFRIQUE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090159.png"
+  },
+  {
+    "bankId": 486,
+    "bankCode": "090391",
+    "bankName": "Davodani Microfinance Bank",
+    "bankConstant": "Davodani_Microfinance_Bank",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090391.png"
+  },
+  {
+    "bankId": 338,
+    "bankCode": "090167",
+    "bankName": "DAYLIGHT MICROFINANCE BANK",
+    "bankConstant": "DAYLIGHT_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090167.png"
+  },
+  {
+    "bankId": 327,
+    "bankCode": "090156",
+    "bankName": "E-BARCS MFB",
+    "bankConstant": "E-BARCS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090156.png"
+  },
+  {
+    "bankId": 395,
+    "bankCode": "090294",
+    "bankName": "EAGLE FLIGHT MFB",
+    "bankConstant": "EAGLE_FLIGHT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090294.png"
+  },
+  {
+    "bankId": 434,
+    "bankCode": "100021",
+    "bankName": "EARTHOLEUM",
+    "bankConstant": "EARTHOLEUM",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100021.png"
+  },
+  {
+    "bankId": 238,
+    "bankCode": "000010",
+    "bankName": "ECOBANK BANK",
+    "bankConstant": "ECOBANK_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000010.png"
+  },
+  {
+    "bankId": 421,
+    "bankCode": "100008",
+    "bankName": "ECOBANK XPRESS ACCOUNT",
+    "bankConstant": "ECOBANK_XPRESS_ACCOUNT",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100008.png"
+  },
+  {
+    "bankId": 404,
+    "bankCode": "090310",
+    "bankName": "EDFIN MFB",
+    "bankConstant": "EDFIN_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090310.png"
+  },
+  {
+    "bankId": 485,
+    "bankCode": "090389",
+    "bankName": "EK-Reliable Microfinance Bank",
+    "bankConstant": "EK-Reliable_Microfinance_Bank",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090389.png"
+  },
+  {
+    "bankId": 279,
+    "bankCode": "090097",
+    "bankName": "EKONDO MFB",
+    "bankConstant": "EKONDO_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090097.png"
+  },
+  {
+    "bankId": 379,
+    "bankCode": "090273",
+    "bankName": "EMERALDS MFB",
+    "bankConstant": "EMERALDS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090273.png"
+  },
+  {
+    "bankId": 285,
+    "bankCode": "090114",
+    "bankName": "EMPIRETRUST MICROFINANCE BANK",
+    "bankConstant": "EMPIRETRUST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090114.png"
+  },
+  {
+    "bankId": 247,
+    "bankCode": "000019",
+    "bankName": "ENTERPRISE BANK",
+    "bankConstant": "ENTERPRISE_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000019.png"
+  },
+  {
+    "bankId": 353,
+    "bankCode": "090189",
+    "bankName": "ESAN MFB",
+    "bankConstant": "ESAN_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090189.png"
+  },
+  {
+    "bankId": 337,
+    "bankCode": "090166",
+    "bankName": "ESO-E MICROFINANCE BANK",
+    "bankConstant": "ESO-E_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090166.png"
+  },
+  {
+    "bankId": 419,
+    "bankCode": "100006",
+    "bankName": "ETRANZACT",
+    "bankConstant": "ETRANZACT",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100006.png"
+  },
+  {
+    "bankId": 459,
+    "bankCode": "090304",
+    "bankName": "EVANGEL MFB",
+    "bankConstant": "EVANGEL_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090304.png"
+  },
+  {
+    "bankId": 466,
+    "bankCode": "090332",
+    "bankName": "EVERGREEN MICROFINANCE BANK",
+    "bankConstant": "EVERGREEN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090332.png"
+  },
+  {
+    "bankId": 463,
+    "bankCode": "090328",
+    "bankName": "EYOWO MICROFINANCE BANK",
+    "bankConstant": "EYOWO_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090328.png"
+  },
+  {
+    "bankId": 350,
+    "bankCode": "090179",
+    "bankName": "FAST MFB",
+    "bankConstant": "FAST_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090179.png"
+  },
+  {
+    "bankId": 280,
+    "bankCode": "090107",
+    "bankName": "FBN MORGAGES LIMITED",
+    "bankConstant": "FBN_MORGAGES_LIMITED",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090107.png"
+  },
+  {
+    "bankId": 257,
+    "bankCode": "060002",
+    "bankName": "FBNQUEST MERCHANT BANK",
+    "bankConstant": "FBNQUEST_MERCHANT_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/060002.png"
+  },
+  {
+    "bankId": 231,
+    "bankCode": "000003",
+    "bankName": "FCMB",
+    "bankConstant": "FCMB",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000003.png"
+  },
+  {
+    "bankId": 443,
+    "bankCode": "100031",
+    "bankName": "FCMB EASY ACCOUNT",
+    "bankConstant": "FCMB_EASY_ACCOUNT",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100031.png"
+  },
+  {
+    "bankId": 392,
+    "bankCode": "090290",
+    "bankName": "FCT MFB",
+    "bankConstant": "FCT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090290.png"
+  },
+  {
+    "bankId": 408,
+    "bankCode": "090318",
+    "bankName": "FEDERAL UNIVERSITY DUTSE MICROFINANCE BANK",
+    "bankConstant": "FEDERAL_UNIVERSITY_DUTSE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090318.png"
+  },
+  {
+    "bankId": 399,
+    "bankCode": "090298",
+    "bankName": "FEDERALPOLY NASARAWAMFB",
+    "bankConstant": "FEDERALPOLY NASARAWAMFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090298.png"
+  },
+  {
+    "bankId": 414,
+    "bankCode": "100001",
+    "bankName": "FETS",
+    "bankConstant": "FETS",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100001.png"
+  },
+  {
+    "bankId": 324,
+    "bankCode": "090153",
+    "bankName": "FFS MICROFINANCE BANK",
+    "bankConstant": "FFS_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090153.png"
+  },
+  {
+    "bankId": 235,
+    "bankCode": "000007",
+    "bankName": "FIDELITY BANK",
+    "bankConstant": "FIDELITY_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000007.png"
+  },
+  {
+    "bankId": 432,
+    "bankCode": "100019",
+    "bankName": "FIDELITY MOBILE",
+    "bankConstant": "FIDELITY_MOBILE",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100019.png"
+  },
+  {
+    "bankId": 297,
+    "bankCode": "090126",
+    "bankName": "FbankIdFUND MFB",
+    "bankConstant": "FbankIdFUND_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090126.png"
+  },
+  {
+    "bankId": 283,
+    "bankCode": "090111",
+    "bankName": "FINATRUST MICROFINANCE BANK",
+    "bankConstant": "FINATRUST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090111.png"
+  },
+  {
+    "bankId": 386,
+    "bankCode": "090281",
+    "bankName": "FINEX MFB",
+    "bankConstant": "FINEX_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090281.png"
+  },
+  {
+    "bankId": 473,
+    "bankCode": "090366",
+    "bankName": "Firmus MICROFINANCE BANK",
+    "bankConstant": "Firmus_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090366.png"
+  },
+  {
+    "bankId": 244,
+    "bankCode": "000016",
+    "bankName": "FIRST BANK OF NIGERIA",
+    "bankConstant": "FIRST_BANK_OF_NIGERIA",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000016.png"
+  },
+  {
+    "bankId": 269,
+    "bankCode": "070014",
+    "bankName": "FIRST GENERATION MORTGAGE BANK",
+    "bankConstant": "FIRST_GENERATION_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070014.png"
+  },
+  {
+    "bankId": 334,
+    "bankCode": "090163",
+    "bankName": "FIRST MULTIPLE MFB",
+    "bankConstant": "FIRST_MULTIPLE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090163.png"
+  },
+  {
+    "bankId": 389,
+    "bankCode": "090285",
+    "bankName": "FIRST OPTION MFB",
+    "bankConstant": "FIRST_OPTION_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090285.png"
+  },
+  {
+    "bankId": 335,
+    "bankCode": "090164",
+    "bankName": "FIRST ROYAL MICROFINANCE BANK",
+    "bankConstant": "FIRST_ROYAL_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090164.png"
+  },
+  {
+    "bankId": 427,
+    "bankCode": "100014",
+    "bankName": "FIRSTMONIE WALLET",
+    "bankConstant": "FIRSTMONIE_WALLET",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100014.png"
+  },
+  {
+    "bankId": 260,
+    "bankCode": "070002",
+    "bankName": "FORTIS MICROFINANCE BANK",
+    "bankConstant": "FORTIS_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070002.png"
+  },
+  {
+    "bankId": 429,
+    "bankCode": "100016",
+    "bankName": "FORTISMOBILE",
+    "bankConstant": "FORTISMOBILE",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100016.png"
+  },
+  {
+    "bankId": 454,
+    "bankCode": "400001",
+    "bankName": "FSDH",
+    "bankConstant": "FSDH",
+    "bankCategory": "6",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/400001.png"
+  },
+  {
+    "bankId": 316,
+    "bankCode": "090145",
+    "bankName": "FULL RANGE MFB",
+    "bankConstant": "FULL_RANGE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090145.png"
+  },
+  {
+    "bankId": 329,
+    "bankCode": "090158",
+    "bankName": "FUTO MFB",
+    "bankConstant": "FUTO_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090158.png"
+  },
+  {
+    "bankId": 339,
+    "bankCode": "090168",
+    "bankName": "GASHUA MICROFINANCE BANK",
+    "bankConstant": "GASHUA_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090168.png"
+  },
+  {
+    "bankId": 264,
+    "bankCode": "070009",
+    "bankName": "GATEWAY MORTGAGE BANK",
+    "bankConstant": "GATEWAY_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070009.png"
+  },
+  {
+    "bankId": 255,
+    "bankCode": "000027",
+    "bankName": "GLOBUS BANK",
+    "bankConstant": "GLOBUS_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000027.png"
+  },
+  {
+    "bankId": 383,
+    "bankCode": "090278",
+    "bankName": "GLORY MFB",
+    "bankConstant": "GLORY_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090278.png"
+  },
+  {
+    "bankId": 435,
+    "bankCode": "100022",
+    "bankName": "GOMONEY",
+    "bankConstant": "GOMONEY",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100022.png"
+  },
+  {
+    "bankId": 293,
+    "bankCode": "090122",
+    "bankName": "GOWANS MFB",
+    "bankConstant": "GOWANS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090122.png"
+  },
+  {
+    "bankId": 349,
+    "bankCode": "090178",
+    "bankName": "GREENBANK MFB",
+    "bankConstant": "GREENBANK_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090178.png"
+  },
+  {
+    "bankId": 375,
+    "bankCode": "090269",
+    "bankName": "GREENVILLE MICROFINANCE BANK",
+    "bankConstant": "GREENVILLE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090269.png"
+  },
+  {
+    "bankId": 358,
+    "bankCode": "090195",
+    "bankName": "GROOMING MICROFINANCE BANK",
+    "bankConstant": "GROOMING_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090195.png"
+  },
+  {
+    "bankId": 241,
+    "bankCode": "000013",
+    "bankName": "GTBANK PLC",
+    "bankConstant": "GTBANK_PLC",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000013.png"
+  },
+  {
+    "bankId": 484,
+    "bankCode": "090385",
+    "bankName": "GTI Microfinance Bank",
+    "bankConstant": "GTI_Microfinance_Bank",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090385.png"
+  },
+  {
+    "bankId": 422,
+    "bankCode": "100009",
+    "bankName": "GTMOBILE",
+    "bankConstant": "GTMOBILE",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100009.png"
+  },
+  {
+    "bankId": 318,
+    "bankCode": "090147",
+    "bankName": "HACKMAN MICROFINANCE BANK",
+    "bankConstant": "HACKMAN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090147.png"
+  },
+  {
+    "bankId": 272,
+    "bankCode": "070017",
+    "bankName": "HAGGAI MORTGAGE BANK",
+    "bankConstant": "HAGGAI_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070017.png"
+  },
+  {
+    "bankId": 393,
+    "bankCode": "090291",
+    "bankName": "HALA MFB",
+    "bankConstant": "HALA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090291.png"
+  },
+  {
+    "bankId": 292,
+    "bankCode": "090121",
+    "bankName": "HASAL MFB",
+    "bankConstant": "HASAL_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090121.png"
+  },
+  {
+    "bankId": 430,
+    "bankCode": "100017",
+    "bankName": "HEDONMARK",
+    "bankConstant": "HEDONMARK",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100017.png"
+  },
+  {
+    "bankId": 248,
+    "bankCode": "000020",
+    "bankName": "HERITAGE",
+    "bankConstant": "HERITAGE",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000020.png"
+  },
+  {
+    "bankId": 289,
+    "bankCode": "090118",
+    "bankName": "IBILE MICROFINANCE BANK",
+    "bankConstant": "IBILE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090118.png"
+  },
+  {
+    "bankId": 461,
+    "bankCode": "090324",
+    "bankName": "IKENNE MFB",
+    "bankConstant": "IKENNE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090324.png"
+  },
+  {
+    "bankId": 384,
+    "bankCode": "090279",
+    "bankName": "IKIRE MFB",
+    "bankConstant": "IKIRE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090279.png"
+  },
+  {
+    "bankId": 475,
+    "bankCode": "090370",
+    "bankName": "ILASAN MICROFINANCE BANK",
+    "bankConstant": "ILASAN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090370.png"
+  },
+  {
+    "bankId": 364,
+    "bankCode": "090258",
+    "bankName": "IMO MICROFINANCE BANK",
+    "bankConstant": "IMO_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090258.png"
+  },
+  {
+    "bankId": 437,
+    "bankCode": "100024",
+    "bankName": "IMPERIAL HOMES MORTGAGE BANK",
+    "bankConstant": "IMPERIAL_HOMES_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100024.png"
+  },
+  {
+    "bankId": 328,
+    "bankCode": "090157",
+    "bankName": "INFINITY MFB",
+    "bankConstant": "INFINITY_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090157.png"
+  },
+  {
+    "bankId": 271,
+    "bankCode": "070016",
+    "bankName": "INFINITY TRUST MORTGAGE BANK",
+    "bankConstant": "INFINITY_TRUST_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070016.png"
+  },
+  {
+    "bankId": 442,
+    "bankCode": "100029",
+    "bankName": "INNOVECTIVES KESH",
+    "bankConstant": "INNOVECTIVES_KESH",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100029.png"
+  },
+  {
+    "bankId": 440,
+    "bankCode": "100027",
+    "bankName": "INTELLIFIN",
+    "bankConstant": "INTELLIFIN",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100027.png"
+  },
+  {
+    "bankId": 320,
+    "bankCode": "090149",
+    "bankName": "IRL MICROFINANCE BANK",
+    "bankConstant": "IRL_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090149.png"
+  },
+  {
+    "bankId": 481,
+    "bankCode": "090377",
+    "bankName": "ISALEOYO MICROFINANCE BANK",
+    "bankConstant": "ISALEOYO_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090377.png"
+  },
+  {
+    "bankId": 234,
+    "bankCode": "000006",
+    "bankName": "JAIZ BANK",
+    "bankConstant": "JAIZ_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000006.png"
+  },
+  {
+    "bankId": 275,
+    "bankCode": "090003",
+    "bankName": "JUBILEELIFE",
+    "bankConstant": "JUBILEELIFE",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090003.png"
+  },
+  {
+    "bankId": 487,
+    "bankCode": "110008",
+    "bankName": "KADICK INTEGRATION LIMITED",
+    "bankConstant": "KADICK_INTEGRATION_LIMITED",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/110008.png"
+  },
+  {
+    "bankId": 409,
+    "bankCode": "090320",
+    "bankName": "KADPOLY MICROFINANCE BANK",
+    "bankConstant": "KADPOLY_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090320.png"
+  },
+  {
+    "bankId": 355,
+    "bankCode": "090191",
+    "bankName": "KCMB MFB",
+    "bankConstant": "KCMB_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090191.png"
+  },
+  {
+    "bankId": 428,
+    "bankCode": "100015",
+    "bankName": "KEGOW",
+    "bankConstant": "KEGOW",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100015.png"
+  },
+  {
+    "bankId": 230,
+    "bankCode": "000002",
+    "bankName": "KEYSTONE BANK",
+    "bankConstant": "KEYSTONE_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000002.png"
+  },
+  {
+    "bankId": 400,
+    "bankCode": "090299",
+    "bankName": "KONTAGORA MFB",
+    "bankConstant": "KONTAGORA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090299.png"
+  },
+  {
+    "bankId": 373,
+    "bankCode": "090267",
+    "bankName": "KUDA MICROFINANCE BANK",
+    "bankConstant": "KUDA_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090267.png"
+  },
+  {
+    "bankId": 348,
+    "bankCode": "090177",
+    "bankName": "LAPO MFB",
+    "bankConstant": "LAPO_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090177.png"
+  },
+  {
+    "bankId": 377,
+    "bankCode": "090271",
+    "bankName": "LAVENDER MICROFINANCE BANK",
+    "bankConstant": "LAVENDER_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090271.png"
+  },
+  {
+    "bankId": 267,
+    "bankCode": "070012",
+    "bankName": "LBIC MORTGAGE BANK",
+    "bankConstant": "LBIC_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070012.png"
+  },
+  {
+    "bankId": 477,
+    "bankCode": "090372",
+    "bankName": "LEGEND MICROFINANCE BANK",
+    "bankConstant": "LEGEND_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090372.png"
+  },
+  {
+    "bankId": 371,
+    "bankCode": "090265",
+    "bankName": "LOVONUS MICROFINANCE BANK",
+    "bankConstant": "LOVONUS_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090265.png"
+  },
+  {
+    "bankId": 411,
+    "bankCode": "090323",
+    "bankName": "MAINLAND MICROFINANCE BANK",
+    "bankConstant": "MAINLAND_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090323.png"
+  },
+  {
+    "bankId": 342,
+    "bankCode": "090171",
+    "bankName": "MAINSTREET MFB",
+    "bankConstant": "MAINSTREET_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090171.png"
+  },
+  {
+    "bankId": 345,
+    "bankCode": "090174",
+    "bankName": "MALACHY MFB",
+    "bankConstant": "MALACHY_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090174.png"
+  },
+  {
+    "bankId": 483,
+    "bankCode": "090383",
+    "bankName": "MANNY MICROFINANCE BANK",
+    "bankConstant": "MANNY_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090383.png"
+  },
+  {
+    "bankId": 410,
+    "bankCode": "090321",
+    "bankName": "MAYFAIR MFB",
+    "bankConstant": "MAYFAIR_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090321.png"
+  },
+  {
+    "bankId": 273,
+    "bankCode": "070019",
+    "bankName": "MAYFRESH MORTGAGE BANK",
+    "bankConstant": "MAYFRESH_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070019.png"
+  },
+  {
+    "bankId": 385,
+    "bankCode": "090280",
+    "bankName": "MEGAPRAISE MICROFINANCE BANK",
+    "bankConstant": "MEGAPRAISE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090280.png"
+  },
+  {
+    "bankId": 381,
+    "bankCode": "090275",
+    "bankName": "MERIDIAN MFB",
+    "bankConstant": "MERIDIAN_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090275.png"
+  },
+  {
+    "bankId": 307,
+    "bankCode": "090136",
+    "bankName": "MICROCRED MICROFINANCE BANK",
+    "bankConstant": "MICROCRED_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090136.png"
+  },
+  {
+    "bankId": 424,
+    "bankCode": "100011",
+    "bankName": "MKUDI",
+    "bankConstant": "MKUDI",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100011.png"
+  },
+  {
+    "bankId": 470,
+    "bankCode": "090362",
+    "bankName": "MOLUSI MICROFINANCE BANK",
+    "bankConstant": "MOLUSI_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090362.png"
+  },
+  {
+    "bankId": 433,
+    "bankCode": "100020",
+    "bankName": "MONEYBOX",
+    "bankConstant": "MONEYBOX",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100020.png"
+  },
+  {
+    "bankId": 300,
+    "bankCode": "090129",
+    "bankName": "MONEYTRUST MFB",
+    "bankConstant": "MONEYTRUST_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090129.png"
+  },
+  {
+    "bankId": 354,
+    "bankCode": "090190",
+    "bankName": "MUTUAL BENEFITS MFB",
+    "bankConstant": "MUTUAL_BENEFITS_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090190.png"
+  },
+  {
+    "bankId": 322,
+    "bankCode": "090151",
+    "bankName": "MUTUAL TRUST MICROFINANCE BANK",
+    "bankConstant": "MUTUAL_TRUST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090151.png"
+  },
+  {
+    "bankId": 323,
+    "bankCode": "090152",
+    "bankName": "NARGATA MFB",
+    "bankConstant": "NARGATA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090152.png"
+  },
+  {
+    "bankId": 369,
+    "bankCode": "090263",
+    "bankName": "NAVY MICROFINANCE BANK",
+    "bankConstant": "NAVY_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090263.png"
+  },
+  {
+    "bankId": 299,
+    "bankCode": "090128",
+    "bankName": "NDIORAH MFB",
+    "bankConstant": "NDIORAH_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090128.png"
+  },
+  {
+    "bankId": 464,
+    "bankCode": "090329",
+    "bankName": "NEPTUNE MICROFINANCE BANK",
+    "bankConstant": "NEPTUNE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090329.png"
+  },
+  {
+    "bankId": 482,
+    "bankCode": "090378",
+    "bankName": "NEW GOLDEN PASTURES MICROFINANCE BANK",
+    "bankConstant": "NEW_GOLDEN_PASTURES_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090378.png"
+  },
+  {
+    "bankId": 281,
+    "bankCode": "090108",
+    "bankName": "NEW PRUDENTIAL BANK",
+    "bankConstant": "NEW_PRUDENTIAL_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090108.png"
+  },
+  {
+    "bankId": 362,
+    "bankCode": "090205",
+    "bankName": "NEWDAWN MICROFINANCE BANK",
+    "bankConstant": "NEWDAWN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090205.png"
+  },
+  {
+    "bankId": 455,
+    "bankCode": "999999",
+    "bankName": "NIP VIRTUAL BANK",
+    "bankConstant": "NIP_VIRTUAL_BANK",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/999999.png"
+  },
+  {
+    "bankId": 357,
+    "bankCode": "090194",
+    "bankName": "NIRSAL NATIONAL MICROFINANCE BANK",
+    "bankConstant": "NIRSAL_NATIONAL_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090194.png"
+  },
+  {
+    "bankId": 388,
+    "bankCode": "090283",
+    "bankName": "NNEW WOMEN MFB",
+    "bankConstant": "NNEW_WOMEN_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090283.png"
+  },
+  {
+    "bankId": 258,
+    "bankCode": "060003",
+    "bankName": "NOVA MB",
+    "bankConstant": "NOVA_MB",
+    "bankCategory": "6",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/060003.png"
+  },
+  {
+    "bankId": 259,
+    "bankCode": "070001",
+    "bankName": "NPF MICROFINANCE BANK",
+    "bankConstant": "NPF_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070001.png"
+  },
+  {
+    "bankId": 471,
+    "bankCode": "090364",
+    "bankName": "NUTURE MFB",
+    "bankConstant": "NUTURE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090364.png"
+  },
+  {
+    "bankId": 467,
+    "bankCode": "090333",
+    "bankName": "OCHE MFB",
+    "bankConstant": "OCHE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090333.png"
+  },
+  {
+    "bankId": 290,
+    "bankCode": "090119",
+    "bankName": "OHAFIA MFB",
+    "bankConstant": "OHAFIA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090119.png"
+  },
+  {
+    "bankId": 332,
+    "bankCode": "090161",
+    "bankName": "OKPOGA MFB",
+    "bankConstant": "OKPOGA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090161.png"
+  },
+  {
+    "bankId": 378,
+    "bankCode": "090272",
+    "bankName": "OLABISI ONABANJO UNIVERSITY MICROFINANCE BANK",
+    "bankConstant": "OLABISI_ONABANJO_UNIVERSITY_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090272.png"
+  },
+  {
+    "bankId": 396,
+    "bankCode": "090295",
+    "bankName": "OMIYE MFB",
+    "bankConstant": "OMIYE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090295.png"
+  },
+  {
+    "bankId": 262,
+    "bankCode": "070007",
+    "bankName": "OMOLUABI MORTGAGE BANK PLC",
+    "bankConstant": "OMOLUABI_MORTGAGE_BANK_PLC",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070007.png"
+  },
+  {
+    "bankId": 439,
+    "bankCode": "100026",
+    "bankName": "ONE FINANCE",
+    "bankConstant": "ONE_FINANCE",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100026.png"
+  },
+  {
+    "bankId": 415,
+    "bankCode": "100002",
+    "bankName": "PAGA",
+    "bankConstant": "PAGA",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100002.png"
+  },
+  {
+    "bankId": 263,
+    "bankCode": "070008",
+    "bankName": "PAGE FINANCIALS",
+    "bankConstant": "PAGE_FINANCIALS",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070008.png"
+  },
+  {
+    "bankId": 445,
+    "bankCode": "100033",
+    "bankName": "PALMPAY",
+    "bankConstant": "PALMPAY",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100033.png"
+  },
+  {
+    "bankId": 416,
+    "bankCode": "100003",
+    "bankName": "PARKWAY-READYCASH",
+    "bankConstant": "PARKWAY-READYCASH",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100003.png"
+  },
+  {
+    "bankId": 276,
+    "bankCode": "090004",
+    "bankName": "PARRALEX",
+    "bankConstant": "PARRALEX",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090004.png"
+  },
+  {
+    "bankId": 407,
+    "bankCode": "090317",
+    "bankName": "PATRICK GOLD",
+    "bankConstant": "PATRICK_GOLD",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090317.png"
+  },
+  {
+    "bankId": 447,
+    "bankCode": "110001",
+    "bankName": "PAYATTITUDE ONLINE",
+    "bankConstant": "PAYATTITUDE_ONLINE",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/110001.png"
+  },
+  {
+    "bankId": 417,
+    "bankCode": "100004",
+    "bankName": "PAYCOM",
+    "bankConstant": "PAYCOM",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100004.png"
+  },
+  {
+    "bankId": 308,
+    "bankCode": "090137",
+    "bankName": "PECAN TRUST MICROFINANCE BANK",
+    "bankConstant": "PECAN_TRUST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090137.png"
+  },
+  {
+    "bankId": 359,
+    "bankCode": "090196",
+    "bankName": "PENNYWISE MICROFINANCE BANK",
+    "bankConstant": "PENNYWISE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090196.png"
+  },
+  {
+    "bankId": 306,
+    "bankCode": "090135",
+    "bankName": "PERSONAL TRUST MICROFINANCE BANK",
+    "bankConstant": "PERSONAL_TRUST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090135.png"
+  },
+  {
+    "bankId": 336,
+    "bankCode": "090165",
+    "bankName": "PETRA MICROFINANCE BANK",
+    "bankConstant": "PETRA_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090165.png"
+  },
+  {
+    "bankId": 391,
+    "bankCode": "090289",
+    "bankName": "PILLAR MFB",
+    "bankConstant": "PILLAR_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090289.png"
+  },
+  {
+    "bankId": 268,
+    "bankCode": "070013",
+    "bankName": "PLATINUM MORTGAGE BANK",
+    "bankConstant": "PLATINUM_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070013.png"
+  },
+  {
+    "bankId": 236,
+    "bankCode": "000008",
+    "bankName": "POLARIS BANK",
+    "bankConstant": "POLARIS_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000008.png"
+  },
+  {
+    "bankId": 397,
+    "bankCode": "090296",
+    "bankName": "POLYUWANNA MFB",
+    "bankConstant": "POLYUWANNA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090296.png"
+  },
+  {
+    "bankId": 380,
+    "bankCode": "090274",
+    "bankName": "PRESTIGE MICROFINANCE BANK",
+    "bankConstant": "PRESTIGE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090274.png"
+  },
+  {
+    "bankId": 251,
+    "bankCode": "000023",
+    "bankName": "PROVIDUS BANK",
+    "bankConstant": "PROVIDUS_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000023.png"
+  },
+  {
+    "bankId": 401,
+    "bankCode": "090303",
+    "bankName": "PURPLEMONEY MFB",
+    "bankConstant": "PURPLEMONEY_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090303.png"
+  },
+  {
+    "bankId": 367,
+    "bankCode": "090261",
+    "bankName": "QUICKFUND MICROFINANCE BANK",
+    "bankConstant": "QUICKFUND_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090261.png"
+  },
+  {
+    "bankId": 341,
+    "bankCode": "090170",
+    "bankName": "RAHAMA MFB",
+    "bankConstant": "RAHAMA_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090170.png"
+  },
+  {
+    "bankId": 252,
+    "bankCode": "000024",
+    "bankName": "RAND MERCHANT BANK",
+    "bankConstant": "RAND_MERCHANT_BANK",
+    "bankCategory": "6",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000024.png"
+  },
+  {
+    "bankId": 266,
+    "bankCode": "070011",
+    "bankName": "REFUGE MORTGAGE BANK",
+    "bankConstant": "REFUGE_MORTGAGE_BANK",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/070011.png"
+  },
+  {
+    "bankId": 296,
+    "bankCode": "090125",
+    "bankName": "REGENT MFB",
+    "bankConstant": "REGENT_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090125.png"
+  },
+  {
+    "bankId": 344,
+    "bankCode": "090173",
+    "bankName": "RELIANCE MFB",
+    "bankConstant": "RELIANCE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090173.png"
+  },
+  {
+    "bankId": 361,
+    "bankCode": "090198",
+    "bankName": "RENMONEY MICROFINANCE BANK",
+    "bankConstant": "RENMONEY_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090198.png"
+  },
+  {
+    "bankId": 460,
+    "bankCode": "090322",
+    "bankName": "REPHbankIdIM MICROFINANCE BANK",
+    "bankConstant": "REPHbankIdIM_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090322.png"
+  },
+  {
+    "bankId": 303,
+    "bankCode": "090132",
+    "bankName": "RICHWAY MFB",
+    "bankConstant": "RICHWAY_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090132.png"
+  },
+  {
+    "bankId": 490,
+    "bankCode": "090405",
+    "bankName": "ROLEZ MICROFINANCE BANK",
+    "bankConstant": "ROLEZ_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090405.png"
+  },
+  {
+    "bankId": 309,
+    "bankCode": "090138",
+    "bankName": "ROYAL EXCHANGE MICROFINANCE BANK",
+    "bankConstant": "ROYAL_EXCHANGE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090138.png"
+  },
+  {
+    "bankId": 346,
+    "bankCode": "090175",
+    "bankName": "RUBIES MFB",
+    "bankConstant": "RUBIES_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090175.png"
+  },
+  {
+    "bankId": 390,
+    "bankCode": "090286",
+    "bankName": "SAFE HAVEN MFB",
+    "bankConstant": "SAFE_HAVEN_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090286.png"
+  },
+  {
+    "bankId": 278,
+    "bankCode": "090006",
+    "bankName": "SAFETRUST",
+    "bankConstant": "SAFETRUST",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090006.png"
+  },
+  {
+    "bankId": 311,
+    "bankCode": "090140",
+    "bankName": "SAGAMU MICROFINANCE BANK",
+    "bankConstant": "SAGAMU_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090140.png"
+  },
+  {
+    "bankId": 284,
+    "bankCode": "090112",
+    "bankName": "SEED CAPITAL MICROFINANCE BANK",
+    "bankConstant": "SEED_CAPITAL_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090112.png"
+  },
+  {
+    "bankId": 474,
+    "bankCode": "090369",
+    "bankName": "SEEDVEST MICROFINANCE BANK",
+    "bankConstant": "SEEDVEST_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090369.png"
+  },
+  {
+    "bankId": 420,
+    "bankCode": "100007",
+    "bankName": "STANBIC IBTC EASE WALLET",
+    "bankConstant": "STANBIC_IBTC_EASE_WALLET",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100007.png"
+  },
+  {
+    "bankId": 240,
+    "bankCode": "000012",
+    "bankName": "STANBIC IBTC BANK",
+    "bankConstant": "STANBIC_IBTC_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000012.png"
+  },
+  {
+    "bankId": 249,
+    "bankCode": "000021",
+    "bankName": "STANDARDCHARTERED",
+    "bankConstant": "STANDARDCHARTERED",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000021.png"
+  },
+  {
+    "bankId": 333,
+    "bankCode": "090162",
+    "bankName": "STANFORD MFB",
+    "bankConstant": "STANFORD_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090162.png"
+  },
+  {
+    "bankId": 368,
+    "bankCode": "090262",
+    "bankName": "STELLAS MICROFINANCE BANK",
+    "bankConstant": "STELLAS_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090262.png"
+  },
+  {
+    "bankId": 229,
+    "bankCode": "000001",
+    "bankName": "STERLING BANK",
+    "bankConstant": "STERLING_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000001.png"
+  },
+  {
+    "bankId": 402,
+    "bankCode": "090305",
+    "bankName": "SULSAP MFB",
+    "bankConstant": "SULSAP_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090305.png"
+  },
+  {
+    "bankId": 250,
+    "bankCode": "000022",
+    "bankName": "SUNTRUST BANK",
+    "bankConstant": "SUNTRUST_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000022.png"
+  },
+  {
+    "bankId": 436,
+    "bankCode": "100023",
+    "bankName": "TAGPAY",
+    "bankConstant": "TAGPAY",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100023.png"
+  },
+  {
+    "bankId": 254,
+    "bankCode": "000026",
+    "bankName": "TAJ BANK",
+    "bankConstant": "TAJ_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000026.png"
+  },
+  {
+    "bankId": 286,
+    "bankCode": "090115",
+    "bankName": "TCF",
+    "bankConstant": "TCF",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090115.png"
+  },
+  {
+    "bankId": 423,
+    "bankCode": "100010",
+    "bankName": "TEASYMOBILE",
+    "bankConstant": "TEASYMOBILE",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100010.png"
+  },
+  {
+    "bankId": 478,
+    "bankCode": "090373",
+    "bankName": "TF MICROFINANCE BANK",
+    "bankConstant": "TF_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090373.png"
+  },
+  {
+    "bankId": 253,
+    "bankCode": "000025",
+    "bankName": "TITAN TRUST BANK",
+    "bankConstant": "TITAN_TRUST_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000025.png"
+  },
+  {
+    "bankId": 317,
+    "bankCode": "090146",
+    "bankName": "TRbankIdENT MICROFINANCE BANK",
+    "bankConstant": "TRbankIdENT_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090146.png"
+  },
+  {
+    "bankId": 462,
+    "bankCode": "090327",
+    "bankName": "TRUST MFB",
+    "bankConstant": "TRUST_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090327.png"
+  },
+  {
+    "bankId": 294,
+    "bankCode": "090123",
+    "bankName": "TRUSTBANC J6 MICROFINANCE BANK LIMITED",
+    "bankConstant": "TRUSTBANC_J6_MICROFINANCE_BANK_LIMITED",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090123.png"
+  },
+  {
+    "bankId": 277,
+    "bankCode": "090005",
+    "bankName": "TRUSTBOND",
+    "bankConstant": "TRUSTBOND",
+    "bankCategory": "7",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090005.png"
+  },
+  {
+    "bankId": 458,
+    "bankCode": "090276",
+    "bankName": "TRUSTFUND MICROFINANCE BANK",
+    "bankConstant": "TRUSTFUND_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090276.png"
+  },
+  {
+    "bankId": 405,
+    "bankCode": "090315",
+    "bankName": "U AND C MFB",
+    "bankConstant": "U_AND_C_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090315.png"
+  },
+  {
+    "bankId": 465,
+    "bankCode": "090331",
+    "bankName": "UNAAB MFB",
+    "bankConstant": "UNAAB_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090331.png"
+  },
+  {
+    "bankId": 372,
+    "bankCode": "090266",
+    "bankName": "UNIBEN MICROFINANCE BANK",
+    "bankConstant": "UNIBEN_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090266.png"
+  },
+  {
+    "bankId": 356,
+    "bankCode": "090193",
+    "bankName": "UNICAL MFB",
+    "bankConstant": "UNICAL_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090193.png"
+  },
+  {
+    "bankId": 246,
+    "bankCode": "000018",
+    "bankName": "UNION BANK",
+    "bankConstant": "UNION_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000018.png"
+  },
+  {
+    "bankId": 232,
+    "bankCode": "000004",
+    "bankName": "UNITED BANK FOR AFRICA",
+    "bankConstant": "UNITED_BANK_FOR_AFRICA",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000004.png"
+  },
+  {
+    "bankId": 239,
+    "bankCode": "000011",
+    "bankName": "UNITY BANK",
+    "bankConstant": "UNITY_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000011.png"
+  },
+  {
+    "bankId": 488,
+    "bankCode": "110009",
+    "bankName": "Venture Garden Nigeria Limited",
+    "bankConstant": "Venture_Garden_Nigeria_Limited",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/110009.png"
+  },
+  {
+    "bankId": 282,
+    "bankCode": "090110",
+    "bankName": "VFD MFB",
+    "bankConstant": "VFD_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090110.png"
+  },
+  {
+    "bankId": 321,
+    "bankCode": "090150",
+    "bankName": "VIRTUE MFB",
+    "bankConstant": "VIRTUE_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090150.png"
+  },
+  {
+    "bankId": 310,
+    "bankCode": "090139",
+    "bankName": "VISA MICROFINANCE BANK",
+    "bankConstant": "VISA_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090139.png"
+  },
+  {
+    "bankId": 425,
+    "bankCode": "100012",
+    "bankName": "VTNETWORKS",
+    "bankConstant": "VTNETWORKS",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100012.png"
+  },
+  {
+    "bankId": 245,
+    "bankCode": "000017",
+    "bankName": "WEMA BANK",
+    "bankConstant": "WEMA_BANK",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000017.png"
+  },
+  {
+    "bankId": 291,
+    "bankCode": "090120",
+    "bankName": "WETLAND MFB",
+    "bankConstant": "WETLAND_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090120.png"
+  },
+  {
+    "bankId": 456,
+    "bankCode": "090201",
+    "bankName": "XPRESS PAYMENTS",
+    "bankConstant": "XPRESS_PAYMENTS",
+    "bankCategory": "11",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090201.png"
+  },
+  {
+    "bankId": 295,
+    "bankCode": "090124",
+    "bankName": "XSLNCE MICROFINANCE BANK",
+    "bankConstant": "XSLNCE_MICROFINANCE_BANK",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090124.png"
+  },
+  {
+    "bankId": 313,
+    "bankCode": "090142",
+    "bankName": "YES MFB",
+    "bankConstant": "YES_MFB",
+    "bankCategory": "9",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/090142.png"
+  },
+  {
+    "bankId": 243,
+    "bankCode": "000015",
+    "bankName": "ZENITH BANK PLC",
+    "bankConstant": "ZENITH_BANK_PLC",
+    "bankCategory": "2",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/000015.png"
+  },
+  {
+    "bankId": 431,
+    "bankCode": "100018",
+    "bankName": "ZENITHMOBILE",
+    "bankConstant": "ZENITHMOBILE",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100018.png"
+  },
+  {
+    "bankId": 438,
+    "bankCode": "100025",
+    "bankName": "ZINTERNET - KONGAPAY",
+    "bankConstant": "ZINTERNET_KONGAPAY",
+    "bankCategory": "10",
+    "bankLogo": "https://cloudfilesstore.blob.core.windows.net/icons/Banks/100025.png"
+  }
+]

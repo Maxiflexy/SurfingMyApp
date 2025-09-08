@@ -1,0 +1,53 @@
+[
+  {
+    "permission": "view-transactions",
+    "description": "This enables user view transaction histories",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "export-transactions",
+    "description": "This enables user export transaction histories",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "view-refunds",
+    "description": "This enables user view refunds histories",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "log-refunds",
+    "description": "This enables user log refunds",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "approve-refunds",
+    "description": "This enables user approve refunds request",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "view-business-performance-metrics",
+    "description": "This enables user view business performance metrics",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "view-charges",
+    "description": "This enables user view charges histories",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "create-charges",
+    "description": "This enables user create charges",
+    "permissionType": "TRANSACTION"
+  },
+  {
+    "permission": "edit-charges",
+    "description": "This enables user edit existing charges",
+    "permissionType": "TRANSACTION"
+  },
+
+  {
+    "permission": "approve-charges",
+    "description": "This enables user approve charges request",
+    "permissionType": "TRANSACTION"
+  }
+]

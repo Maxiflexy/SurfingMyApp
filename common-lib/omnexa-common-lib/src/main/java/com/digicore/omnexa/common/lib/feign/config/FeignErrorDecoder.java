@@ -5,7 +5,7 @@ import com.digicore.omnexa.common.lib.exception.OmnexaException;
 import com.digicore.omnexa.common.lib.util.RequestUtil;
 import feign.Response;
 import feign.codec.ErrorDecoder;
-import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 
@@ -17,17 +17,36 @@ import org.springframework.http.HttpStatus;
 public class FeignErrorDecoder implements ErrorDecoder {
 
   @Override
-  public Exception decode(String s, Response response) {
+  public Exception decode(String methodKey, Response response) {
+    String body = null;
+
     try {
-      ApiResponseJson<?> apiResponseJson =
-          RequestUtil.getObjectMapper()
-              .readValue(response.body().asInputStream(), ApiResponseJson.class);
+      if (response.body() != null) {
+        body = new String(response.body().asInputStream().readAllBytes(), StandardCharsets.UTF_8);
+      }
+    } catch (Exception e) {
       return new OmnexaException(
-          apiResponseJson.getMessage(),
-          HttpStatus.valueOf(response.status()),
-          apiResponseJson.getErrors());
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+          "Unable to read error body", HttpStatus.valueOf(response.status()));
     }
+
+    // Try to parse as JSON
+    if (body != null && !body.isBlank()) {
+      try {
+        ApiResponseJson<?> apiResponseJson =
+            RequestUtil.getObjectMapper().readValue(body, ApiResponseJson.class);
+        return new OmnexaException(
+            apiResponseJson.getMessage(),
+            HttpStatus.valueOf(response.status()),
+            apiResponseJson.getErrors());
+      } catch (Exception e) {
+        // Fallback: could not parse JSON
+        return new OmnexaException(
+            "Error from service: " + body, HttpStatus.valueOf(response.status()));
+      }
+    }
+
+    // No body at all
+    return new OmnexaException(
+        "Service returned error with no body", HttpStatus.valueOf(response.status()));
   }
 }

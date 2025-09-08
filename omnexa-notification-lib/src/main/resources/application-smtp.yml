@@ -1,0 +1,14 @@
+spring:
+  mail:
+    host: s1346.use1.mysecurecloudhost.com
+    port: 465
+    username: "disbursement@digicoreltd.com"
+    password: "@Digicore12345"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: false
+          ssl:
+            enable: true

@@ -1,0 +1,113 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'f179c110-f8b0-42d3-8f0d-bd01c172ed5c'
+  imageRepository: 'omnirootservice'
+  containerRegistry: 'zestdevaksreg.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: 'latest'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+parameters:
+  - name: ForceImagePushImageWithVulnerability
+    values:
+      - true
+      - false
+    default: true
+    displayName: Force Image Push Image With Vulnerability
+
+stages:
+
+- stage: Build_VA_Push
+  displayName: Build, VA & Push
+  jobs:
+  - job: Build_VA_Push
+    displayName: Build, VA & Push
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+# Build the Docker image
+    - task: Docker@2
+      displayName: Build
+      inputs:
+        containerRegistry: 'Test ACR'
+        repository: '$(imageRepository)'
+        command: 'build'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(Build.BuildId)
+          latest
+    - script: 'docker image ls'
+#Install Trivy
+    - task: CmdLine@2
+      displayName: Trivy Container scan
+      inputs:
+        script: |
+            sudo docker images
+            sudo apt-get install -y wget apt-transport-https gnupg lsb-release 
+            wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+            wget https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl $(Build.SourcesDirectory)/html.tpl
+            echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+            sudo apt-get -y update
+            sudo apt-get -y install trivy
+            wget https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/junit.tpl $(Build.SourcesDirectory)/junit.tpl
+            trivy image --format template --template "@junit.tpl" -o $(imageRepository).xml $(containerRegistry)/$(imageRepository):$(tag)
+            trivy i -f template -t "@html.tpl" -o $(imageRepository).html --exit-code 0 --severity HIGH,MEDIUM,CRITICAL $(containerRegistry)/$(imageRepository):$(tag)
+            ls -la
+#Publish Scan Result
+    - ${{ if eq(parameters.ForceImagePushImageWithVulnerability, 'false') }}:
+      - task: PublishTestResults@2
+        displayName: Publish Results If_False
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '$(imageRepository).xml'
+          mergeTestResults: true
+          failTaskOnFailedTests: true
+          testRunTitle: '$(imageRepository) - Vulnerabilities Summary'
+    - ${{ if eq(parameters.ForceImagePushImageWithVulnerability, 'true') }}:
+      - task: PublishTestResults@2
+        displayName: Publish Results If_True
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '$(imageRepository).xml'
+          mergeTestResults: true
+          failTaskOnFailedTests: false
+          testRunTitle: '$(imageRepository) - Vulnerabilities Summary'
+#Publish Scan Result
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publish_Trivy_HTML'
+        inputs:
+          artifactName: '$(imageRepository).html'
+          targetPath: '$(Build.SourcesDirectory)/$(imageRepository).html'
+          publishLocation: 'pipeline'
+
+# Push the Docker image to ACR
+    - task: Docker@2
+      displayName: Push to ACR
+      inputs:
+        containerRegistry: 'Test ACR'
+        repository: '$(imageRepository)'
+        command: 'push'
+        tags: |
+          $(Build.BuildId)
+          latest
+    
+    - task: Gitleaks@2
+      displayName: Git Leaks
+      inputs:
+        scanlocation: '$(Build.SourcesDirectory)'
+        configtype: 'default'
+        scanmode: 'all'
+        redact: false
+        reportformat: 'csv'
+      continueOnError: True
